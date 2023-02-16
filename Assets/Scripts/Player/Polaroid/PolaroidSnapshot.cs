@@ -87,6 +87,10 @@ public class PolaroidSnapshot : MonoBehaviour
         RenderTexture.active = snapshotCam.targetTexture;
         // tell texture2d to read from rendertexture
         snapshot.ReadPixels(new Rect(0, 0, resWidth, resHeight), 0, 0);
+
+        Debug.Log(snapshot.GetPixel(256, 256).ToString());
+        Debug.Log(snapshot.GetPixel(512, 256).ToString());
+
         // turn texture2d info into png
         byte[] bytes = snapshot.EncodeToPNG();
         string fileName = SnapshotName();
