@@ -83,7 +83,14 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "1519c8111921479db71abbca873c7c6c"
+        },
+        {
+            "m_Id": "3cf934770d904398b34f753b4735f1b9"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -618,6 +625,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "1519c8111921479db71abbca873c7c6c",
+    "m_Title": "This is an unused simpler comparison",
+    "m_Content": "It just determines the shorter between the two distances from input to colour, then outputs the corresponding colour.",
+    "m_TextSize": 1,
+    "m_Theme": 1,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -725.3333129882813,
+        "y": 630.6666259765625,
+        "width": 948.0,
+        "height": 702.6666870117188
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "1a52a2b06bac4876a979b2bb7d593697",
     "m_Id": 2,
@@ -833,6 +860,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "3cf934770d904398b34f753b4735f1b9",
+    "m_Title": "This is the comparison made at each step in the ClosestColourComparison32 binary search.",
+    "m_Content": "It finds the shorter between the two distances from input to colour, then outputs the corresponding colour. Before the input is compared, it is overlayed with the closest colour - if the distance is still shorter, it means that the hue is closer. This has the effect of biasing hues for the overall comparison.",
+    "m_TextSize": 1,
+    "m_Theme": 1,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1296.666748046875,
+        "y": -568.0,
+        "width": 1781.095703125,
+        "height": 1074.3037109375
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "3d2e1accdba24aecba5e397632f9eb6a",
     "m_Group": {
@@ -1020,10 +1067,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 144.00006103515626,
-            "y": -149.0,
-            "width": 209.33319091796876,
-            "height": 328.0
+            "x": 192.00006103515626,
+            "y": -101.33333587646485,
+            "width": 173.99996948242188,
+            "height": 144.00001525878907
         }
     },
     "m_Slots": [
@@ -1108,10 +1155,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 575.9999389648438,
-            "y": -83.33330535888672,
-            "width": 122.0,
-            "height": 78.66667938232422
+            "x": 737.333251953125,
+            "y": 412.00006103515627,
+            "width": 122.0001220703125,
+            "height": 78.6666259765625
         }
     },
     "m_Slots": [
@@ -1630,9 +1677,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -695.9999389648438,
-            "y": -375.33331298828127,
-            "width": 117.99993896484375,
+            "x": -1058.0,
+            "y": -415.9999694824219,
+            "width": 118.0,
             "height": 36.0
         }
     },
@@ -1848,7 +1895,7 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_BlendMode": 13
+    "m_BlendMode": 15
 }
 
 {
@@ -2076,10 +2123,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -651.3333129882813,
-            "y": -179.3333282470703,
-            "width": 209.3333740234375,
-            "height": 280.0000305175781
+            "x": -689.9999389648438,
+            "y": -119.9999771118164,
+            "width": 133.33331298828126,
+            "height": 95.99994659423828
         }
     },
     "m_Slots": [
@@ -2113,10 +2160,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -678.0,
-            "y": 335.33331298828127,
+            "x": -1074.6666259765625,
+            "y": 415.3333435058594,
             "width": 119.33331298828125,
-            "height": 36.0
+            "height": 36.000030517578128
         }
     },
     "m_Slots": [
@@ -2298,7 +2345,7 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_BlendMode": 13
+    "m_BlendMode": 15
 }
 
 {
@@ -2338,9 +2385,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -623.3333129882813,
-            "y": 36.66672134399414,
-            "width": 129.3333740234375,
+            "x": -689.9999389648438,
+            "y": 17.333332061767579,
+            "width": 133.33331298828126,
             "height": 95.99995422363281
         }
     },

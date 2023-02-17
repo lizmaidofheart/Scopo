@@ -56,6 +56,8 @@ Material:
     - Vector1_A2F854E5: 0
     - Vector1_EFA89908: 1
     - _ColorCount: 8
+    - _DotsDensity: 90
+    - _DotsInfluence: 0.25
     - _QueueControl: 0
     - _QueueOffset: 0
     - _TEST: 0
