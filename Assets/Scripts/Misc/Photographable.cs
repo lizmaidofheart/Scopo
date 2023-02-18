@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider))]
 public class Photographable : MonoBehaviour
@@ -12,6 +13,8 @@ public class Photographable : MonoBehaviour
     [SerializeField] public float visibleRange = 100f;
     [SerializeField] public string identity = "Unknown Object";
 
+    [SerializeField] UnityEvent gotPhotographed;
+
     // place self in a list of all photographable objects, which will be looped through later
     void Start()
     {
@@ -22,5 +25,10 @@ public class Photographable : MonoBehaviour
     private void OnDestroy()
     {
         PolaroidInfo.Instance.photographables.Remove(this);
+    }
+
+    public void IveBeenPhotographed()
+    {
+        gotPhotographed.Invoke();
     }
 }

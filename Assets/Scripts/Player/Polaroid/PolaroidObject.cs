@@ -7,6 +7,7 @@ public class PolaroidObject : MonoBehaviour
     [Header("Object Movement")]
 
     [SerializeField] Quaternion restAngle;
+    [SerializeField] Quaternion reloadAngle;
 
     [SerializeField] float restLerpRate = 0.1f;
     [SerializeField] float aimLerpRate = 0.1f;
@@ -16,14 +17,17 @@ public class PolaroidObject : MonoBehaviour
 
     [Header("State Management")]
 
-    [SerializeField] AimState aimState = AimState.Rest;
+    [SerializeField] AimState polaroidAimState = AimState.Rest;
+
+    [Header("Flashlight")]
 
     [SerializeField] Flashlight flashlightReference;
     private bool setFlashlightToReenable = false;
 
     [Header("Camera Flash")]
 
-    [SerializeField] Light polaroidFlash;
+    [SerializeField] Light polaroidFlashPointLight;
+    [SerializeField] ParticleSystem polaroidFlashParticle;
     [SerializeField] float flashIntensity = 50;
     [SerializeField] float flashLingerRate = 0.5f;
     [SerializeField] float flashIncreaseRate = 0.2f;
@@ -35,10 +39,28 @@ public class PolaroidObject : MonoBehaviour
     [SerializeField] KeyCode aimKey;
     [SerializeField] KeyCode captureKey;
 
+    [Header("Limiting")]
+
+    [SerializeField] int maxFilm = 10;
+    [SerializeField] int currentFilm = 10;
+    [SerializeField] float reloadTime = 1;
+    private float remainingReloadTime = 0;
+
+    [Header("Audio")]
+
+    [SerializeField] AudioSource reloadSound;
+    [SerializeField] AudioSource chargeSound;
+    [SerializeField] AudioSource captureSound;
+    [SerializeField] AudioSource noFilmLeftSound;
+    [SerializeField] float chargePitchMax = 3;
+    [SerializeField] float chargePitchMin = -3;
+    [SerializeField] float chargePitchIncreaseRate = 1;
+
     private enum AimState
     {
         Rest,
-        Aim
+        Aim,
+        Reload
     }
 
     private enum FlashState
@@ -60,60 +82,106 @@ public class PolaroidObject : MonoBehaviour
         angleMatch.angleToDampenTo = restAngle;
         SetState(AimState.Rest);
 
-        polaroidFlash.intensity = 0;
+        polaroidFlashPointLight.intensity = 0;
+
+        changeFilmCount(currentFilm);
+
+        chargeSound.pitch = chargePitchMin;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // check if aiming the camera
-        if (Input.GetKeyDown(aimKey) && aimState != AimState.Aim)
+        // check if aiming the camera. if theres remaining reloadtime, aimkey starts reloading instead
+        if (Input.GetKeyDown(aimKey) && polaroidAimState != AimState.Aim && remainingReloadTime <= 0 && polaroidAimState != AimState.Reload)
         {
-            SetState(AimState.Aim);
+            if (currentFilm > 0)
+            {
+                SetState(AimState.Aim);
+            }
+            else
+            {
+                noFilmLeftSound.Play();
+                // do smth on hud to indicate no film remaining
+            }
+            
         }
-        if (Input.GetKeyUp(aimKey) && aimState != AimState.Rest)
+        else if (Input.GetKeyDown(aimKey) && polaroidAimState != AimState.Reload && remainingReloadTime > 0)
+        {
+            SetState(AimState.Reload);
+        }
+        else if (Input.GetKeyUp(aimKey) && polaroidAimState != AimState.Rest && polaroidAimState != AimState.Reload)
         {
             SetState(AimState.Rest);
         }
 
         //take photo
-        if (aimState == AimState.Aim && Input.GetKeyDown(captureKey))
+        if (polaroidAimState == AimState.Aim && Input.GetKeyDown(captureKey))
         {
             PolaroidSnapshot.Instance.CallTakeSnapshot();
-            SetState(AimState.Rest);
+            polaroidFlashParticle.Play();
+            changeFilmCount(currentFilm - 1);
+
+            captureSound.Play();
+
+            if (currentFilm > 0)
+            {
+                SetState(AimState.Reload);
+                remainingReloadTime = reloadTime;
+            }
+            else SetState(AimState.Rest);
         }
 
-        if (aimState == AimState.Rest)
+        // charge sound pitch handling
+        if (polaroidAimState == AimState.Aim && chargeSound.pitch < chargePitchMax)
         {
-            // slerp the x and z axis of the camera's euler rotation towards restAngle
+            chargeSound.pitch += chargePitchIncreaseRate * Time.deltaTime;
+        }
+        else if (chargeSound.pitch > chargePitchMin)
+        {
+            chargeSound.pitch -= chargePitchIncreaseRate * Time.deltaTime;
+        }
 
-            Vector3 camEulers = camTransform.eulerAngles;
-            Vector3 restEulers = restAngle.eulerAngles;
+        // position slerping
+        if (polaroidAimState == AimState.Rest)
+        {
+            slerpCamTowardsAngle(restAngle);
+        }
+        else if (polaroidAimState == AimState.Reload)
+        {
+            slerpCamTowardsAngle(reloadAngle);
+        }
 
-            float lerpedX = Mathf.LerpAngle(camEulers.x, restEulers.x, restLerpRate);
-            float lerpedZ = Mathf.LerpAngle(camEulers.z, restEulers.z, restLerpRate);
+        // if reloading, reduce remaining reload time
+        if (polaroidAimState == AimState.Reload)
+        {
+            remainingReloadTime -= Time.deltaTime;
 
-            camTransform.eulerAngles = new Vector3(lerpedX, camEulers.y, lerpedZ);
+            // if theres no reload time left, stop reloading
+            if (remainingReloadTime <= 0)
+            {
+                SetState(AimState.Rest);
+            }
         }
     }
 
-    private void LateUpdate()
+    private void LateUpdate() // everything in here deals with lighting
     {
         // reduce lingering flash
         if (flashState == FlashState.Reduce)
         {
-            polaroidFlash.intensity *= flashLingerRate;
-            if (polaroidFlash.intensity <= 2f)
+            polaroidFlashPointLight.intensity *= flashLingerRate;
+            if (polaroidFlashPointLight.intensity <= 2f)
             {
                 flashState = FlashState.None;
-                polaroidFlash.intensity = 0;
+                polaroidFlashPointLight.intensity = 0;
             }
         }
 
         // increase flash while preparing
         else if (flashState == FlashState.Increase)
         {
-            polaroidFlash.intensity = Mathf.Lerp(polaroidFlash.intensity, flashIntensity, flashIncreaseRate);
+            polaroidFlashPointLight.intensity = Mathf.Lerp(polaroidFlashPointLight.intensity, flashIntensity, flashIncreaseRate);
         }
 
         // if just flashed, begin to reduce flash (this is delayed so the frame when the camera takes the photo is fully lit)
@@ -122,32 +190,98 @@ public class PolaroidObject : MonoBehaviour
             flashState = FlashState.Reduce;
         }
 
+        // if flashlight is set to reenable, do so
         if (setFlashlightToReenable)
         {
             flashlightReference.SetActive(true);
+            setFlashlightToReenable = false;
         }
     }
 
-    private void SetState(AimState state)
+    private void SetState(AimState state) // function to swap between states
     {
-        aimState = state;
-        if (aimState == AimState.Aim)
+        polaroidAimState = state;
+        
+        switch (polaroidAimState)
         {
-            angleMatch.matchYOnly = false;
-            angleMatch.setSlerpRate(aimLerpRate);
-            flashlightReference.SetActive(false);
-            flashState = FlashState.Increase;
-        }
-        else if (aimState == AimState.Rest)
-        {
-            angleMatch.matchYOnly = true;
-            angleMatch.setSlerpRate(restLerpRate);
-            setFlashlightToReenable = true;
+            case AimState.Rest: // make the cam not match the players vision, turn the flashlight on and adjust flash intensity downwards
 
-            if (polaroidFlash.intensity > 0)
-            {
-                flashState = FlashState.JustFlashed;
-            }
+                angleMatch.matchYOnly = true;
+                angleMatch.setSlerpRate(restLerpRate);
+                setFlashlightToReenable = true;
+
+                if (polaroidFlashPointLight.intensity > 0)
+                {
+                    flashState = FlashState.JustFlashed;
+                }
+
+                // audio
+                reloadSound.Stop();
+                chargeSound.Stop();
+
+                break;
+
+            case AimState.Aim: // make the cam match the players vision, turn the flashlight off and adjust flash intensity upwards
+
+                angleMatch.matchYOnly = false;
+                angleMatch.setSlerpRate(aimLerpRate);
+                flashlightReference.SetActive(false);
+                flashState = FlashState.Increase;
+
+                // audio
+                chargeSound.Play();
+
+                break;
+
+            case AimState.Reload: // make the cam match the players vision, turn the flashlight off, adjust flash intensity downwards
+
+                angleMatch.matchYOnly = false;
+                angleMatch.setSlerpRate(restLerpRate);
+                flashlightReference.SetActive(false);
+
+                if (polaroidFlashPointLight.intensity > 0)
+                {
+                    flashState = FlashState.JustFlashed;
+                }
+
+                // audio
+                reloadSound.Play();
+                chargeSound.Stop();
+
+                break;
+        }
+
+    }
+
+    private void changeFilmCount(int newFilmCount) // changes the film counter to a new value
+    {
+        currentFilm = newFilmCount;
+        if (currentFilm > maxFilm)
+        {
+            currentFilm = maxFilm;
+        }
+        else if (currentFilm < 0)
+        {
+            currentFilm = 0;
         }
     }
+
+    public void refillFilmToMax() // refills the film counter to the maximum value
+    {
+        currentFilm = maxFilm;
+    }
+
+    private void slerpCamTowardsAngle(Quaternion goalAngle)
+    {
+        // slerp the x and z axis of the camera's euler rotation towards goalAngle
+
+        Vector3 camEulers = camTransform.eulerAngles;
+        Vector3 goalEulers = goalAngle.eulerAngles;
+
+        float lerpedX = Mathf.LerpAngle(camEulers.x, goalEulers.x, restLerpRate);
+        float lerpedZ = Mathf.LerpAngle(camEulers.z, goalEulers.z, restLerpRate);
+
+        camTransform.eulerAngles = new Vector3(lerpedX, camEulers.y, lerpedZ);
+    }
+
 }

@@ -71,6 +71,11 @@ public class PolaroidSnapshot : MonoBehaviour
 
             List<Photographable> visibleObjs = PolaroidCheckVisible.Instance.visiblePhotographables(snapshotCam);
 
+            foreach (Photographable obj in visibleObjs)
+            {
+                obj.IveBeenPhotographed(); // tell a photographed object that it's been photographed.
+            }
+
             PolaroidInfo.Instance.photos.Add(new PolaroidInfo.Photograph(fileName, visibleObjs));
 
             // disable cam
