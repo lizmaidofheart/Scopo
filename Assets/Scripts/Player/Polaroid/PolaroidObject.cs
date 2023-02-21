@@ -41,6 +41,7 @@ public class PolaroidObject : MonoBehaviour
 
     [Header("Limiting")]
 
+    [SerializeField] TMPro.TextMeshProUGUI filmCounterText;
     [SerializeField] int maxFilm = 10;
     [SerializeField] int currentFilm = 10;
     [SerializeField] float reloadTime = 1;
@@ -87,6 +88,8 @@ public class PolaroidObject : MonoBehaviour
         changeFilmCount(currentFilm);
 
         chargeSound.pitch = chargePitchMin;
+
+        filmCounterText.text = currentFilm.ToString();
     }
 
     // Update is called once per frame
@@ -102,7 +105,6 @@ public class PolaroidObject : MonoBehaviour
             else
             {
                 noFilmLeftSound.Play();
-                // do smth on hud to indicate no film remaining
             }
             
         }
@@ -264,11 +266,13 @@ public class PolaroidObject : MonoBehaviour
         {
             currentFilm = 0;
         }
+        filmCounterText.text = currentFilm.ToString();
     }
 
     public void refillFilmToMax() // refills the film counter to the maximum value
     {
         currentFilm = maxFilm;
+        filmCounterText.text = currentFilm.ToString();
     }
 
     private void slerpCamTowardsAngle(Quaternion goalAngle)
