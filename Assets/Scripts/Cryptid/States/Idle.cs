@@ -6,12 +6,12 @@ public class Idle : BrainState
 {
     public float idleTime;
     public float idleTimeRemaining;
-    public BrainState nextState;
+    public string nextStateKey;
 
-    public Idle(CryptidBrain brain, float time, BrainState next) : base("Idle", brain)
+    public Idle(CryptidBrain brain, float time, string next) : base("Idle", brain)
     {
         idleTime = time;
-        nextState = next;
+        nextStateKey = next;
     }
 
     public override void Enter()
@@ -26,7 +26,7 @@ public class Idle : BrainState
         idleTimeRemaining -= Time.deltaTime;
         if (idleTimeRemaining <= 0)
         {
-            brain.ChangeState(nextState);
+            brain.ChangeState(nextStateKey);
         }
 
     }
