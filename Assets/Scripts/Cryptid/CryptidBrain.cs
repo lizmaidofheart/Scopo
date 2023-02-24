@@ -11,15 +11,16 @@ public class CryptidBrain : MonoBehaviour
     [SerializeReference] DictionaryOfStringAndBrainState states = new DictionaryOfStringAndBrainState();
 
     [Header("State Settings")]
-    [SerializeField] string initialStateKey = "Idle";
+    [SerializeField] string initialStateKey = "Initial";
     [SerializeField] float idleTime = 5;
     [SerializeField] Transform wanderTargetsParent;
 
-    private void Awake() // declaring all the possible states and their access keys
+    private void Awake() // declaring all the possible states and their access keys.
+                         // its a bit frustrating these can't be set in the editor yet but it works well enough here.
     {
-        states["Idle"] = new Idle(this, idleTime, "Wander");
-        states["Wander"] = new Wander(this, wanderTargetsParent);
-        states["Follow"] = new Follow(this);
+        states["Initial"] = new Idle("Initial", this, idleTime, "Wander");
+        states["Wander"] = new Wander("Wander", this, wanderTargetsParent);
+        states["Follow"] = new Follow("Follow", this);
     }
 
     void Start()

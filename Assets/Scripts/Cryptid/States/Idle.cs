@@ -8,7 +8,7 @@ public class Idle : BrainState
     public float idleTimeRemaining;
     public string nextStateKey;
 
-    public Idle(CryptidBrain brain, float time, string next) : base("Idle", brain)
+    public Idle(string name, CryptidBrain brain, float time, string next) : base(name, brain)
     {
         idleTime = time;
         nextStateKey = next;

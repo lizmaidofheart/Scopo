@@ -189,10 +189,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894e0f3c11a180f499d808b1378eb806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState:
-    name: 
+  currentStateKey: 
+  states:
+    rid: 3515355835750154243
+  initialStateKey: Initial
   idleTime: 5
   wanderTargetsParent: {fileID: 1617983519}
+  references:
+    version: 2
+    RefIds:
+    - rid: 3515355835750154243
+      type: {class: DictionaryOfStringAndBrainState, ns: , asm: Assembly-CSharp}
+      data:
+        keys: []
+        values: []
 --- !u!1 &84983777
 GameObject:
   m_ObjectHideFlags: 0

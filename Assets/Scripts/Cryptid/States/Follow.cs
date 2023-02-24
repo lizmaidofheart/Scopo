@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Follow : BrainState
 {
-    public Follow(CryptidBrain brain) : base("Follow", brain) { }
+    public Follow(string name, CryptidBrain brain) : base(name, brain) { }
 }
