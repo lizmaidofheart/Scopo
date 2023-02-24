@@ -15,6 +15,9 @@ public class CryptidBrain : MonoBehaviour
     [SerializeField] float idleTime = 5;
     [SerializeField] Transform wanderTargetsParent;
 
+    [Header("Senses and Body")]
+    [SerializeField] Rigidbody body;
+
     private void Awake() // declaring all the possible states and their access keys.
                          // its a bit frustrating these can't be set in the editor yet but it works well enough here.
     {
