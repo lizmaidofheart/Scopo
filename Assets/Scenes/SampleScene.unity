@@ -177,6 +177,21 @@ CapsuleCollider:
   m_Height: 2.2
   m_Direction: 1
   m_Center: {x: 0, y: 0.7, z: 0}
+--- !u!114 &77103252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77103247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894e0f3c11a180f499d808b1378eb806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState:
+    name: 
+  idleTime: 5
 --- !u!1 &84983777
 GameObject:
   m_ObjectHideFlags: 0
@@ -7150,7 +7165,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7a2dca9100c63714dad92b76bb5cdc51,
         type: 3}
       propertyPath: m_Name
-      value: Helen
+      value: Cryptid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a2dca9100c63714dad92b76bb5cdc51, type: 3}
