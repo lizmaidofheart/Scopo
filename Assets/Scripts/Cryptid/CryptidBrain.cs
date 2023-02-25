@@ -25,11 +25,15 @@ public class CryptidBrain : MonoBehaviour
     [SerializeField] string initialStateKey = "Initial";
     [SerializeField] float idleTime = 5;
     [SerializeField] Transform wanderTargetsParent;
+    [SerializeField] float followTimeToLose = 5;
+    [SerializeField] float followDistance = 10;
 
-    [Header("Body and Senses")]
+    [Header("References")]
     [SerializeField] public Rigidbody body;
     [SerializeField] public CryptidSenses senses;
     [SerializeField] public NavMeshAgent navigator;
+    [SerializeField] public Transform defendedZoneCenter;
+    [SerializeField] public float defendedZoneRadius;
 
     private void Awake() 
     {
@@ -49,12 +53,12 @@ public class CryptidBrain : MonoBehaviour
 
         states["Initial"] = new Idle("Initial", this, idleTime, "Wander");
         states["Wander"] = new Wander("Wander", this, wanderTargetsParent);
-        states["Follow"] = new Follow("Follow", this);
+        states["Follow"] = new Follow("Follow", this, followTimeToLose, radius: followDistance);
         states["HuntNormal"] = new Hunt("HuntNormal", this);
         states["Toy"] = new Toy("Toy", this);
         states["Lurk"] = new Lurk("Lurk", this);
         states["HuntAggressive"] = new Hunt("HuntAggressive", this);
-        states["Chase"] = new Follow("Chase", this);
+        states["Chase"] = new Follow("Chase", this, followTimeToLose, chase: true);
     }
 
     void Start()
@@ -71,17 +75,11 @@ public class CryptidBrain : MonoBehaviour
             
     }
 
-    // update and lateupdate trigger the updatelogic and updatephysics of the current state respectively
+    // update triggers the updatelogic of the current state
     void Update()
     {
         if (currentStateKey != null)
             states[currentStateKey].UpdateLogic();
-    }
-
-    void LateUpdate()
-    {
-        if (currentStateKey != null)
-            states[currentStateKey].UpdatePhysics();
     }
 
     // change the current state to a new state from the given access key. calls the enter and exit values of the states as they are entered and exited

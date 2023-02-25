@@ -19,8 +19,6 @@ public class BrainState
 
     public virtual void UpdateLogic() { }
 
-    public virtual void UpdatePhysics() { }
-
     public virtual void Exit() { }
 
 }

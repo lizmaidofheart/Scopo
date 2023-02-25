@@ -46,7 +46,6 @@ public class CryptidSenses : MonoBehaviour
                     if (hit.collider.transform == target) // if player was hit by raycast
                     {
                         Debug.DrawRay(transform.position, directionToTarget * distanceToTarget, Color.yellow, 2f);
-                        Debug.Log("Seen player");
                         return true; // player is visible!
                     }
                     //else, player in view angle but blocked by obstacle
@@ -61,14 +60,14 @@ public class CryptidSenses : MonoBehaviour
     private bool CheckHearing() // mid-range detection for sounds made by player regardless of line of sight
     {
         Collider[] hitSounds = Physics.OverlapSphere(transform.position, hearingRadius, soundLayer);
-        if (hitSounds.Length > 0) { Debug.Log("Heard player"); return true; } // sounds heard in radius
+        if (hitSounds.Length > 0) return true; // sounds heard in radius
         else return false;
     }
 
     private bool CheckTremorSense() // close-range detection for player regardless of line of sight
     {
         Collider[] hitPlayer = Physics.OverlapSphere(transform.position, tremorsenseRadius, playerLayer);
-        if (hitPlayer.Length > 0) { Debug.Log("Tremorsensed player"); return true; } // player detected in radius
+        if (hitPlayer.Length > 0) return true; // player detected in radius
         else return false;
     }
 
