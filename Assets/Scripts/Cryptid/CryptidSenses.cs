@@ -14,8 +14,8 @@ public class CryptidSenses : MonoBehaviour
     [SerializeField] private float tremorsenseRadius = 3;
 
     [Header("Collision Layers")]
-    [SerializeField] private int playerLayer = 9;
-    [SerializeField] private int soundLayer = 8;
+    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private LayerMask soundLayer;
 
     // check whether the player can be sensed by the cryptid
     public bool CanSensePlayer()
@@ -30,7 +30,7 @@ public class CryptidSenses : MonoBehaviour
     private bool CheckSight() // long-range detection for player relying on line of sight
     {
         // detect if player is in sight radius
-        Collider[] hitPlayer = Physics.OverlapSphere(transform.position, sightRadius, 1 << playerLayer);
+        Collider[] hitPlayer = Physics.OverlapSphere(transform.position, sightRadius, playerLayer);
         if (hitPlayer.Length > 0) 
         {
             // player detected; check if in view angle
@@ -46,6 +46,7 @@ public class CryptidSenses : MonoBehaviour
                     if (hit.collider.transform == target) // if player was hit by raycast
                     {
                         Debug.DrawRay(transform.position, directionToTarget * distanceToTarget, Color.yellow, 2f);
+                        Debug.Log("Seen player");
                         return true; // player is visible!
                     }
                     //else, player in view angle but blocked by obstacle
@@ -59,27 +60,21 @@ public class CryptidSenses : MonoBehaviour
 
     private bool CheckHearing() // mid-range detection for sounds made by player regardless of line of sight
     {
-        Collider[] hitSounds = Physics.OverlapSphere(transform.position, hearingRadius, 1 << soundLayer);
-        if (hitSounds.Length > 0) // sounds heard in radius
-        {
-            return true;
-        }
+        Collider[] hitSounds = Physics.OverlapSphere(transform.position, hearingRadius, soundLayer);
+        if (hitSounds.Length > 0) { Debug.Log("Heard player"); return true; } // sounds heard in radius
         else return false;
     }
 
     private bool CheckTremorSense() // close-range detection for player regardless of line of sight
     {
-        Collider[] hitPlayer = Physics.OverlapSphere(transform.position, hearingRadius, 1 << playerLayer);
-        if (hitPlayer.Length > 0) // player detected
-        {
-            return true;
-        }
+        Collider[] hitPlayer = Physics.OverlapSphere(transform.position, tremorsenseRadius, playerLayer);
+        if (hitPlayer.Length > 0) { Debug.Log("Tremorsensed player"); return true; } // player detected in radius
         else return false;
     }
 
     void OnDrawGizmosSelected()
     {
-        // draw spheres for the sense radii
+        // draw spheres for the sense radii in the editor
 
         // Draw a yellow sphere for sight
         Gizmos.color = Color.yellow;
