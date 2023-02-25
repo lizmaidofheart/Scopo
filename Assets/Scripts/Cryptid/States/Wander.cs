@@ -18,5 +18,11 @@ public class Wander : BrainState
     {
         base.UpdateLogic();
 
+        // if player is detected, increase curiosity and swap to follow state
+        if (CryptidBrain.Instance.senses.CanSensePlayer())
+        {
+            brain.ChangeState("Follow");
+            CryptidBrain.Instance.curiosity += 1;
+        }
     }
 }
