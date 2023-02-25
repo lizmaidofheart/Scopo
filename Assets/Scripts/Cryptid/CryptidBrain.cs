@@ -99,4 +99,21 @@ public class CryptidBrain : MonoBehaviour
         
     }
 
+    // when the player takes a photo, trigger the current state's response to that action.
+    public void OnCryptidPhotographed()
+    {
+        states[currentStateKey].CryptidPhotographed();
+    }
+
+    public void OnNotCryptidPhotographed()
+    {
+        states[currentStateKey].NotCryptidPhotographed();
+    }
+
+    // check whether the player is near the defended zone
+    public bool PlayerNearDefendedZone()
+    {
+        if (Vector2.Distance(PlayerReference.Instance.transform.position, defendedZoneCenter.position) <= defendedZoneRadius) return true;
+        else return false;
+    }
 }

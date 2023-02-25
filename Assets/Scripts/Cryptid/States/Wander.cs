@@ -38,14 +38,6 @@ public class Wander : BrainState
         }
     }
 
-    public override void Exit()
-    {
-        base.Exit();
-
-        // stop pathfinding
-        CryptidBrain.Instance.navigator.ResetPath();
-    }
-
     private void GoToNewLocation()
     {
         // pick new random location from targets

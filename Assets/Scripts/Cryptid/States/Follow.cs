@@ -22,7 +22,9 @@ public class Follow : BrainState
         base.Enter();
 
         timeRemaining = timeToLosePlayer;
-        CryptidBrain.Instance.navigator.SetDestination(PlayerReference.Instance.transform.position);
+
+        if (radiusToFollowIn != 0) CryptidBrain.Instance.navigator.SetDestination(closestPositionAtFollowDistance());
+        else CryptidBrain.Instance.navigator.SetDestination(PlayerReference.Instance.transform.position);
 
         // subscribe to player taking photo
     }
@@ -34,7 +36,9 @@ public class Follow : BrainState
         // if can sense player, update navigation destination and reset lose player timer
         if (CryptidBrain.Instance.senses.CanSensePlayer())
         {
-            CryptidBrain.Instance.navigator.SetDestination(PlayerReference.Instance.transform.position);
+            if (radiusToFollowIn != 0) CryptidBrain.Instance.navigator.SetDestination(closestPositionAtFollowDistance());
+            else CryptidBrain.Instance.navigator.SetDestination(PlayerReference.Instance.transform.position);
+
             if (timeRemaining < timeToLosePlayer) timeRemaining = timeToLosePlayer;
         }
         // otherwise, reduce lose player timer
@@ -48,23 +52,21 @@ public class Follow : BrainState
         }
     }
 
-    public override void Exit()
+    private Vector3 closestPositionAtFollowDistance()
     {
-        base.Exit();
-
-        // stop pathfinding
-        CryptidBrain.Instance.navigator.ResetPath();
+        Vector3 angleFromPlayerToCryptid = (CryptidBrain.Instance.body.position - PlayerReference.Instance.transform.position).normalized;
+        return angleFromPlayerToCryptid * radiusToFollowIn;
     }
 
-    private void PlayerTakenPhoto(bool ofCryptid)
+    public override void CryptidPhotographed()
     {
-        if (!ofCryptid) // player taken a photo that wasn't of the cryptid
-        {
-            CryptidBrain.Instance.curiosity += 1;
-        }
-        else // player taken a photo of the cryptid
-        {
-            // no effect rn
-        }
+        base.CryptidPhotographed();
+        CryptidBrain.Instance.aggression += 5;
+    }
+
+    public override void NotCryptidPhotographed()
+    {
+        base.NotCryptidPhotographed();
+        CryptidBrain.Instance.curiosity += 1;
     }
 }

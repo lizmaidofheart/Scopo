@@ -19,6 +19,14 @@ public class BrainState
 
     public virtual void UpdateLogic() { }
 
-    public virtual void Exit() { }
+    public virtual void Exit()
+    {
+        // stop pathfinding
+        CryptidBrain.Instance.navigator.ResetPath();
+    }
+
+    public virtual void CryptidPhotographed() { }
+
+    public virtual void NotCryptidPhotographed() { }
 
 }

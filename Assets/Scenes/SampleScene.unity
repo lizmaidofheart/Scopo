@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 264799977}
   - component: {fileID: 264799976}
   - component: {fileID: 264799981}
+  - component: {fileID: 264799982}
   m_Layer: 0
   m_Name: Cryptid
   m_TagString: Untagged
@@ -369,6 +370,35 @@ NavMeshAgent:
   m_BaseOffset: 0.4
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &264799982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264799975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17767730c3727e744abc48e71c31b475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visibleRange: 30
+  identity: ???
+  gotPhotographed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 264799977}
+        m_TargetAssemblyTypeName: CryptidBrain, Assembly-CSharp
+        m_MethodName: OnCryptidPhotographed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &332125037
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,7 +839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17767730c3727e744abc48e71c31b475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visibleRange: 100
+  visibleRange: 15
   identity: Test Cube
   gotPhotographed:
     m_PersistentCalls:
@@ -1293,6 +1323,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2641167336686170606, guid: 204d55c51f12e474aaa1ea6c6373b289,
+        type: 3}
+      propertyPath: photographedNotTheCryptid.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2641167336686170606, guid: 204d55c51f12e474aaa1ea6c6373b289,
+        type: 3}
+      propertyPath: photographedNotTheCryptid.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2641167336686170606, guid: 204d55c51f12e474aaa1ea6c6373b289,
+        type: 3}
+      propertyPath: photographedNotTheCryptid.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 264799977}
+    - target: {fileID: 2641167336686170606, guid: 204d55c51f12e474aaa1ea6c6373b289,
+        type: 3}
+      propertyPath: photographedNotTheCryptid.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2641167336686170606, guid: 204d55c51f12e474aaa1ea6c6373b289,
+        type: 3}
+      propertyPath: photographedNotTheCryptid.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnNotCryptidPhotographed
+      objectReference: {fileID: 0}
+    - target: {fileID: 2641167336686170606, guid: 204d55c51f12e474aaa1ea6c6373b289,
+        type: 3}
+      propertyPath: photographedNotTheCryptid.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CryptidBrain, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2641167336686170606, guid: 204d55c51f12e474aaa1ea6c6373b289,
+        type: 3}
+      propertyPath: photographedNotTheCryptid.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2641167336686170607, guid: 204d55c51f12e474aaa1ea6c6373b289,
         type: 3}
       propertyPath: testObj

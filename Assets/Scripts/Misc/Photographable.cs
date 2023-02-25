@@ -20,7 +20,7 @@ public class Photographable : MonoBehaviour
     {
         PolaroidInfo.Instance.photographables.Add(this);
     }
-    
+
     // when destroyed, remove self from list of all photographable objects
     private void OnDestroy()
     {
@@ -30,5 +30,13 @@ public class Photographable : MonoBehaviour
     public void IveBeenPhotographed()
     {
         gotPhotographed.Invoke();
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        // draw a sphere for the visibleRange in the editor
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, visibleRange);
     }
 }
