@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CryptidBrain : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class CryptidBrain : MonoBehaviour
     [Header("Body and Senses")]
     [SerializeField] public Rigidbody body;
     [SerializeField] public CryptidSenses senses;
+    [SerializeField] public NavMeshAgent navigator;
 
     private void Awake() 
     {
