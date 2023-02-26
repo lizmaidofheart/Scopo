@@ -84,7 +84,9 @@ public class Follow : BrainState
 
     private Vector3 closestPositionAtFollowDistance()
     {
+        // returns the closest position where the distance from the player to the cryptid is equal to the set follow radius
+
         Vector3 angleFromPlayerToCryptid = (CryptidBrain.Instance.body.position - CryptidBrain.Instance.senses.lastKnownPlayerLocation).normalized;
-        return angleFromPlayerToCryptid * radiusToFollowIn;
+        return CryptidBrain.Instance.senses.lastKnownPlayerLocation + angleFromPlayerToCryptid * radiusToFollowIn;
     }
 }

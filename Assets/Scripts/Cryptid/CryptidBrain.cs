@@ -116,4 +116,13 @@ public class CryptidBrain : MonoBehaviour
         if (Vector2.Distance(PlayerReference.Instance.transform.position, defendedZoneCenter.position) <= defendedZoneRadius) return true;
         else return false;
     }
+
+    private void OnDrawGizmosSelected() // draws the navigation destination in the editor
+    {
+        if (navigator.destination != null)
+        {
+            Gizmos.color = Color.white;
+            Gizmos.DrawSphere(navigator.destination, 0.2f);
+        }
+    }
 }

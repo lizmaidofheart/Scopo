@@ -290,7 +290,7 @@ MonoBehaviour:
   idleTime: 5
   wanderTargetsParent: {fileID: 1617983519}
   followTimeToLose: 3
-  followDistance: 10
+  followDistance: 25
   body: {fileID: 264799978}
   senses: {fileID: 264799976}
   navigator: {fileID: 264799981}
