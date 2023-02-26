@@ -6,13 +6,16 @@ public class Follow : BrainState
 {
     public float timeToLosePlayer = 5;
     public float timeRemaining = 5;
+    public float aggressionIncreaseOnLosePlayer = 1;
     public float curiosityToToy = 6;
     public float aggressionToLurk = 10;
     public float radiusToFollowIn = 0;
+    
 
-    public Follow(string name, CryptidBrain brain, float timeToLose, float radius, float curiosity, float aggression) : base(name, brain)
+    public Follow(string name, CryptidBrain brain, float timeToLose, float aggressionIncrease, float radius, float curiosity, float aggression) : base(name, brain)
     {
         timeToLosePlayer = timeToLose;
+        aggressionIncreaseOnLosePlayer = aggressionIncrease;
         radiusToFollowIn = radius;
         curiosityToToy = curiosity;
         aggressionToLurk = aggression;
@@ -35,10 +38,16 @@ public class Follow : BrainState
         base.UpdateLogic();
 
         // if curiosity is high enough, swap to 'toy' mode
-        if (CryptidBrain.Instance.curiosity >= curiosityToToy) brain.ChangeState("Toy");
+        if (CryptidBrain.Instance.curiosity >= curiosityToToy)
+        {
+            brain.ChangeState("Toy");
+        }
 
         // if aggression is high enough, swap to 'lurk' mode
-        else if (CryptidBrain.Instance.aggression >= aggressionToLurk) brain.ChangeState("Lurk");
+        else if (CryptidBrain.Instance.aggression >= aggressionToLurk)
+        {
+            brain.ChangeState("Lurk");
+        }
 
         // if can sense player, update navigation destination, reset lose player timer and set cryptid to stare at the player
         else if (CryptidBrain.Instance.senses.CanSensePlayer())
@@ -58,7 +67,11 @@ public class Follow : BrainState
             timeRemaining -= Time.deltaTime;
 
             // if lost player, swap to 'hunt' mode
-            if (timeRemaining <= 0) brain.ChangeState("HuntNormal");
+            if (timeRemaining <= 0)
+            {
+                CryptidBrain.Instance.aggression += 1;
+                brain.ChangeState("HuntNormal");
+            }
 
             EnableStareAtPlayer(false);
         }

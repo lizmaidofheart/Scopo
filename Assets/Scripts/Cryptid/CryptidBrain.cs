@@ -27,6 +27,10 @@ public class CryptidBrain : MonoBehaviour
     [SerializeField] Transform wanderTargetsParent;
     [SerializeField] float followTimeToLose = 5;
     [SerializeField] float followDistance = 10;
+    [SerializeField] float huntSearchRadiusIncrease = 5;
+    [SerializeField] float huntTimeBeforeGiveUp = 20;
+    [SerializeField] float aggrohuntSearchRadiusIncrease = 5;
+    [SerializeField] float aggrohuntTimeBeforeGiveUp = 15;
 
     [Header("References")]
     [SerializeField] public Rigidbody body;
@@ -34,6 +38,7 @@ public class CryptidBrain : MonoBehaviour
     [SerializeField] public NavMeshAgent navigator;
     [SerializeField] public Transform defendedZoneCenter;
     [SerializeField] public float defendedZoneRadius;
+    [SerializeField] public LayerMask groundLayer;
 
     private void Awake() 
     {
@@ -53,11 +58,11 @@ public class CryptidBrain : MonoBehaviour
 
         states["Initial"] = new Idle("Initial", this, idleTime, "Wander");
         states["Wander"] = new Wander("Wander", this, wanderTargetsParent);
-        states["Follow"] = new Follow("Follow", this, followTimeToLose, followDistance, 6, 10);
-        states["HuntNormal"] = new Hunt("HuntNormal", this);
+        states["Follow"] = new Follow("Follow", this, followTimeToLose, 2, followDistance, 6, 10);
         states["Toy"] = new Toy("Toy", this);
         states["Lurk"] = new Lurk("Lurk", this);
-        states["HuntAggressive"] = new Hunt("HuntAggressive", this);
+        states["HuntNormal"] = new Hunt("HuntNormal", this, huntSearchRadiusIncrease, 1, 20, 6, false, huntTimeBeforeGiveUp, "Wander");
+        states["HuntAggressive"] = new Hunt("HuntAggressive", this, aggrohuntSearchRadiusIncrease, 1, 20, -1, true, aggrohuntTimeBeforeGiveUp, "HuntNormal");
         states["Chase"] = new Chase("Chase", this);
     }
 
