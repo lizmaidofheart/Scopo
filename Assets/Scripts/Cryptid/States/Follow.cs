@@ -28,8 +28,7 @@ public class Follow : BrainState
         timeRemaining = timeToLosePlayer;
         EnableStareAtPlayer(true);
 
-        if (radiusToFollowIn != 0) CryptidBrain.Instance.navigator.SetDestination(closestPositionAtFollowDistance());
-        else CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
+        CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
 
     }
 

@@ -295,9 +295,12 @@ MonoBehaviour:
   huntTimeBeforeGiveUp: 20
   aggrohuntSearchRadiusIncrease: 5
   aggrohuntTimeBeforeGiveUp: 15
+  chaseTimeToLose: 5
+  chaseAttackDistance: 3
   body: {fileID: 264799978}
   senses: {fileID: 264799976}
   navigator: {fileID: 264799981}
+  photographable: {fileID: 0}
   defendedZoneCenter: {fileID: 332125038}
   defendedZoneRadius: 10
   groundLayer:
@@ -349,7 +352,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264799975}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000014603138}
-  m_LocalPosition: {x: -3.43, y: 0.735, z: 1.808}
+  m_LocalPosition: {x: -9.71, y: 0.735, z: 1.81}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:

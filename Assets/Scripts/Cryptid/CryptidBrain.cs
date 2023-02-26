@@ -31,6 +31,8 @@ public class CryptidBrain : MonoBehaviour
     [SerializeField] float huntTimeBeforeGiveUp = 20;
     [SerializeField] float aggrohuntSearchRadiusIncrease = 5;
     [SerializeField] float aggrohuntTimeBeforeGiveUp = 15;
+    [SerializeField] float chaseTimeToLose = 5;
+    [SerializeField] float chaseAttackDistance = 3;
 
     [Header("References")]
     [SerializeField] public Rigidbody body;
@@ -64,7 +66,8 @@ public class CryptidBrain : MonoBehaviour
         states["Lurk"] = new Lurk("Lurk", this);
         states["HuntNormal"] = new Hunt("HuntNormal", this, huntSearchRadiusIncrease, 1, 20, 6, false, huntTimeBeforeGiveUp, "Wander");
         states["HuntAggressive"] = new Hunt("HuntAggressive", this, aggrohuntSearchRadiusIncrease, 1, 20, -1, true, aggrohuntTimeBeforeGiveUp, "HuntNormal");
-        states["Chase"] = new Chase("Chase", this);
+        states["Chase"] = new Chase("Chase", this, chaseTimeToLose, chaseAttackDistance);
+        states["Attack"] = new Attack("Attack", this);
     }
 
     void Start()

@@ -4,5 +4,70 @@ using UnityEngine;
 
 public class Chase : BrainState
 {
-    public Chase(string name, CryptidBrain brain) : base(name, brain) { }
+    public float timeToLosePlayer = 5;
+    public float timeRemaining = 5;
+    public float attackDistance = 3;
+    public bool playerInDefendedZone = false;
+    public float aggressionReduction = 4;
+
+    public Chase(string name, CryptidBrain brain, float time, float attackDist) : base(name, brain)
+    {
+        timeToLosePlayer = time;
+        attackDistance = attackDist;
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+
+        timeRemaining = timeToLosePlayer;
+        EnableStareAtPlayer(true);
+
+        CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
+
+    }
+
+    public override void UpdateLogic()
+    {
+        base.UpdateLogic();
+
+        // if can sense player, update navigation destination, reset lose player timer and set cryptid to stare at the player
+        if (CryptidBrain.Instance.senses.CanSensePlayer())
+        {
+            CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
+
+            if (timeRemaining < timeToLosePlayer) timeRemaining = timeToLosePlayer;
+
+            EnableStareAtPlayer(true);
+        }
+        // otherwise, reduce lose player timer and stop staring at the player
+        else
+        {
+            timeRemaining -= Time.deltaTime;
+
+            // if lost player, swap to 'hunt' mode
+            if (timeRemaining <= 0)
+            {
+                CryptidBrain.Instance.aggression += 1;
+                brain.ChangeState("HuntAggressive");
+            }
+
+            EnableStareAtPlayer(false);
+        }
+
+        // if in defended zone, remember that
+        if (CryptidBrain.Instance.PlayerNearDefendedZone()) playerInDefendedZone = true;
+
+        // if was in defended zone but isn't anymore, reduce aggression
+        else if (playerInDefendedZone) CryptidBrain.Instance.aggression -= aggressionReduction;
+
+        // if close enough to player, attack them
+        if ((PlayerReference.Instance.transform.position - CryptidBrain.Instance.body.position).magnitude <= attackDistance) brain.ChangeState("Attack");
+    }
+
+    public override void CryptidPhotographed()
+    {
+        base.CryptidPhotographed();
+        CryptidBrain.Instance.aggression += 5;
+    }
 }
