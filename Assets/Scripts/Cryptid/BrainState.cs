@@ -40,7 +40,7 @@ public class BrainState
 
     // useful methods for a variety of states
 
-    public virtual void EnableStareAtPlayer(bool enable)
+    public void EnableStareAtPlayer(bool enable)
     {
         if (enable && !stareAtPlayer)
         {

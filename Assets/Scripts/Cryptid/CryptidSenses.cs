@@ -79,6 +79,11 @@ public class CryptidSenses : MonoBehaviour
         else return false;
     }
 
+    public bool PlayerCanSeeMe()
+    {
+        return PolaroidCheckVisible.Instance.ICanSee(PlayerReference.Instance.cam, CryptidBrain.Instance.photographable);
+    }
+
     void OnDrawGizmosSelected()
     {
         // draw spheres for the sense radii in the editor

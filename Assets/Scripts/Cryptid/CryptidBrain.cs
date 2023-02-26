@@ -36,6 +36,7 @@ public class CryptidBrain : MonoBehaviour
     [SerializeField] public Rigidbody body;
     [SerializeField] public CryptidSenses senses;
     [SerializeField] public NavMeshAgent navigator;
+    [SerializeField] public Photographable photographable;
     [SerializeField] public Transform defendedZoneCenter;
     [SerializeField] public float defendedZoneRadius;
     [SerializeField] public LayerMask groundLayer;

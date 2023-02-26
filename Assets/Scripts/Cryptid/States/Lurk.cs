@@ -5,4 +5,6 @@ using UnityEngine;
 public class Lurk : BrainState
 {
     public Lurk(string name, CryptidBrain brain) : base(name, brain) { }
+
+    // use CryptidBrain.Instance.senses.PlayerCanSeeMe()
 }

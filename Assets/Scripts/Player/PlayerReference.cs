@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerReference : MonoBehaviour
 {
+    [SerializeField] public Camera cam;
+
     // this is a singleton acting as an easy reference for the player
     // it being a singleton means its accessible from anywhere without complex getcomponents etc
 
