@@ -254,8 +254,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a26a6e434b0b3b641908095c388b3972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sightRadius: 20
+  lastKnownPlayerLocation: {x: 0, y: 0, z: 0}
+  sightRadius: 30
   sightAngleInDegrees: 90
+  sightHeightAddition: 3
   sightLayerMask:
     serializedVersion: 2
     m_Bits: 515
@@ -382,7 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17767730c3727e744abc48e71c31b475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visibleRange: 30
+  visibleRange: 45
   identity: ???
   gotPhotographed:
     m_PersistentCalls:

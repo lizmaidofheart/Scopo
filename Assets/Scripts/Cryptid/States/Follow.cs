@@ -8,6 +8,7 @@ public class Follow : BrainState
     public float timeRemaining = 5;
     public float radiusToFollowIn = 0;
     public bool chasing = false;
+    public bool stareAtPlayer = true;
 
     public Follow(string name, CryptidBrain brain, float timeToLose, float radius = 0, bool chase = false) : base(name, brain)
     {
@@ -24,38 +25,49 @@ public class Follow : BrainState
         timeRemaining = timeToLosePlayer;
 
         if (radiusToFollowIn != 0) CryptidBrain.Instance.navigator.SetDestination(closestPositionAtFollowDistance());
-        else CryptidBrain.Instance.navigator.SetDestination(PlayerReference.Instance.transform.position);
+        else CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
 
-        // subscribe to player taking photo
     }
 
     public override void UpdateLogic()
     {
         base.UpdateLogic();
 
-        // if can sense player, update navigation destination and reset lose player timer
+        // if can sense player, update navigation destination, reset lose player timer and set cryptid to stare at the player
         if (CryptidBrain.Instance.senses.CanSensePlayer())
         {
             if (radiusToFollowIn != 0) CryptidBrain.Instance.navigator.SetDestination(closestPositionAtFollowDistance());
-            else CryptidBrain.Instance.navigator.SetDestination(PlayerReference.Instance.transform.position);
+            else CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
 
             if (timeRemaining < timeToLosePlayer) timeRemaining = timeToLosePlayer;
-        }
-        // otherwise, reduce lose player timer
-        else timeRemaining -= Time.deltaTime;
 
-        if (timeRemaining <= 0)
+            if (!stareAtPlayer)
+            {
+                stareAtPlayer = true;
+                CryptidBrain.Instance.navigator.angularSpeed = 0;
+            }
+        }
+        // otherwise, move towards last known player location, reduce lose player timer and stop staring at the player
+        else
         {
-            // lost player
+            CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
 
-            brain.ChangeState("HuntNormal");
+            timeRemaining -= Time.deltaTime;
+
+            if (timeRemaining <= 0)
+            {
+                // lost player
+                brain.ChangeState("HuntNormal");
+            }
+
+            if (stareAtPlayer)
+            {
+                stareAtPlayer = false;
+                CryptidBrain.Instance.navigator.angularSpeed = 120;
+            }
         }
-    }
 
-    private Vector3 closestPositionAtFollowDistance()
-    {
-        Vector3 angleFromPlayerToCryptid = (CryptidBrain.Instance.body.position - PlayerReference.Instance.transform.position).normalized;
-        return angleFromPlayerToCryptid * radiusToFollowIn;
+        if (stareAtPlayer) StareAtPlayer();
     }
 
     public override void CryptidPhotographed()
@@ -68,5 +80,11 @@ public class Follow : BrainState
     {
         base.NotCryptidPhotographed();
         CryptidBrain.Instance.curiosity += 1;
+    }
+
+    private Vector3 closestPositionAtFollowDistance()
+    {
+        Vector3 angleFromPlayerToCryptid = (CryptidBrain.Instance.body.position - CryptidBrain.Instance.senses.lastKnownPlayerLocation).normalized;
+        return angleFromPlayerToCryptid * radiusToFollowIn;
     }
 }

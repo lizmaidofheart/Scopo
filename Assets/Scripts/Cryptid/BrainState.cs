@@ -6,6 +6,8 @@ using UnityEngine;
 [Serializable]
 public class BrainState
 {
+    // this is a generic class to be inherited from for states for the cryptidbrain state machine
+
     public string name;
     protected CryptidBrain brain;
 
@@ -29,4 +31,16 @@ public class BrainState
 
     public virtual void NotCryptidPhotographed() { }
 
+    // useful methods for a variety of states
+
+    public virtual void StareAtPlayer()
+    {
+        // rotate to stare at the player, only rotating on y axis
+        Transform cryptidTransform = CryptidBrain.Instance.gameObject.transform;
+
+        Vector3 targetPostition = new Vector3(CryptidBrain.Instance.senses.lastKnownPlayerLocation.x,
+                                        cryptidTransform.position.y,
+                                        CryptidBrain.Instance.senses.lastKnownPlayerLocation.z);
+        cryptidTransform.LookAt(targetPostition);
+    }
 }
