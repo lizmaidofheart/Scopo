@@ -6,16 +6,16 @@ public class Follow : BrainState
 {
     public float timeToLosePlayer = 5;
     public float timeRemaining = 5;
+    public float curiosityToToy = 6;
+    public float aggressionToLurk = 10;
     public float radiusToFollowIn = 0;
-    public bool chasing = false;
-    public bool stareAtPlayer = true;
 
-    public Follow(string name, CryptidBrain brain, float timeToLose, float radius = 0, bool chase = false) : base(name, brain)
+    public Follow(string name, CryptidBrain brain, float timeToLose, float radius, float curiosity, float aggression) : base(name, brain)
     {
         timeToLosePlayer = timeToLose;
         radiusToFollowIn = radius;
-        chasing = chase;
-        
+        curiosityToToy = curiosity;
+        aggressionToLurk = aggression;
     }
 
     public override void Enter()
@@ -23,6 +23,7 @@ public class Follow : BrainState
         base.Enter();
 
         timeRemaining = timeToLosePlayer;
+        EnableStareAtPlayer(true);
 
         if (radiusToFollowIn != 0) CryptidBrain.Instance.navigator.SetDestination(closestPositionAtFollowDistance());
         else CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
@@ -33,19 +34,21 @@ public class Follow : BrainState
     {
         base.UpdateLogic();
 
+        // if curiosity is high enough, swap to 'toy' mode
+        if (CryptidBrain.Instance.curiosity >= curiosityToToy) brain.ChangeState("Toy");
+
+        // if aggression is high enough, swap to 'lurk' mode
+        else if (CryptidBrain.Instance.aggression >= aggressionToLurk) brain.ChangeState("Lurk");
+
         // if can sense player, update navigation destination, reset lose player timer and set cryptid to stare at the player
-        if (CryptidBrain.Instance.senses.CanSensePlayer())
+        else if (CryptidBrain.Instance.senses.CanSensePlayer())
         {
             if (radiusToFollowIn != 0) CryptidBrain.Instance.navigator.SetDestination(closestPositionAtFollowDistance());
             else CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
 
             if (timeRemaining < timeToLosePlayer) timeRemaining = timeToLosePlayer;
 
-            if (!stareAtPlayer)
-            {
-                stareAtPlayer = true;
-                CryptidBrain.Instance.navigator.angularSpeed = 0;
-            }
+            EnableStareAtPlayer(true);
         }
         // otherwise, move towards last known player location, reduce lose player timer and stop staring at the player
         else
@@ -54,20 +57,11 @@ public class Follow : BrainState
 
             timeRemaining -= Time.deltaTime;
 
-            if (timeRemaining <= 0)
-            {
-                // lost player
-                brain.ChangeState("HuntNormal");
-            }
+            // if lost player, swap to 'hunt' mode
+            if (timeRemaining <= 0) brain.ChangeState("HuntNormal");
 
-            if (stareAtPlayer)
-            {
-                stareAtPlayer = false;
-                CryptidBrain.Instance.navigator.angularSpeed = 120;
-            }
+            EnableStareAtPlayer(false);
         }
-
-        if (stareAtPlayer) StareAtPlayer();
     }
 
     public override void CryptidPhotographed()
