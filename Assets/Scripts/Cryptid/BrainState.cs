@@ -11,6 +11,8 @@ public class BrainState
     public string name;
     protected CryptidBrain brain;
     private bool stareAtPlayer = false;
+    private bool playerInDefendedZone;
+    private float defenceTimer;
 
     public BrainState(string name, CryptidBrain brain)
     {
@@ -18,7 +20,10 @@ public class BrainState
         this.brain = brain;
     }
 
-    public virtual void Enter() { }
+    public virtual void Enter()
+    {
+        playerInDefendedZone = false;
+    }
 
     public virtual void UpdateLogic()
     {
@@ -37,6 +42,7 @@ public class BrainState
     public virtual void CryptidPhotographed() { }
 
     public virtual void NotCryptidPhotographed() { }
+
 
     // useful methods for a variety of states
 
@@ -63,5 +69,38 @@ public class BrainState
                                         cryptidTransform.position.y,
                                         CryptidBrain.Instance.senses.lastKnownPlayerLocation.z);
         cryptidTransform.LookAt(targetPostition);
+    }
+
+    public void DefendedZoneHandling(float aggressionOnEnter, float aggressionOnStay, float aggressionOnLeave, float timerForAggressionIncrease)
+    {
+        bool nearDefended = CryptidBrain.Instance.PlayerNearDefendedZone();
+
+        if (nearDefended && !playerInDefendedZone) // entered zone
+        {
+            playerInDefendedZone = true;
+            CryptidBrain.Instance.aggression += aggressionOnEnter;
+            if (timerForAggressionIncrease != -1)
+            {
+                defenceTimer = timerForAggressionIncrease;
+            }
+        }
+        else if (!nearDefended && playerInDefendedZone) // left zone
+        {
+            playerInDefendedZone = false;
+            CryptidBrain.Instance.aggression += aggressionOnLeave;
+        }
+        else if (nearDefended && playerInDefendedZone) // stayed in zone
+        {
+            if (timerForAggressionIncrease != -1)
+            {
+                defenceTimer -= Time.deltaTime;
+                if (defenceTimer <= 0)
+                {
+                    CryptidBrain.Instance.aggression += aggressionOnStay;
+                    defenceTimer = timerForAggressionIncrease;
+                }
+            }
+
+        }
     }
 }

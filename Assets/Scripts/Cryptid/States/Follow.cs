@@ -10,15 +10,18 @@ public class Follow : BrainState
     public float curiosityToToy = 6;
     public float aggressionToLurk = 10;
     public float radiusToFollowIn = 0;
-    
+    public bool playerInDefendedZone = false;
+    public float defendedZoneTimeBeforeRefreshAggression = 10;
 
-    public Follow(string name, CryptidBrain brain, float timeToLose, float aggressionIncrease, float radius, float curiosity, float aggression) : base(name, brain)
+
+    public Follow(string name, CryptidBrain brain, float timeToLose, float aggressionIncrease, float radius, float curiosity, float aggression, float defenceTime) : base(name, brain)
     {
         timeToLosePlayer = timeToLose;
         aggressionIncreaseOnLosePlayer = aggressionIncrease;
         radiusToFollowIn = radius;
         curiosityToToy = curiosity;
         aggressionToLurk = aggression;
+        defendedZoneTimeBeforeRefreshAggression = defenceTime;
     }
 
     public override void Enter()
@@ -57,6 +60,8 @@ public class Follow : BrainState
             if (timeRemaining < timeToLosePlayer) timeRemaining = timeToLosePlayer;
 
             EnableStareAtPlayer(true);
+
+            DefendedZoneHandling(4, 2, 0, defendedZoneTimeBeforeRefreshAggression);
         }
         // otherwise, move towards last known player location, reduce lose player timer and stop staring at the player
         else
@@ -68,7 +73,7 @@ public class Follow : BrainState
             // if lost player, swap to 'hunt' mode
             if (timeRemaining <= 0)
             {
-                CryptidBrain.Instance.aggression += 1;
+                CryptidBrain.Instance.aggression += aggressionIncreaseOnLosePlayer;
                 brain.ChangeState("HuntNormal");
             }
 
@@ -79,7 +84,7 @@ public class Follow : BrainState
     public override void CryptidPhotographed()
     {
         base.CryptidPhotographed();
-        CryptidBrain.Instance.aggression += 5;
+        CryptidBrain.Instance.aggression += 3;
     }
 
     public override void NotCryptidPhotographed()

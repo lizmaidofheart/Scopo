@@ -11,8 +11,6 @@ public class PolaroidCheckVisible : MonoBehaviour
 
     [SerializeField] private LayerMask raycastLayers;
 
-    [SerializeField] Photographable testObj;
-
     private void Awake() // singleton setup
     {
         if (_instance != null && _instance != this)

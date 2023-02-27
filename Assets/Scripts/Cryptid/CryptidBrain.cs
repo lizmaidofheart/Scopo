@@ -62,9 +62,9 @@ public class CryptidBrain : MonoBehaviour
 
         states["Initial"] = new Idle("Initial", this, idleTime, "Wander");
         states["Wander"] = new Wander("Wander", this, wanderTargetsParent);
-        states["Follow"] = new Follow("Follow", this, followTimeToLose, 2, followDistance, 6, 10);
-        states["Toy"] = new Toy("Toy", this);
-        states["Lurk"] = new Lurk("Lurk", this);
+        states["Follow"] = new Follow("Follow", this, followTimeToLose, 2, followDistance, 6, 10, 15);
+        states["Toy"] = new Toy("Toy", this, 5, 1, 10, 10, 4, 15);
+        states["Lurk"] = new Lurk("Lurk", this, 5, 2, 10, 20);
         states["HuntNormal"] = new Hunt("HuntNormal", this, huntSearchRadiusIncrease, 1, 20, 6, false, huntTimeBeforeGiveUp, "Wander");
         states["HuntAggressive"] = new Hunt("HuntAggressive", this, aggrohuntSearchRadiusIncrease, 1, 20, -1, true, aggrohuntTimeBeforeGiveUp, "HuntNormal");
         states["Chase"] = new Chase("Chase", this, chaseTimeToLose, chaseAttackDistance);

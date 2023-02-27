@@ -55,11 +55,7 @@ public class Chase : BrainState
             EnableStareAtPlayer(false);
         }
 
-        // if in defended zone, remember that
-        if (CryptidBrain.Instance.PlayerNearDefendedZone()) playerInDefendedZone = true;
-
-        // if was in defended zone but isn't anymore, reduce aggression
-        else if (playerInDefendedZone) CryptidBrain.Instance.aggression -= aggressionReduction;
+        DefendedZoneHandling(0, 0, aggressionReduction, -1);
 
         // if close enough to player, attack them
         if ((PlayerReference.Instance.transform.position - CryptidBrain.Instance.body.position).magnitude <= attackDistance) brain.ChangeState("Attack");
