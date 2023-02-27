@@ -9,6 +9,7 @@ public class Chase : BrainState
     public float attackDistance = 3;
     public bool playerInDefendedZone = false;
     public float aggressionReduction = 4;
+    public float defaultRadius;
 
     public Chase(string name, CryptidBrain brain, float time, float attackDist) : base(name, brain)
     {
@@ -19,6 +20,9 @@ public class Chase : BrainState
     public override void Enter()
     {
         base.Enter();
+
+        defaultRadius = CryptidBrain.Instance.playerObstacle.radius;
+        CryptidBrain.Instance.playerObstacle.radius = 1;
 
         timeRemaining = timeToLosePlayer;
         EnableStareAtPlayer(true);
@@ -59,6 +63,12 @@ public class Chase : BrainState
 
         // if close enough to player, attack them
         if ((PlayerReference.Instance.transform.position - CryptidBrain.Instance.body.position).magnitude <= attackDistance) brain.ChangeState("Attack");
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        CryptidBrain.Instance.playerObstacle.radius = defaultRadius;
     }
 
     public override void CryptidPhotographed()

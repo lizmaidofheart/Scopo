@@ -87,8 +87,7 @@ public class Hunt : BrainState
 
             // raycast down from the chosen location in the sky to find the equivalent location on the ground
 
-            RaycastHit searchLocation;
-            if (Physics.Raycast(searchLocationSky, Vector3.down, out searchLocation, 100, CryptidBrain.Instance.groundLayer))
+            if (Physics.Raycast(searchLocationSky, Vector3.down, out RaycastHit searchLocation, 100, CryptidBrain.Instance.groundLayer))
             {
                 Debug.DrawRay(searchLocationSky, Vector3.down * 100, Color.white, 5, true);
 

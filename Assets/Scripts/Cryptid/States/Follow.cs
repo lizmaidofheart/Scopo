@@ -54,7 +54,15 @@ public class Follow : BrainState
         // if can sense player, update navigation destination, reset lose player timer and set cryptid to stare at the player
         else if (CryptidBrain.Instance.senses.CanSensePlayer())
         {
-            if (radiusToFollowIn != 0) CryptidBrain.Instance.navigator.SetDestination(closestPositionAtFollowDistance());
+            if (radiusToFollowIn != 0)
+            {
+                // find the position to follow to and make sure it's valid
+                if (FindValidLocation(closestPositionAtFollowDistance(), PlayerReference.Instance.transform.position, out Vector3 destination))
+                    CryptidBrain.Instance.navigator.SetDestination(destination);
+
+                else CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
+            }
+                
             else CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
 
             if (timeRemaining < timeToLosePlayer) timeRemaining = timeToLosePlayer;

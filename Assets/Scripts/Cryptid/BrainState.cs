@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [Serializable]
 public class BrainState
@@ -103,4 +104,33 @@ public class BrainState
 
         }
     }
+
+    public bool FindValidLocation(Vector3 ideal, Vector3 centre, out Vector3 result)
+    {
+        Vector3 skyLocation = ideal + Vector3.up * 50;
+
+        for (int i = 0; i < 5; i++)
+        {
+            // on second attempt and onwards, increase range by 5
+            if (i != 0)
+            {
+                skyLocation = skyLocation + (skyLocation - centre).normalized * 5;
+            }
+
+            if (Physics.Raycast(skyLocation, Vector3.down, out RaycastHit hit, 100, CryptidBrain.Instance.groundLayer))
+            {
+                //Debug.DrawRay(skyLocation, Vector3.down * 100, Color.white, 5, true);
+
+                NavMeshPath path = new NavMeshPath();
+                if (CryptidBrain.Instance.navigator.CalculatePath(hit.point, path))
+                {
+                    result = hit.point;
+                    return true;
+                }
+            }
+        }
+
+        result = Vector3.zero;
+        return false;
+    }    
 }

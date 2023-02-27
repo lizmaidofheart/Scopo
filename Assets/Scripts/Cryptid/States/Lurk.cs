@@ -135,7 +135,12 @@ public class Lurk : BrainState
             positionToLurk = CryptidBrain.Instance.senses.lastKnownPlayerLocation + PlayerReference.Instance.transform.forward * -distanceToLurk;
         }
 
-        CryptidBrain.Instance.navigator.SetDestination(positionToLurk);
+        // make sure that location is valid (reachable)
+        if (FindValidLocation(positionToLurk, PlayerReference.Instance.transform.position, out Vector3 destination))
+        {
+            CryptidBrain.Instance.navigator.SetDestination(destination);
+        }
+        
         EnableStareAtPlayer(true);
     }
 
