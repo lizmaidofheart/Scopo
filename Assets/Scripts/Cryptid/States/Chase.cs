@@ -10,11 +10,14 @@ public class Chase : BrainState
     public bool playerInDefendedZone = false;
     public float aggressionReduction = 4;
     public float defaultRadius;
+    public float defaultSpeed;
+    public float imposedSpeed;
 
-    public Chase(string name, CryptidBrain brain, float time, float attackDist) : base(name, brain)
+    public Chase(string name, CryptidBrain brain, float time, float attackDist, float newSpeed) : base(name, brain)
     {
         timeToLosePlayer = time;
         attackDistance = attackDist;
+        imposedSpeed = newSpeed;
     }
 
     public override void Enter()
@@ -23,6 +26,9 @@ public class Chase : BrainState
 
         defaultRadius = CryptidBrain.Instance.playerObstacle.radius;
         CryptidBrain.Instance.playerObstacle.radius = 1;
+
+        defaultSpeed = CryptidBrain.Instance.navigator.speed;
+        CryptidBrain.Instance.navigator.speed = imposedSpeed;
 
         timeRemaining = timeToLosePlayer;
         EnableStareAtPlayer(true);
@@ -69,6 +75,7 @@ public class Chase : BrainState
     {
         base.Exit();
         CryptidBrain.Instance.playerObstacle.radius = defaultRadius;
+        CryptidBrain.Instance.navigator.speed = defaultSpeed;
     }
 
     public override void CryptidPhotographed()

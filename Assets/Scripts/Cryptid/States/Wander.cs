@@ -4,22 +4,29 @@ using UnityEngine;
 
 public class Wander : BrainState
 {
+    public float defaultSpeed;
+    public float imposedSpeed = 2.5f;
     public List<Transform> targets = new List<Transform>();
 
-    public Wander(string name, CryptidBrain brain, Transform wanderTargetsParent) : base(name, brain)
+    public Wander(string name, CryptidBrain brain, Transform wanderTargetsParent, float newSpeed) : base(name, brain)
     {
         for (int i = 0; i < wanderTargetsParent.childCount; i++)
         {
             targets.Add(wanderTargetsParent.GetChild(i));
         }
+        imposedSpeed = newSpeed;
     }
 
     public override void Enter()
     {
         base.Enter();
 
+        defaultSpeed = CryptidBrain.Instance.navigator.speed;
+        CryptidBrain.Instance.navigator.speed = imposedSpeed;
+
         // start pathfinding
         GoToNewLocation();
+
     }
 
     public override void UpdateLogic()
@@ -35,6 +42,13 @@ public class Wander : BrainState
             brain.ChangeState("Follow");
             CryptidBrain.Instance.curiosity += 1;
         }
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+
+        CryptidBrain.Instance.navigator.speed = defaultSpeed;
     }
 
     private void GoToNewLocation()

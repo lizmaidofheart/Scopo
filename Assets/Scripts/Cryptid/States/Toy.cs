@@ -12,9 +12,11 @@ public class Toy : BrainState
     public float curiosityToFollow = 5;
     public float interestingTime = 20;
     public float interestingTimeRemaining;
+    public float cameraMovement = 0;
+    public float cameraMovementThreshhold = 15;
 
     public Toy(string name, CryptidBrain brain, float timeToLose, float aggressionIncrease, float defendedTime, float lurkAggression, float followCuriosity,
-        float interesting) : base(name, brain)
+        float interesting, float camThreshhold) : base(name, brain)
     {
         timeToLosePlayer = timeToLose;
         aggressionIncreaseOnLosePlayer = aggressionIncrease;
@@ -22,6 +24,7 @@ public class Toy : BrainState
         aggressionToLurk = lurkAggression;
         curiosityToFollow = followCuriosity;
         interestingTime = interesting;
+        cameraMovementThreshhold = camThreshhold;
     }
 
     public override void Enter()
@@ -34,6 +37,9 @@ public class Toy : BrainState
     public override void UpdateLogic()
     {
         base.UpdateLogic();
+
+        // measure how shaky the player's camera is this frame
+        cameraMovement += measureCameraMovement();
 
         // if aggression is high enough, swap to 'lurk' mode
         if (CryptidBrain.Instance.aggression >= aggressionToLurk)
@@ -61,7 +67,11 @@ public class Toy : BrainState
             interestingTimeRemaining -= Time.deltaTime;
             if (interestingTimeRemaining <= 0)
             {
-                CryptidBrain.Instance.curiosity += -1;
+                // if cam has moved around a lot, bump the curiosity, otherwise lower it
+                if (cameraMovement < cameraMovementThreshhold) CryptidBrain.Instance.curiosity += -1;
+                else CryptidBrain.Instance.curiosity += 1;
+
+                interestingTimeRemaining = interestingTime;
             }
         }
         // otherwise, move towards last known player location, reduce lose player timer and stop staring at the player
@@ -95,5 +105,11 @@ public class Toy : BrainState
         CryptidBrain.Instance.curiosity += 1.5f;
         CryptidBrain.Instance.aggression += -1;
         interestingTimeRemaining = interestingTime;
+    }
+
+    private float measureCameraMovement()
+    {
+        Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        return mouseDelta.magnitude;
     }
 }

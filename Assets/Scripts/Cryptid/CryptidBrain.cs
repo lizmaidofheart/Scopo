@@ -21,16 +21,23 @@ public class CryptidBrain : MonoBehaviour
     [SerializeField] public float curiosity = 0;
     [SerializeField] public float aggression = 0;
 
+    [Header("State Boundaries")]
+    [SerializeField] float toyMinimumCuriosity = 6;
+    [SerializeField] float lurkMinimumAggression = 10;
+    [SerializeField] float chaseMinimumAggression = 20;
+
     [Header("State Settings")]
     [SerializeField] string initialStateKey = "Initial";
     [SerializeField] float idleTime = 5;
     [SerializeField] Transform wanderTargetsParent;
+    [SerializeField] float wanderSpeed = 2.5f;
     [SerializeField] float followTimeToLose = 5;
     [SerializeField] float followDistance = 10;
+    [SerializeField] float toyInterestTime = 15;
+    [SerializeField] float toyCameraThreshold = 1500;
     [SerializeField] float lurkDistance = 5;
     [SerializeField] float lurkWatchedDistance = 15;
     [SerializeField] float lurkAvoidance = 2;
-    [SerializeField] float lurkSpeed = 5;
     [SerializeField] float lurkLoseInterestTime = 20;
     [SerializeField] float huntSearchRadiusIncrease = 5;
     [SerializeField] float huntTimeBeforeGiveUp = 20;
@@ -38,6 +45,7 @@ public class CryptidBrain : MonoBehaviour
     [SerializeField] float aggrohuntTimeBeforeGiveUp = 15;
     [SerializeField] float chaseTimeToLose = 5;
     [SerializeField] float chaseAttackDistance = 3;
+    [SerializeField] float chaseSpeed = 2.5f;
     [SerializeField] float attackAnimationDuration = 2;
 
     [Header("References")]
@@ -67,13 +75,13 @@ public class CryptidBrain : MonoBehaviour
         // its a bit frustrating these can't be set in the editor yet but it works well enough here.
 
         states["Initial"] = new Idle("Initial", this, idleTime, "Wander");
-        states["Wander"] = new Wander("Wander", this, wanderTargetsParent);
-        states["Follow"] = new Follow("Follow", this, followTimeToLose, 2, followDistance, 6, 10, 15);
-        states["Toy"] = new Toy("Toy", this, 5, 1, 10, 10, 4, 15);
-        states["Lurk"] = new Lurk("Lurk", this, 5, 2, 10, 20, lurkDistance, lurkWatchedDistance, lurkAvoidance, lurkSpeed, 3, lurkLoseInterestTime);
-        states["HuntNormal"] = new Hunt("HuntNormal", this, huntSearchRadiusIncrease, 1, 20, 6, false, huntTimeBeforeGiveUp, "Wander");
-        states["HuntAggressive"] = new Hunt("HuntAggressive", this, aggrohuntSearchRadiusIncrease, 1, 20, -1, true, aggrohuntTimeBeforeGiveUp, "HuntNormal");
-        states["Chase"] = new Chase("Chase", this, chaseTimeToLose, chaseAttackDistance);
+        states["Wander"] = new Wander("Wander", this, wanderTargetsParent, wanderSpeed);
+        states["Follow"] = new Follow("Follow", this, followTimeToLose, 2, followDistance, toyMinimumCuriosity, lurkMinimumAggression, 15);
+        states["Toy"] = new Toy("Toy", this, 5, 1, 10, lurkMinimumAggression, toyMinimumCuriosity - 2, toyInterestTime, toyCameraThreshold);
+        states["Lurk"] = new Lurk("Lurk", this, 5, 2, 10, chaseMinimumAggression, lurkDistance, lurkWatchedDistance, lurkAvoidance, 3, lurkLoseInterestTime);
+        states["HuntNormal"] = new Hunt("HuntNormal", this, huntSearchRadiusIncrease, 1, chaseMinimumAggression, toyMinimumCuriosity, false, huntTimeBeforeGiveUp, "Wander");
+        states["HuntAggressive"] = new Hunt("HuntAggressive", this, aggrohuntSearchRadiusIncrease, 1, chaseMinimumAggression, -1, true, aggrohuntTimeBeforeGiveUp, "HuntNormal");
+        states["Chase"] = new Chase("Chase", this, chaseTimeToLose, chaseAttackDistance, chaseSpeed);
         states["Attack"] = new Attack("Attack", this, attackAnimationDuration);
     }
 

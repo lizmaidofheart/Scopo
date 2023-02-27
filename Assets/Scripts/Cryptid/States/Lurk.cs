@@ -13,15 +13,13 @@ public class Lurk : BrainState
     public float distanceWhenBeingWatched = 15;
     public float defaultAvoidance;
     public float imposedAvoidance = 2;
-    public float defaultSpeed;
-    public float imposedSpeed = 5;
     public float watchedRefreshTime = 5;
     public float watchedTimeRemaining;
     public float loseInterestTime = 20;
     public float loseInterestTimeRemaining;
 
     public Lurk(string name, CryptidBrain brain, float timeToLose, float aggressionBump, float defendedTime, float chaseAggression, float distance, float watchDistance,
-        float avoidance, float speed, float watchedTime, float interestTime) : base(name, brain)
+        float avoidance, float watchedTime, float interestTime) : base(name, brain)
     {
         timeToLosePlayer = timeToLose;
         aggressionIncrease = aggressionBump;
@@ -30,7 +28,6 @@ public class Lurk : BrainState
         distanceToLurk = distance;
         distanceWhenBeingWatched = watchDistance;
         imposedAvoidance = avoidance;
-        imposedSpeed = speed;
         watchedRefreshTime = watchedTime;
         loseInterestTime = interestTime;
     }
@@ -43,8 +40,6 @@ public class Lurk : BrainState
         timeRemaining = timeToLosePlayer;
         defaultAvoidance = CryptidBrain.Instance.navigator.radius;
         CryptidBrain.Instance.navigator.radius = imposedAvoidance;
-        defaultSpeed = CryptidBrain.Instance.navigator.speed;
-        CryptidBrain.Instance.navigator.speed = imposedSpeed;
         watchedTimeRemaining = 2;
         loseInterestTimeRemaining = loseInterestTime;
     }
@@ -91,7 +86,6 @@ public class Lurk : BrainState
     {
         base.Exit();
         CryptidBrain.Instance.navigator.radius = defaultAvoidance;
-        CryptidBrain.Instance.navigator.speed = defaultSpeed;
     }
 
     public override void CryptidPhotographed()
