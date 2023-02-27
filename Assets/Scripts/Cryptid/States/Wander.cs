@@ -14,6 +14,7 @@ public class Wander : BrainState
         {
             targets.Add(wanderTargetsParent.GetChild(i));
         }
+
         imposedSpeed = newSpeed;
     }
 

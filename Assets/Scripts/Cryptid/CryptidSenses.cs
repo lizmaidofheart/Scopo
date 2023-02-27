@@ -53,7 +53,7 @@ public class CryptidSenses : MonoBehaviour
                 {
                     if (hit.collider.transform == target) // if player was hit by raycast
                     {
-                        Debug.DrawRay(sightPosition, directionToTarget * distanceToTarget, Color.yellow, 2f);
+                        Debug.DrawLine(sightPosition, PlayerReference.Instance.transform.position, Color.yellow, 2);
                         return true; // player is visible!
                     }
                     //else, player in view angle but blocked by obstacle

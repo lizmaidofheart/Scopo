@@ -28,10 +28,8 @@ public class BrainState
 
     public virtual void UpdateLogic()
     {
-        if (stareAtPlayer)
-        {
-            StareAtPlayer();
-        }
+        // manage staring
+        if (stareAtPlayer) StareAtPlayer();
     }
 
     public virtual void Exit()
@@ -85,11 +83,13 @@ public class BrainState
                 defenceTimer = timerForAggressionIncrease;
             }
         }
+
         else if (!nearDefended && playerInDefendedZone) // left zone
         {
             playerInDefendedZone = false;
             CryptidBrain.Instance.aggression += aggressionOnLeave;
         }
+
         else if (nearDefended && playerInDefendedZone) // stayed in zone
         {
             if (timerForAggressionIncrease != -1)
@@ -101,7 +101,6 @@ public class BrainState
                     defenceTimer = timerForAggressionIncrease;
                 }
             }
-
         }
     }
 

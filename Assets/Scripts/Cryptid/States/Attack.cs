@@ -15,6 +15,7 @@ public class Attack : BrainState
     public override void Enter()
     {
         base.Enter();
+        CryptidBrain.Instance.playerObstacle.radius = 1;
         // play attack animation
     }
 

@@ -14,9 +14,17 @@ public class Toy : BrainState
     public float interestingTimeRemaining;
     public float cameraMovement = 0;
     public float cameraMovementThreshhold = 15;
+    public float targetSelectionMaxDistance = 30;
+    public float timeForSelectNewGoal = 30;
+    public float goalTimeRemaining;
+    public List<Transform> targets = new List<Transform>();
+    public Vector3 currentGoalZone;
+    public float maxDistanceBeforeKite = 50;
+    public float kiteOffsetDistance = 5;
 
     public Toy(string name, CryptidBrain brain, float timeToLose, float aggressionIncrease, float defendedTime, float lurkAggression, float followCuriosity,
-        float interesting, float camThreshhold) : base(name, brain)
+        float interesting, float camThreshhold, Transform kiteTargetsParent, float selectionMaxDistance, float newSelectionTime, float distanceToKite,
+        float kiteOffset) : base(name, brain)
     {
         timeToLosePlayer = timeToLose;
         aggressionIncreaseOnLosePlayer = aggressionIncrease;
@@ -25,6 +33,15 @@ public class Toy : BrainState
         curiosityToFollow = followCuriosity;
         interestingTime = interesting;
         cameraMovementThreshhold = camThreshhold;
+        targetSelectionMaxDistance = selectionMaxDistance;
+        timeForSelectNewGoal = newSelectionTime;
+        maxDistanceBeforeKite = distanceToKite;
+        kiteOffsetDistance = kiteOffset;
+
+        for (int i = 0; i < kiteTargetsParent.childCount; i++)
+        {
+            targets.Add(kiteTargetsParent.GetChild(i));
+        }
     }
 
     public override void Enter()
@@ -32,6 +49,7 @@ public class Toy : BrainState
         base.Enter();
         timeRemaining = timeToLosePlayer;
         interestingTimeRemaining = interestingTime;
+        goalTimeRemaining = 0;
     }
 
     public override void UpdateLogic()
@@ -40,6 +58,10 @@ public class Toy : BrainState
 
         // measure how shaky the player's camera is this frame
         cameraMovement += measureCameraMovement();
+
+        // behaviour
+        ToyBehaviour();
+        EnableStareAtPlayer(true);
 
         // if aggression is high enough, swap to 'lurk' mode
         if (CryptidBrain.Instance.aggression >= aggressionToLurk)
@@ -56,11 +78,7 @@ public class Toy : BrainState
         // if can sense player, update navigation destination, reset lose player timer and set cryptid to stare at the player
         else if (CryptidBrain.Instance.senses.CanSensePlayer())
         {
-            // DO TOY STUFF
-
             if (timeRemaining < timeToLosePlayer) timeRemaining = timeToLosePlayer;
-
-            EnableStareAtPlayer(true);
 
             DefendedZoneHandling(4, 2, 0, defendedZoneTimeBeforeRefreshAggression);
 
@@ -74,10 +92,10 @@ public class Toy : BrainState
                 interestingTimeRemaining = interestingTime;
             }
         }
-        // otherwise, move towards last known player location, reduce lose player timer and stop staring at the player
+        // otherwise, reduce lose player timer
         else
         {
-            CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
+            //CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
 
             timeRemaining -= Time.deltaTime;
 
@@ -87,9 +105,9 @@ public class Toy : BrainState
                 CryptidBrain.Instance.aggression += aggressionIncreaseOnLosePlayer;
                 brain.ChangeState("HuntNormal");
             }
-
-            EnableStareAtPlayer(false);
         }
+
+        goalTimeRemaining -= Time.deltaTime;
     }
 
     public override void CryptidPhotographed()
@@ -111,5 +129,52 @@ public class Toy : BrainState
     {
         Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         return mouseDelta.magnitude;
+    }
+
+    private void ToyBehaviour()
+    {
+        // if new goal needed, select one
+        if (currentGoalZone == null || goalTimeRemaining <= 0)
+        {
+            currentGoalZone = chooseGoalZone();
+            goalTimeRemaining = timeForSelectNewGoal;
+        }
+
+        float playerDistanceFromGoal = (CryptidBrain.Instance.senses.lastKnownPlayerLocation - currentGoalZone).magnitude;
+
+        // if player is too far from goal, kite them
+        if (playerDistanceFromGoal > maxDistanceBeforeKite)
+        {
+            Kite();
+        }
+        
+    }
+
+    private Vector3 chooseGoalZone()
+    {
+        // choose a goal zone close enough to where the player currently is
+
+        List<Transform> zones = new List<Transform>(targets);
+
+        while (zones.Count > 0)
+        {
+            Transform chosen = zones[Random.Range(0, zones.Count)];
+            if ((chosen.position - CryptidBrain.Instance.senses.lastKnownPlayerLocation).magnitude < targetSelectionMaxDistance) return chosen.position;
+            else zones.Remove(chosen);
+        }
+        return CryptidBrain.Instance.senses.lastKnownPlayerLocation;
+    }
+
+    private void Kite()
+    {
+
+        Vector3 kitePositionOffset = (CryptidBrain.Instance.senses.lastKnownPlayerLocation - currentGoalZone).normalized * kiteOffsetDistance;
+        Vector3 kitePosition = CryptidBrain.Instance.senses.lastKnownPlayerLocation + kitePositionOffset;
+
+        // find the position to move to and make sure it's valid
+        if (FindValidLocation(kitePosition, PlayerReference.Instance.transform.position, out Vector3 destination))
+            CryptidBrain.Instance.navigator.SetDestination(destination);
+
+        else CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
     }
 }

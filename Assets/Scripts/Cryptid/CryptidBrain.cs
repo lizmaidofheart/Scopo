@@ -21,31 +21,50 @@ public class CryptidBrain : MonoBehaviour
     [SerializeField] public float curiosity = 0;
     [SerializeField] public float aggression = 0;
 
-    [Header("State Boundaries")]
-    [SerializeField] float toyMinimumCuriosity = 6;
-    [SerializeField] float lurkMinimumAggression = 10;
-    [SerializeField] float chaseMinimumAggression = 20;
-
-    [Header("State Settings")]
+    [Header("Initial Settings")]
     [SerializeField] string initialStateKey = "Initial";
     [SerializeField] float idleTime = 5;
+
+    [Header("Wander Settings")]
     [SerializeField] Transform wanderTargetsParent;
     [SerializeField] float wanderSpeed = 2.5f;
+
+    [Header("Follow Settings")]
     [SerializeField] float followTimeToLose = 5;
     [SerializeField] float followDistance = 10;
+
+    [Header("Toy Settings")]
+    [SerializeField] float toyMinimumCuriosity = 6;
     [SerializeField] float toyInterestTime = 15;
     [SerializeField] float toyCameraThreshold = 1500;
+    [SerializeField] Transform toyKiteTargetsParent;
+    [SerializeField] float toyMaxDistanceToGoal = 45;
+    [SerializeField] float toyTimeToSelectNewGoal = 30;
+    [SerializeField] float toyDistanceToKiteOutside = 15;
+    [SerializeField] float toyKiteOffsetDistance = 10;
+
+    [Header("Lurk Settings")]
+    [SerializeField] float lurkMinimumAggression = 10;
     [SerializeField] float lurkDistance = 5;
     [SerializeField] float lurkWatchedDistance = 15;
     [SerializeField] float lurkAvoidance = 2;
     [SerializeField] float lurkLoseInterestTime = 20;
+
+    [Header("Hunt Settings")]
     [SerializeField] float huntSearchRadiusIncrease = 5;
     [SerializeField] float huntTimeBeforeGiveUp = 20;
+
+    [Header("Aggressive Hunt Settings")]
     [SerializeField] float aggrohuntSearchRadiusIncrease = 5;
     [SerializeField] float aggrohuntTimeBeforeGiveUp = 15;
+
+    [Header("Chase Settings")]
+    [SerializeField] float chaseMinimumAggression = 20;
     [SerializeField] float chaseTimeToLose = 5;
     [SerializeField] float chaseAttackDistance = 3;
     [SerializeField] float chaseSpeed = 2.5f;
+
+    [Header("Attack Settings")]
     [SerializeField] float attackAnimationDuration = 2;
 
     [Header("References")]
@@ -77,7 +96,8 @@ public class CryptidBrain : MonoBehaviour
         states["Initial"] = new Idle("Initial", this, idleTime, "Wander");
         states["Wander"] = new Wander("Wander", this, wanderTargetsParent, wanderSpeed);
         states["Follow"] = new Follow("Follow", this, followTimeToLose, 2, followDistance, toyMinimumCuriosity, lurkMinimumAggression, 15);
-        states["Toy"] = new Toy("Toy", this, 5, 1, 10, lurkMinimumAggression, toyMinimumCuriosity - 2, toyInterestTime, toyCameraThreshold);
+        states["Toy"] = new Toy("Toy", this, 5, 1, 10, lurkMinimumAggression, toyMinimumCuriosity - 2, toyInterestTime, toyCameraThreshold, toyKiteTargetsParent,
+            toyMaxDistanceToGoal, toyTimeToSelectNewGoal, toyDistanceToKiteOutside, toyKiteOffsetDistance);
         states["Lurk"] = new Lurk("Lurk", this, 5, 2, 10, chaseMinimumAggression, lurkDistance, lurkWatchedDistance, lurkAvoidance, 3, lurkLoseInterestTime);
         states["HuntNormal"] = new Hunt("HuntNormal", this, huntSearchRadiusIncrease, 1, chaseMinimumAggression, toyMinimumCuriosity, false, huntTimeBeforeGiveUp, "Wander");
         states["HuntAggressive"] = new Hunt("HuntAggressive", this, aggrohuntSearchRadiusIncrease, 1, chaseMinimumAggression, -1, true, aggrohuntTimeBeforeGiveUp, "HuntNormal");
