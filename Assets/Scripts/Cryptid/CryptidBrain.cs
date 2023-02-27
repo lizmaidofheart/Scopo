@@ -27,6 +27,10 @@ public class CryptidBrain : MonoBehaviour
     [SerializeField] Transform wanderTargetsParent;
     [SerializeField] float followTimeToLose = 5;
     [SerializeField] float followDistance = 10;
+    [SerializeField] float lurkDistance = 5;
+    [SerializeField] float lurkWatchedDistance = 15;
+    [SerializeField] float lurkAvoidance = 2;
+    [SerializeField] float lurkSpeed = 5;
     [SerializeField] float huntSearchRadiusIncrease = 5;
     [SerializeField] float huntTimeBeforeGiveUp = 20;
     [SerializeField] float aggrohuntSearchRadiusIncrease = 5;
@@ -64,7 +68,7 @@ public class CryptidBrain : MonoBehaviour
         states["Wander"] = new Wander("Wander", this, wanderTargetsParent);
         states["Follow"] = new Follow("Follow", this, followTimeToLose, 2, followDistance, 6, 10, 15);
         states["Toy"] = new Toy("Toy", this, 5, 1, 10, 10, 4, 15);
-        states["Lurk"] = new Lurk("Lurk", this, 5, 2, 10, 20);
+        states["Lurk"] = new Lurk("Lurk", this, 5, 2, 10, 20, lurkDistance, lurkWatchedDistance, lurkAvoidance, lurkSpeed, 3);
         states["HuntNormal"] = new Hunt("HuntNormal", this, huntSearchRadiusIncrease, 1, 20, 6, false, huntTimeBeforeGiveUp, "Wander");
         states["HuntAggressive"] = new Hunt("HuntAggressive", this, aggrohuntSearchRadiusIncrease, 1, 20, -1, true, aggrohuntTimeBeforeGiveUp, "HuntNormal");
         states["Chase"] = new Chase("Chase", this, chaseTimeToLose, chaseAttackDistance);

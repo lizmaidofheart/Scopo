@@ -291,18 +291,21 @@ MonoBehaviour:
   wanderTargetsParent: {fileID: 1617983519}
   followTimeToLose: 3
   followDistance: 25
+  lurkDistance: 5
+  lurkWatchedDistance: 15
+  lurkAvoidance: 2
+  lurkSpeed: 5
   huntSearchRadiusIncrease: 5
   huntTimeBeforeGiveUp: 20
   aggrohuntSearchRadiusIncrease: 5
   aggrohuntTimeBeforeGiveUp: 15
   chaseTimeToLose: 5
   chaseAttackDistance: 3
-  attackSpeed: 5
-  attackAngularSpeed: 260
+  attackAnimationDuration: 2
   body: {fileID: 264799978}
   senses: {fileID: 264799976}
   navigator: {fileID: 264799981}
-  photographable: {fileID: 0}
+  photographable: {fileID: 264799982}
   defendedZoneCenter: {fileID: 332125038}
   defendedZoneRadius: 10
   groundLayer:

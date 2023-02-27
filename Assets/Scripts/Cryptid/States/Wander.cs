@@ -27,8 +27,7 @@ public class Wander : BrainState
         base.UpdateLogic();
 
         // if at destination, pick somewhere new to pathfind to.
-        if (!CryptidBrain.Instance.navigator.pathPending && CryptidBrain.Instance.navigator.remainingDistance < 0.5f)
-            GoToNewLocation();
+        if (!CryptidBrain.Instance.navigator.pathPending && CryptidBrain.Instance.navigator.remainingDistance < 0.5f) GoToNewLocation();
 
         // if player is detected, increase curiosity and swap to follow state
         if (CryptidBrain.Instance.senses.CanSensePlayer())
