@@ -72,7 +72,6 @@ public class Lurk : BrainState
         // otherwise, move towards last known player location, reduce lose player timer and stop staring at the player
         else
         {
-            //CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
 
             LurkBehaviour();
 
@@ -85,7 +84,6 @@ public class Lurk : BrainState
                 brain.ChangeState("HuntAggressive");
             }
 
-            //EnableStareAtPlayer(false);
         }
     }
 
