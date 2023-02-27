@@ -17,9 +17,11 @@ public class Lurk : BrainState
     public float imposedSpeed = 5;
     public float watchedRefreshTime = 5;
     public float watchedTimeRemaining;
+    public float loseInterestTime = 20;
+    public float loseInterestTimeRemaining;
 
     public Lurk(string name, CryptidBrain brain, float timeToLose, float aggressionBump, float defendedTime, float chaseAggression, float distance, float watchDistance,
-        float avoidance, float speed, float watchedTime) : base(name, brain)
+        float avoidance, float speed, float watchedTime, float interestTime) : base(name, brain)
     {
         timeToLosePlayer = timeToLose;
         aggressionIncrease = aggressionBump;
@@ -30,6 +32,7 @@ public class Lurk : BrainState
         imposedAvoidance = avoidance;
         imposedSpeed = speed;
         watchedRefreshTime = watchedTime;
+        loseInterestTime = interestTime;
     }
 
     // use CryptidBrain.Instance.senses.PlayerCanSeeMe()
@@ -43,6 +46,7 @@ public class Lurk : BrainState
         defaultSpeed = CryptidBrain.Instance.navigator.speed;
         CryptidBrain.Instance.navigator.speed = imposedSpeed;
         watchedTimeRemaining = 2;
+        loseInterestTimeRemaining = loseInterestTime;
     }
 
     public override void UpdateLogic()
@@ -119,7 +123,7 @@ public class Lurk : BrainState
                 positionToLurk = CryptidBrain.Instance.senses.lastKnownPlayerLocation - PlayerReference.Instance.transform.right * distanceWhenBeingWatched;
             }
 
-            // if player is looking at the cryptid, handle reducing watch timer
+            // if player is looking at the cryptid, handle timers
             watchedTimeRemaining -= Time.deltaTime;
 
             if (watchedTimeRemaining <= 0)
@@ -127,12 +131,26 @@ public class Lurk : BrainState
                 watchedTimeRemaining = watchedRefreshTime;
                 CryptidBrain.Instance.aggression += aggressionIncrease;
             }
+
+            loseInterestTimeRemaining = loseInterestTime;
         }
         else
         {
-            // if player can't see the cryptid, stands directly behind the player at distanceToLurk distance
+            // if player can't see the cryptid, stands directly behind the player at distanceToLurk distance and handle loseInterestTime
 
             positionToLurk = CryptidBrain.Instance.senses.lastKnownPlayerLocation + PlayerReference.Instance.transform.forward * -distanceToLurk;
+
+            // time reduces slower if aggression is high
+
+            float aggressionFactor = 1 - (CryptidBrain.Instance.aggression - 10) / 20;
+            loseInterestTimeRemaining -= Time.deltaTime * aggressionFactor;
+
+            if (loseInterestTimeRemaining <= 0)
+            {
+                CryptidBrain.Instance.aggression = 8;
+                if (CryptidBrain.Instance.curiosity >= 6) brain.ChangeState("Toy");
+                else brain.ChangeState("Follow");
+            }
         }
 
         // make sure that location is valid (reachable)
