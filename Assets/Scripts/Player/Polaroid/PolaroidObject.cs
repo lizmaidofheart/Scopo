@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PolaroidObject : MonoBehaviour
 {
+    // yes i know this script is very messy
+
     [Header("Object Movement")]
 
     [SerializeField] Quaternion restAngle;
@@ -104,7 +106,7 @@ public class PolaroidObject : MonoBehaviour
             }
             else
             {
-                noFilmLeftSound.Play();
+                PlayerSoundMaker.Instance.CreateSound(noFilmLeftSound, true);
             }
             
         }
@@ -124,7 +126,7 @@ public class PolaroidObject : MonoBehaviour
             polaroidFlashParticle.Play();
             changeFilmCount(currentFilm - 1);
 
-            captureSound.Play();
+            PlayerSoundMaker.Instance.CreateSound(captureSound, true);
 
             if (currentFilm > 0)
             {
@@ -218,8 +220,8 @@ public class PolaroidObject : MonoBehaviour
                 }
 
                 // audio
-                reloadSound.Stop();
-                chargeSound.Stop();
+                PlayerSoundMaker.Instance.DestroyLoopingSound(reloadSound, true);
+                PlayerSoundMaker.Instance.DestroyLoopingSound(chargeSound, true);
 
                 break;
 
@@ -231,7 +233,7 @@ public class PolaroidObject : MonoBehaviour
                 flashState = FlashState.Increase;
 
                 // audio
-                chargeSound.Play();
+                PlayerSoundMaker.Instance.CreateSound(chargeSound, true);
 
                 break;
 
@@ -247,8 +249,8 @@ public class PolaroidObject : MonoBehaviour
                 }
 
                 // audio
-                reloadSound.Play();
-                chargeSound.Stop();
+                PlayerSoundMaker.Instance.CreateSound(reloadSound, true);
+                PlayerSoundMaker.Instance.DestroyLoopingSound(chargeSound);
 
                 break;
         }

@@ -11,8 +11,6 @@ public class PolaroidCheckVisible : MonoBehaviour
 
     [SerializeField] private LayerMask raycastLayers;
 
-    [SerializeField] Photographable testObj;
-
     private void Awake() // singleton setup
     {
         if (_instance != null && _instance != this)
@@ -61,7 +59,7 @@ public class PolaroidCheckVisible : MonoBehaviour
                     {
                         if (hitPhotographable == obj)
                         {
-                            Debug.DrawRay(transform.position, (obj.transform.position - cam.transform.position).normalized * obj.visibleRange, Color.yellow, 2f);
+                            Debug.DrawRay(transform.position, (obj.transform.position - cam.transform.position).normalized * obj.visibleRange, Color.red, 2f);
                             Debug.Log(obj.identity);
 
                             return true;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using System.IO;
 
 public class PolaroidSnapshot : MonoBehaviour
@@ -16,6 +17,8 @@ public class PolaroidSnapshot : MonoBehaviour
 
     [SerializeField] int resWidth = 256;
     [SerializeField] int resHeight = 256;
+
+    [SerializeField] UnityEvent photographedNotTheCryptid;
 
     private void Awake()
     {
@@ -71,12 +74,23 @@ public class PolaroidSnapshot : MonoBehaviour
 
             List<Photographable> visibleObjs = PolaroidCheckVisible.Instance.visiblePhotographables(snapshotCam);
 
+            bool cryptidPhotographed = false;
             foreach (Photographable obj in visibleObjs)
             {
                 obj.IveBeenPhotographed(); // tell a photographed object that it's been photographed.
+                if (obj.identity == "???")
+                {
+                    cryptidPhotographed = true;
+                }
             }
 
             PolaroidInfo.Instance.photos.Add(new PolaroidInfo.Photograph(fileName, visibleObjs));
+
+            // trigger event if haven't photographed the cryptid (this is to interface with cryptid behaviour)
+            if (!cryptidPhotographed)
+            {
+                photographedNotTheCryptid.Invoke();
+            }
 
             // disable cam
             snapshotCam.gameObject.SetActive(false);
