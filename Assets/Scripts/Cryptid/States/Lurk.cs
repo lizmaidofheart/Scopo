@@ -40,7 +40,7 @@ public class Lurk : BrainState
         timeRemaining = timeToLosePlayer;
         defaultAvoidance = CryptidBrain.Instance.navigator.radius;
         CryptidBrain.Instance.navigator.radius = imposedAvoidance;
-        watchedTimeRemaining = 2;
+        watchedTimeRemaining = watchedRefreshTime;
         loseInterestTimeRemaining = loseInterestTime;
     }
 

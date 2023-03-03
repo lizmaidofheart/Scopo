@@ -92,7 +92,7 @@ public class Follow : BrainState
     public override void CryptidPhotographed()
     {
         base.CryptidPhotographed();
-        CryptidBrain.Instance.aggression += 3;
+        CryptidBrain.Instance.aggression += 3.5f;
     }
 
     public override void NotCryptidPhotographed()
