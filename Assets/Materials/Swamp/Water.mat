@@ -93,10 +93,10 @@ Material:
     - _DstBlend: 10
     - _EnvironmentReflections: 1
     - _FoamAmount: 1.26
-    - _FoamCutoff: 0.92
-    - _FoamDistance: 0.5
+    - _FoamCutoff: 1.48
+    - _FoamDistance: 0.34
     - _FoamScale: 1000
-    - _FoamSmoothness: 0.92
+    - _FoamSmoothness: 0.39
     - _FoamSpeed: 0.0002
     - _GlossMapScale: 0
     - _Glossiness: 0
