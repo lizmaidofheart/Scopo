@@ -200,7 +200,17 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "c9539ef72de547ef9ccf0ffda82c6a61"
+        },
+        {
+            "m_Id": "f5ef4336e8004385b81668e625457488"
+        },
+        {
+            "m_Id": "6325323d5cde420290dd4ef8bb1ad817"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -1574,9 +1584,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1390.666748046875,
-            "y": 1760.0001220703125,
-            "width": 127.3331298828125,
+            "x": 699.3333740234375,
+            "y": 2158.666259765625,
+            "width": 127.33331298828125,
             "height": 36.0
         }
     },
@@ -1630,10 +1640,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 55.3333740234375,
-            "y": 1010.6668090820313,
-            "width": 115.99981689453125,
-            "height": 36.00006103515625
+            "x": -1731.3333740234375,
+            "y": 1174.666748046875,
+            "width": 115.9998779296875,
+            "height": 36.0001220703125
         }
     },
     "m_Slots": [
@@ -1665,10 +1675,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 281.33343505859377,
-            "y": 884.0000610351563,
-            "width": 209.3333740234375,
-            "height": 328.00006103515627
+            "x": -1505.33349609375,
+            "y": 1048.0001220703125,
+            "width": 209.33349609375,
+            "height": 327.9998779296875
         }
     },
     "m_Slots": [
@@ -2164,10 +2174,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -587.3333129882813,
-            "y": 656.0001220703125,
-            "width": 115.33322143554688,
-            "height": 35.9998779296875
+            "x": -2374.000244140625,
+            "y": 820.0001220703125,
+            "width": 115.333251953125,
+            "height": 36.0
         }
     },
     "m_Slots": [
@@ -2881,6 +2891,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "6325323d5cde420290dd4ef8bb1ad817",
+    "m_Title": "Picking a gloss value based off the RGBA channels of a colour",
+    "m_Content": "",
+    "m_TextSize": 3,
+    "m_Theme": 1,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -3083.333251953125,
+        "y": 209.3333282470703,
+        "width": 1890.538330078125,
+        "height": 1838.552490234375
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "634469b6d1829d80b63795ff5a4bd4e5",
     "m_Id": 4,
@@ -2908,9 +2938,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1652.66650390625,
-            "y": 1620.0001220703125,
-            "width": 209.3333740234375,
+            "x": 961.33349609375,
+            "y": 2018.6666259765625,
+            "width": 209.3331298828125,
             "height": 327.9998779296875
         }
     },
@@ -3095,9 +3125,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 421.33331298828127,
-            "y": 2397.999755859375,
-            "width": 209.33343505859376,
+            "x": -270.0000915527344,
+            "y": 2796.666259765625,
+            "width": 209.3331756591797,
             "height": 280.000244140625
         }
     },
@@ -4002,10 +4032,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -38.000186920166019,
-            "y": 656.0001220703125,
-            "width": 209.3333740234375,
-            "height": 327.9998779296875
+            "x": -1824.6666259765625,
+            "y": 820.0001220703125,
+            "width": 209.3331298828125,
+            "height": 328.0
         }
     },
     "m_Slots": [
@@ -4071,10 +4101,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -894.0000610351563,
-            "y": 345.33331298828127,
-            "width": 114.00006103515625,
-            "height": 36.00006103515625
+            "x": -2680.666748046875,
+            "y": 509.33343505859377,
+            "width": 114.0,
+            "height": 35.99993896484375
         }
     },
     "m_Slots": [
@@ -4218,10 +4248,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1225.3333740234375,
-            "y": 1424.0,
-            "width": 209.33331298828126,
-            "height": 280.0
+            "x": -3012.000244140625,
+            "y": 1588.000244140625,
+            "width": 209.333251953125,
+            "height": 279.9998779296875
         }
     },
     "m_Slots": [
@@ -4274,9 +4304,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 746.6665649414063,
-            "y": 2538.0,
-            "width": 120.6666259765625,
+            "x": 55.333396911621097,
+            "y": 2936.666259765625,
+            "width": 120.66681671142578,
             "height": 150.666748046875
         }
     },
@@ -4347,9 +4377,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1671.333251953125,
-            "y": 2012.0,
-            "width": 127.33349609375,
+            "x": 979.9999389648438,
+            "y": 2410.66650390625,
+            "width": 127.33331298828125,
             "height": 36.0
         }
     },
@@ -4391,6 +4421,26 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "c9539ef72de547ef9ccf0ffda82c6a61",
+    "m_Title": "Picking a texture based off the RGBA channels of a colour",
+    "m_Content": "",
+    "m_TextSize": 3,
+    "m_Theme": 1,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -670.0,
+        "y": -1286.0,
+        "width": 2930.666748046875,
+        "height": 1872.0
+    },
+    "m_Group": {
+        "m_Id": ""
     }
 }
 
@@ -4615,10 +4665,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -354.666748046875,
-            "y": 434.0000915527344,
-            "width": 209.3333740234375,
-            "height": 327.9998474121094
+            "x": -2141.333251953125,
+            "y": 598.0000610351563,
+            "width": 209.3331298828125,
+            "height": 328.0
         }
     },
     "m_Slots": [
@@ -4733,10 +4783,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -643.9998779296875,
-            "y": 269.9999694824219,
-            "width": 209.3330078125,
-            "height": 328.0000305175781
+            "x": -2430.666748046875,
+            "y": 434.0001220703125,
+            "width": 209.33349609375,
+            "height": 328.0
         }
     },
     "m_Slots": [
@@ -4795,10 +4845,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1016.666748046875,
-            "y": 1145.3333740234375,
-            "width": 209.3333740234375,
-            "height": 327.9998779296875
+            "x": 325.3334655761719,
+            "y": 1543.9998779296875,
+            "width": 209.33316040039063,
+            "height": 328.0
         }
     },
     "m_Slots": [
@@ -4861,10 +4911,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1338.0,
-            "y": 1386.0,
-            "width": 209.3333740234375,
-            "height": 327.9998779296875
+            "x": 646.6664428710938,
+            "y": 1784.666748046875,
+            "width": 209.33367919921876,
+            "height": 327.999755859375
         }
     },
     "m_Slots": [
@@ -5030,10 +5080,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1972.0001220703125,
-            "y": 1847.9998779296875,
-            "width": 209.3328857421875,
-            "height": 328.0003662109375
+            "x": 1280.66650390625,
+            "y": 2246.666259765625,
+            "width": 209.3336181640625,
+            "height": 328.0
         }
     },
     "m_Slots": [
@@ -5133,9 +5183,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1099.33349609375,
-            "y": 1584.0001220703125,
-            "width": 126.6666259765625,
+            "x": 407.9998474121094,
+            "y": 1982.6666259765625,
+            "width": 126.66677856445313,
             "height": 36.0
         }
     },
@@ -5168,10 +5218,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -261.33355712890627,
-            "y": 782.0000610351563,
-            "width": 116.00018310546875,
-            "height": 36.00006103515625
+            "x": -2048.0,
+            "y": 946.0000610351563,
+            "width": 115.9998779296875,
+            "height": 36.0001220703125
         }
     },
     "m_Slots": [
@@ -5218,10 +5268,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 778.666748046875,
-            "y": 1214.0001220703125,
-            "width": 125.33343505859375,
-            "height": 35.999755859375
+            "x": 87.3333511352539,
+            "y": 1612.666748046875,
+            "width": 125.33330535888672,
+            "height": 35.9998779296875
         }
     },
     "m_Slots": [
@@ -5282,10 +5332,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -894.0000610351563,
-            "y": 1553.3333740234375,
-            "width": 120.66656494140625,
-            "height": 150.666748046875
+            "x": -2680.666748046875,
+            "y": 1717.33349609375,
+            "width": 120.66650390625,
+            "height": 150.6666259765625
         }
     },
     "m_Slots": [
@@ -5633,6 +5683,26 @@
         "w": 0.0
     },
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "f5ef4336e8004385b81668e625457488",
+    "m_Title": "Picking a metallic value based off the RGBA channels of a colour",
+    "m_Content": "",
+    "m_TextSize": 3,
+    "m_Theme": 1,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -376.6666564941406,
+        "y": 1328.666748046875,
+        "width": 2003.6995849609375,
+        "height": 1963.984130859375
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {

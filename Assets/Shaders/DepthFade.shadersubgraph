@@ -9,7 +9,11 @@
     ],
     "m_Keywords": [],
     "m_Dropdowns": [],
-    "m_CategoryData": [],
+    "m_CategoryData": [
+        {
+            "m_Id": "db6d138f3c3d481b9d37d77fdab48f42"
+        }
+    ],
     "m_Nodes": [
         {
             "m_Id": "5a4b1cc581804d72b8cd16b855051478"
@@ -37,7 +41,11 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "af58a57a47b0425bb4a934e7e95943ff"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -513,6 +521,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "af58a57a47b0425bb4a934e7e95943ff",
+    "m_Title": "Getting the water depth. The higher the output, the deeper.",
+    "m_Content": "",
+    "m_TextSize": 1,
+    "m_Theme": 1,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -557.3333129882813,
+        "y": -260.0,
+        "width": 1296.4969482421875,
+        "height": 463.4331359863281
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.ScreenPositionMaterialSlot",
     "m_ObjectId": "b1ea0f62aa61442a973ec894532778a1",
     "m_Id": 0,
@@ -732,6 +760,18 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.CategoryData",
+    "m_ObjectId": "db6d138f3c3d481b9d37d77fdab48f42",
+    "m_Name": "",
+    "m_ChildObjectList": [
+        {
+            "m_Id": "ab9950212f4b4e59970a849222b53e02"
+        }
+    ]
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "e46fbc41b3bd479fbe9359d131ed5b3b",
     "m_Id": 1,
@@ -827,10 +867,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -18.1666259765625,
-            "y": -19.33331298828125,
-            "width": 0.0,
-            "height": 0.0
+            "x": -65.33336639404297,
+            "y": 25.33333969116211,
+            "width": 154.0000457763672,
+            "height": 35.999977111816409
         }
     },
     "m_Slots": [
