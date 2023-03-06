@@ -101,7 +101,9 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _MaxFadeOutDistance: 40
     - _Metallic: 1
+    - _MinFadeOutDistance: 20
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0

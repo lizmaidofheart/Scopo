@@ -30,11 +30,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture2:
-        m_Texture: {fileID: 2800000, guid: c1553a01fd8660f419a94cd0f3ce0517, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1d423238c810ad448830f546b362ceaf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture3:
-        m_Texture: {fileID: 2800000, guid: 811c81f7e74fcd14081f0d5cb8a029ff, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6d52f714b2abec4428ea62a71fdc318e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoTexture4:

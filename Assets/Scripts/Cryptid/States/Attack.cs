@@ -5,7 +5,6 @@ using UnityEngine;
 public class Attack : BrainState
 {
     public float duration = 2;
-    public float timeRemaining;
 
     public Attack(string name, CryptidBrain brain, float animationDuration) : base(name, brain)
     {
@@ -17,18 +16,7 @@ public class Attack : BrainState
         base.Enter();
         CryptidBrain.Instance.playerObstacle.radius = 1;
         // play attack animation
-    }
-
-    public override void UpdateLogic()
-    {
-        base.UpdateLogic();
-
-        timeRemaining -= Time.deltaTime;
-
-        if (timeRemaining <= 0)
-        {
-            // reset
-        }
+        PlayerReference.Instance.Die(duration + 1);
     }
 
 }

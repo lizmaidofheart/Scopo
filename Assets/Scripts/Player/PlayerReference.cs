@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerReference : MonoBehaviour
 {
@@ -24,5 +25,18 @@ public class PlayerReference : MonoBehaviour
         {
             _instance = this;
         }
+    }
+
+    public void Die(float timeBeforeReset)
+    {
+        FirstPersonMovement mover = GetComponent<FirstPersonMovement>(); // stop player being able to move
+        Destroy(mover);
+        StartCoroutine(ResetLevel(timeBeforeReset));
+    }
+
+    private IEnumerator ResetLevel(float timeToWait) // reload scene after a specified delay
+    {
+        yield return new WaitForSeconds(timeToWait);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
