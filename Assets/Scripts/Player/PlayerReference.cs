@@ -30,7 +30,7 @@ public class PlayerReference : MonoBehaviour
     public void Die(float timeBeforeReset)
     {
         FirstPersonMovement mover = GetComponent<FirstPersonMovement>(); // stop player being able to move
-        Destroy(mover);
+        mover.speed = 0;
         StartCoroutine(ResetLevel(timeBeforeReset));
     }
 
