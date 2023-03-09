@@ -22335,7 +22335,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: efcdc0b399399ce4da9ecceb400e0269, type: 2}
+  - {fileID: 2100000, guid: 12cdd23eef26adc47b6dbe99d2918fe7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22580,6 +22580,11 @@ PrefabInstance:
       propertyPath: gotPhotographed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1115535353}
+    - target: {fileID: 1606432049242799474, guid: a4e99344032e01d499943b8c40336423,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 90e42de3cc543d94faa80afebfe56979, type: 2}
     - target: {fileID: 1606432049248973730, guid: a4e99344032e01d499943b8c40336423,
         type: 3}
       propertyPath: m_Mesh
