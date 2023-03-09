@@ -41,3 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Lilypads
+    uniqueID: 205522277
+    locked: 0
