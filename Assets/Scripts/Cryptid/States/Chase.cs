@@ -35,6 +35,7 @@ public class Chase : BrainState
 
         CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
 
+        AdaptiveMusic.Instance.SwitchTrack(4);
     }
 
     public override void UpdateLogic()

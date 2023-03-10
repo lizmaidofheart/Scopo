@@ -33,6 +33,15 @@ public class Hunt : BrainState
         searchRadius = 0;
         timeRemaining = timeToStopCaring;
         CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
+
+        if (lurkOnRediscovery)
+        {
+            AdaptiveMusic.Instance.SwitchTrack(2);
+        }
+        else
+        {
+            AdaptiveMusic.Instance.SwitchTrack(1);
+        }
     }
 
     public override void UpdateLogic()

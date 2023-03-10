@@ -42,6 +42,8 @@ public class Lurk : BrainState
         CryptidBrain.Instance.navigator.radius = imposedAvoidance;
         watchedTimeRemaining = watchedRefreshTime;
         loseInterestTimeRemaining = loseInterestTime;
+
+        AdaptiveMusic.Instance.SwitchTrack(2);
     }
 
     public override void UpdateLogic()

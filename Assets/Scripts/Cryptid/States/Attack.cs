@@ -17,6 +17,8 @@ public class Attack : BrainState
         CryptidBrain.Instance.playerObstacle.radius = 1;
         // play attack animation
         PlayerReference.Instance.Die(duration + 1);
+
+        AdaptiveMusic.Instance.SwitchTrack(-1); // silence all music
     }
 
 }

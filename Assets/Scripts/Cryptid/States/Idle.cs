@@ -18,6 +18,8 @@ public class Idle : BrainState
     {
         base.Enter();
         idleTimeRemaining = idleTime;
+
+        AdaptiveMusic.Instance.SwitchTrack(0);
     }
 
     public override void UpdateLogic()
