@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class PlayerReference : MonoBehaviour
 {
     [SerializeField] public Camera cam;
+    [SerializeField] private float cluesFound = 0;
+    private List<string> clueLog = new List<string>();
 
     // this is a singleton acting as an easy reference for the player
     // it being a singleton means its accessible from anywhere without complex getcomponents etc
@@ -38,5 +40,14 @@ public class PlayerReference : MonoBehaviour
     {
         yield return new WaitForSeconds(timeToWait);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void FindClue(string clue)
+    {
+        if (!clueLog.Contains(clue)) // if clue hasnt been found yet
+        {
+            clueLog.Add(clue);
+            cluesFound += 1;
+        }
     }
 }

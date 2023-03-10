@@ -22966,6 +22966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 20437471614014423}
+  cluesFound: 0
 --- !u!4 &181155215068929312
 Transform:
   m_ObjectHideFlags: 0
@@ -23072,9 +23073,49 @@ PrefabInstance:
       objectReference: {fileID: 2080731321}
     - target: {fileID: 1606432049242799436, guid: a4e99344032e01d499943b8c40336423,
         type: 3}
+      propertyPath: gotPhotographed.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1606432049242799436, guid: a4e99344032e01d499943b8c40336423,
+        type: 3}
+      propertyPath: gotPhotographed.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1606432049242799436, guid: a4e99344032e01d499943b8c40336423,
+        type: 3}
       propertyPath: gotPhotographed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1115535353}
+    - target: {fileID: 1606432049242799436, guid: a4e99344032e01d499943b8c40336423,
+        type: 3}
+      propertyPath: gotPhotographed.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 136877097965906144}
+    - target: {fileID: 1606432049242799436, guid: a4e99344032e01d499943b8c40336423,
+        type: 3}
+      propertyPath: gotPhotographed.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1606432049242799436, guid: a4e99344032e01d499943b8c40336423,
+        type: 3}
+      propertyPath: gotPhotographed.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: FindClue
+      objectReference: {fileID: 0}
+    - target: {fileID: 1606432049242799436, guid: a4e99344032e01d499943b8c40336423,
+        type: 3}
+      propertyPath: gotPhotographed.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PlayerReference, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1606432049242799436, guid: a4e99344032e01d499943b8c40336423,
+        type: 3}
+      propertyPath: gotPhotographed.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Van
+      objectReference: {fileID: 0}
+    - target: {fileID: 1606432049242799436, guid: a4e99344032e01d499943b8c40336423,
+        type: 3}
+      propertyPath: gotPhotographed.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1606432049242799474, guid: a4e99344032e01d499943b8c40336423,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
