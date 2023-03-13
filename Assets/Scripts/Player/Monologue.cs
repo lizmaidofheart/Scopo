@@ -5,6 +5,26 @@ using UnityEngine;
 
 public class Monologue : MonoBehaviour
 {
+    // this is a singleton
+    // it being a singleton means its accessible from anywhere without complex getcomponents etc
+
+    private static Monologue _instance;
+    public static Monologue Instance { get { return _instance; } }
+
+    private void Awake()
+    {
+        // singleton setup
+
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+
     // this script manages the monologue text at the top of the screen
 
     [Header("Text Input")]
