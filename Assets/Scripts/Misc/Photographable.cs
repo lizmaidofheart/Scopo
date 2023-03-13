@@ -12,6 +12,7 @@ public class Photographable : MonoBehaviour
 
     [SerializeField] public float visibleRange = 100f;
     [SerializeField] public string identity = "Unknown Object";
+    [SerializeField] bool isClue = true;
 
     [SerializeField] UnityEvent gotPhotographed;
 
@@ -30,6 +31,13 @@ public class Photographable : MonoBehaviour
     public void IveBeenPhotographed()
     {
         gotPhotographed.Invoke();
+
+        if (isClue)
+        {
+            PlayerReference.Instance.FindClue(identity);
+            Monologue.Instance.PlayText(identity);
+        }
+        
     }
 
     void OnDrawGizmosSelected()
