@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/RoomStart.unity
+    guid: bd80104f63e63934ab152b151af883c6
+  - enabled: 1
     path: Assets/Scenes/Swamp.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/RoomEnd.unity
+    guid: 04975120a8418b8449fbfe67e58ad501
   m_configObjects: {}

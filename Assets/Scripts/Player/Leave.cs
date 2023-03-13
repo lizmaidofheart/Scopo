@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Leave : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Leave : MonoBehaviour
     [SerializeField] float maxRadius = 5;
     [SerializeField] float minRadius = 3;
     Transform playerTransform;
+    [SerializeField] KeyCode leaveButton;
+    [SerializeField] int sceneIndex = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +37,12 @@ public class Leave : MonoBehaviour
         Color textColour = prompt.color;
         textColour.a = opacity;
         prompt.color = textColour;
+
+        // if player is close enough to leave, let do it on button press
+        if (Input.GetKeyDown(leaveButton))
+        {
+            SceneManager.LoadScene(sceneIndex);
+        }
     }
 
     private void OnDrawGizmosSelected()
