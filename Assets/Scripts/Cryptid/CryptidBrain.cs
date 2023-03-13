@@ -168,5 +168,8 @@ public class CryptidBrain : MonoBehaviour
             Gizmos.color = Color.white;
             Gizmos.DrawSphere(navigator.destination, 0.2f);
         }
+
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(defendedZoneCenter.position, defendedZoneRadius);
     }
 }
