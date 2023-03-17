@@ -5,6 +5,7 @@ using UnityEngine;
 public class Billboard : MonoBehaviour
 {
     private Transform cameraTransform;
+    private float maxDistanceToBillboard = 50;
 
     private void Start()
     {
@@ -15,7 +16,12 @@ public class Billboard : MonoBehaviour
     void Update()
     {
         Vector3 lookPos = cameraTransform.position - transform.position;
-        lookPos.y = 0;
-        transform.rotation = Quaternion.LookRotation(lookPos);
+
+        if (lookPos.magnitude <= maxDistanceToBillboard) // only billboard if inside max distance
+        {
+            lookPos.y = 0;
+            transform.rotation = Quaternion.LookRotation(lookPos);
+        }
+        
     }
 }

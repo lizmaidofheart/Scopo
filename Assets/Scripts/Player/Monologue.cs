@@ -37,6 +37,8 @@ public class Monologue : MonoBehaviour
     [SerializeField] float timeBetweenCharacters = 0.05f;
     [SerializeField] float timeToStay = 3;
 
+    private Coroutine runningTypewriter;
+
     private void Start()
     {
         textUI = GetComponent<TextMeshProUGUI>();
@@ -52,13 +54,15 @@ public class Monologue : MonoBehaviour
     {
         if (monologueText.ContainsKey(key))
         {
+            StopCoroutine(runningTypewriter);
             textUI.text = monologueText[key];
-            StartCoroutine(TextTypewriter());
+            runningTypewriter = StartCoroutine(TextTypewriter());
         }
         
     }
 
-    private IEnumerator TextTypewriter() // make text appear one character by one, then 
+    private IEnumerator TextTypewriter() // make text appear one character by one, then stay
+                                         // for the specified time before being removed
     {
         int max = textUI.text.Length;
         textUI.maxVisibleCharacters = 0;
