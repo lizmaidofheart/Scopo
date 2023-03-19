@@ -16,8 +16,8 @@ TagManager:
   - PlayerSound
   - Player
   - Ground
-  - 
-  - 
+  - Clipping
+  - Cryptid
   - 
   - 
   - 
@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Water
+    uniqueID: 959185687
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

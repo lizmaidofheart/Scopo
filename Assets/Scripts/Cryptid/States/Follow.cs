@@ -33,6 +33,7 @@ public class Follow : BrainState
 
         CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
 
+        AdaptiveMusic.Instance.SwitchTrack(1);
     }
 
     public override void UpdateLogic()
@@ -92,7 +93,7 @@ public class Follow : BrainState
     public override void CryptidPhotographed()
     {
         base.CryptidPhotographed();
-        CryptidBrain.Instance.aggression += 3;
+        CryptidBrain.Instance.aggression += 3.5f;
     }
 
     public override void NotCryptidPhotographed()

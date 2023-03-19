@@ -28,6 +28,8 @@ public class Wander : BrainState
         // start pathfinding
         GoToNewLocation();
 
+        AdaptiveMusic.Instance.SwitchTrack(0);
+
     }
 
     public override void UpdateLogic()

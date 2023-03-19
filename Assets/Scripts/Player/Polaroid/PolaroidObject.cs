@@ -284,8 +284,8 @@ public class PolaroidObject : MonoBehaviour
         Vector3 camEulers = camTransform.eulerAngles;
         Vector3 goalEulers = goalAngle.eulerAngles;
 
-        float lerpedX = Mathf.LerpAngle(camEulers.x, goalEulers.x, restLerpRate);
-        float lerpedZ = Mathf.LerpAngle(camEulers.z, goalEulers.z, restLerpRate);
+        float lerpedX = Mathf.LerpAngle(camEulers.x, goalEulers.x, restLerpRate * Time.deltaTime);
+        float lerpedZ = Mathf.LerpAngle(camEulers.z, goalEulers.z, restLerpRate * Time.deltaTime);
 
         camTransform.eulerAngles = new Vector3(lerpedX, camEulers.y, lerpedZ);
     }

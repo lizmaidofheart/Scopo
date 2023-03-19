@@ -50,6 +50,8 @@ public class Toy : BrainState
         timeRemaining = timeToLosePlayer;
         interestingTimeRemaining = interestingTime;
         goalTimeRemaining = 0;
+
+        AdaptiveMusic.Instance.SwitchTrack(1);
     }
 
     public override void UpdateLogic()
