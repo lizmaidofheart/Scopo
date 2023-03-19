@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-1359403579793744482
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 6
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: StudioPalette
+  m_Shader: {fileID: -6465566751694194690, guid: bc67930520faddb499e03fe6ac42f32c,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _TEST_A
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - Vector1_A2F854E5: 0
+    - Vector1_EFA89908: 1
+    - _ColorCount: 8
+    - _DotsDensity: 90
+    - _DotsInfluence: 0.25
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _TEST: 0
+    m_Colors:
+    - _Colour01: {r: 0.007843138, g: 0.003921569, b: 0.03529412, a: 0}
+    - _Colour02: {r: 0.011764707, g: 0.015686275, b: 0.14509805, a: 0}
+    - _Colour03: {r: 0.058823533, g: 0.007843138, b: 0.23529413, a: 0}
+    - _Colour04: {r: 0.10980393, g: 0.007843138, b: 0.39607847, a: 0}
+    - _Colour05: {r: 0.08627451, g: 0.011764707, b: 0.47058827, a: 0}
+    - _Colour06: {r: 0.07058824, g: 0.023529414, b: 0.63529414, a: 0}
+    - _Colour07: {r: 0.054901965, g: 0.007843138, b: 0, a: 0}
+    - _Colour08: {r: 0.10980393, g: 0.015686275, b: 0, a: 0}
+    - _Colour09: {r: 0.227451, g: 0.019607844, b: 0, a: 0}
+    - _Colour1: {r: 0.4117647, g: 0.62352943, b: 0.6784314, a: 0}
+    - _Colour10: {r: 0.34117648, g: 0.003921569, b: 0.003921569, a: 0}
+    - _Colour11: {r: 0.454902, g: 0.023529414, b: 0.003921569, a: 0}
+    - _Colour12: {r: 0.59607846, g: 0.011764707, b: 0.011764707, a: 0}
+    - _Colour13: {r: 0.43921572, g: 0, b: 0, a: 0}
+    - _Colour14: {r: 0.52156866, g: 0.003921569, b: 0, a: 0}
+    - _Colour15: {r: 0.654902, g: 0.007843138, b: 0.003921569, a: 0}
+    - _Colour16: {r: 0.7490196, g: 0.03529412, b: 0.011764707, a: 0}
+    - _Colour17: {r: 0.83921576, g: 0.007843138, b: 0.011764707, a: 0}
+    - _Colour18: {r: 0.9294118, g: 0.039215688, b: 0.03137255, a: 0}
+    - _Colour19: {r: 0.03137255, g: 0.11764707, b: 0.054901965, a: 0}
+    - _Colour1_1: {r: 0.22745098, g: 0.4392157, b: 0.5568628, a: 0}
+    - _Colour1_2: {r: 0.16862746, g: 0.27058825, b: 0.30980393, a: 0}
+    - _Colour1_3: {r: 0.06666667, g: 0.07058824, b: 0.08235294, a: 0}
+    - _Colour2: {r: 0.08235294, g: 0.11372549, b: 0.101960786, a: 0}
+    - _Colour20: {r: 0.09411766, g: 0.18431373, b: 0.050980397, a: 0}
+    - _Colour21: {r: 0.19215688, g: 0.2784314, b: 0.04705883, a: 0}
+    - _Colour22: {r: 0.32941177, g: 0.39607847, b: 0.023529414, a: 0}
+    - _Colour23: {r: 0.43529415, g: 0.47450984, b: 0.03137255, a: 0}
+    - _Colour24: {r: 0.62352943, g: 0.63529414, b: 0.058823533, a: 0}
+    - _Colour25: {r: 0.8470589, g: 0.8352942, b: 0.9960785, a: 0}
+    - _Colour26: {r: 1, g: 0.9176471, b: 0.9176471, a: 0}
+    - _Colour27: {r: 0.9921569, g: 0.83921576, b: 0.83921576, a: 0}
+    - _Colour28: {r: 0.9921569, g: 1, b: 0.83921576, a: 0}
+    - _Colour29: {r: 0.9921569, g: 1, b: 0.83921576, a: 0}
+    - _Colour2_1: {r: 0.11372549, g: 0.19607843, b: 0.1882353, a: 0}
+    - _Colour2_2: {r: 0.19215687, g: 0.30588236, b: 0.24705882, a: 0}
+    - _Colour2_3: {r: 0.30980393, g: 0.3647059, b: 0.25882354, a: 0}
+    - _Colour3: {r: 0.6039216, g: 0.62352943, b: 0.5294118, a: 0}
+    - _Colour30: {r: 0.9921569, g: 1, b: 0.83921576, a: 0}
+    - _Colour31: {r: 0.9921569, g: 1, b: 0.83921576, a: 0}
+    - _Colour32: {r: 0.9921569, g: 1, b: 0.83921576, a: 0}
+    - _Colour3_1: {r: 0.92941177, g: 0.9019608, b: 0.79607844, a: 0}
+    - _Colour3_2: {r: 0.9607843, g: 0.84705883, b: 0.5764706, a: 0}
+    - _Colour3_3: {r: 0.9098039, g: 0.69803923, b: 0.43529412, a: 0}
+    - _Colour4: {r: 0.7137255, g: 0.5137255, b: 0.29803923, a: 0}
+    - _Colour4_1: {r: 0.4392157, g: 0.3019608, b: 0.16862746, a: 0}
+    - _Colour4_2: {r: 0.2509804, g: 0.13725491, b: 0.11764706, a: 0}
+    - _Colour4_3: {r: 0.08235294, g: 0.0627451, b: 0.08235294, a: 0}
+  m_BuildTextureStacks: []
