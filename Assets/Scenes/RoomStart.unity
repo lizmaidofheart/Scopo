@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 518572461}
   - component: {fileID: 518572460}
   - component: {fileID: 518572459}
+  - component: {fileID: 518572463}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -227,6 +228,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &518572463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518572458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c12543e8bd191242a5ddade2e013410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLook: {fileID: 664126016}
+  playerMovement: {fileID: 560824072}
+  textElements:
+  - {fileID: 991119327}
+  - {fileID: 880335381}
+  - {fileID: 1104962017}
+  startKey: 32
+  textFadeTime: 1
+--- !u!114 &560824072 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7460316096190674391, guid: b5acc29b417164447ac4ad5db094b436,
+    type: 3}
+  m_PrefabInstance: {fileID: 1358855597}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97fca36bd81de7c4cafce7bbf02ca611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &664126016 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7460049836507950749, guid: b5acc29b417164447ac4ad5db094b436,
+    type: 3}
+  m_PrefabInstance: {fileID: 1358855597}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec72980442fddac4d86e75ab24b4d027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &880335379
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,7 +579,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -204}
+  m_AnchoredPosition: {x: 0, y: -243.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1104962017
@@ -558,7 +603,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Vertical Slice by Ariele Borghi, Elizabeth Miller, Bal\xE1zs Osvay-Szab\xF3
-    & Temi Sorinmade"
+    & Temi Sorinmade."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4103a511f4c840945a8d189e5cee8614, type: 2}
   m_sharedMaterial: {fileID: -2384797647186890052, guid: 4103a511f4c840945a8d189e5cee8614,
