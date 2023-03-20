@@ -5,14 +5,16 @@ using TMPro;
 
 public class PromptInArea : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI prompt;
+    [SerializeField] public TextMeshProUGUI prompt;
     [SerializeField] float maxRadius = 5;
     [SerializeField] float minRadius = 3;
-    Transform playerTransform;
+    public Transform playerTransform;
     [SerializeField] KeyCode button;
+    [SerializeField] float activateCooldown = 0;
+    bool onCooldown = false;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         Color textColour = prompt.color;
         textColour.a = 0;
@@ -22,7 +24,7 @@ public class PromptInArea : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         // get opacity value based on player proximity to point (max distance to show = maxRadius)
         float distanceToPlayer = (playerTransform.position - transform.position).magnitude;
@@ -37,7 +39,7 @@ public class PromptInArea : MonoBehaviour
         prompt.color = textColour;
 
         // if player is close enough, do the action on button press
-        if (Input.GetKeyDown(button))
+        if (Input.GetKeyDown(button) && distanceToPlayer <= maxRadius && !onCooldown)
         {
             Action();
         }
@@ -55,6 +57,13 @@ public class PromptInArea : MonoBehaviour
 
     public virtual void Action()
     {
+        Cooldown();
+    }
 
+    private IEnumerator Cooldown()
+    {
+        onCooldown = true;
+        yield return new WaitForSeconds(activateCooldown);
+        onCooldown = false;
     }
 }

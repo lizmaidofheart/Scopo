@@ -17,15 +17,13 @@ public class StartScreen : MonoBehaviour
     bool fadeAway = false;
     bool activated = false;
 
-    float lookDefaultSensitity;
-
     // Start is called before the first frame update
     void Start()
     {
         playerMovement.enabled = false;
+        playerLook.enabled = false;
 
-        lookDefaultSensitity = playerLook.sensitivity;
-        playerLook.sensitivity = 0;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -34,9 +32,10 @@ public class StartScreen : MonoBehaviour
         if (Input.GetKeyDown(startKey) && !activated)
         {
             fadeAway = true;
+            activated = true;
 
             playerMovement.enabled = true;
-            playerLook.sensitivity = lookDefaultSensitity;
+            playerLook.enabled = true;
         }
 
         if (fadeAway) // fade text
