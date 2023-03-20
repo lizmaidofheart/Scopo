@@ -8,13 +8,15 @@ public class Corkboard : PromptInArea
     [SerializeField] string unlockedPrompt;
 
     [SerializeField] Vector3 lockedPosition;
-    [SerializeField] float lockedBodyRotationX;
-    [SerializeField] float lockedLookRotationY;
+    [SerializeField] Vector3 lookOffset;
     [SerializeField] float positionLerpRate = 0.1f;
     [SerializeField] float rotationLerpRate = 0.1f;
 
     [SerializeField] FirstPersonMovement playerMovement;
     [SerializeField] FirstPersonLook playerLook;
+
+    [SerializeField] Camera corkboardCamera;
+    [SerializeField] Camera playerCamera;
 
     bool lockedOn = false;
 
@@ -22,6 +24,7 @@ public class Corkboard : PromptInArea
     {
         base.Start();
         prompt.text = unlockedPrompt;
+        corkboardCamera.enabled = false;
     }
 
     public override void Action() // on press space
@@ -35,25 +38,32 @@ public class Corkboard : PromptInArea
             playerMovement.enabled = true;
 
             prompt.text = unlockedPrompt;
+
+            Cursor.lockState = CursorLockMode.Locked;
+
+            // swap cameras
+            corkboardCamera.enabled = false;
+            playerCamera.enabled = true;
         }
         else // lock the player into the corkboard
         {
             lockedOn = true;
+
             playerLook.enabled = false;
             playerMovement.enabled = false;
             
             prompt.text = lockedPrompt;
+
+            Cursor.lockState = CursorLockMode.Confined;
+
+            // swap cameras
+            corkboardCamera.enabled = true;
+            playerCamera.enabled = false;
         }
     }
 
     public override void Update()
     {
         base.Update();
-        if (lockedOn)
-        {
-            playerTransform.position = Vector3.Lerp(playerTransform.position, lockedPosition, positionLerpRate);
-            playerTransform.eulerAngles = new Vector3(Mathf.Lerp(playerTransform.eulerAngles.x, lockedBodyRotationX, rotationLerpRate), 0, 0);
-            playerLook.transform.eulerAngles = new Vector3(0, Mathf.Lerp(playerLook.transform.eulerAngles.y, lockedLookRotationY, rotationLerpRate), 0);
-        }
     }
 }
