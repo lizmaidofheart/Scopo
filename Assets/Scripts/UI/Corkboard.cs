@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class Corkboard : PromptInArea
 {
+    [Header("Prompt")]
     [SerializeField] string lockedPrompt;
     [SerializeField] string unlockedPrompt;
 
-    [SerializeField] Vector3 lockedPosition;
-    [SerializeField] Vector3 lookOffset;
+    [Header("Camera Control")]
+    [SerializeField] Transform camWaypoint;
     [SerializeField] float positionLerpRate = 0.1f;
     [SerializeField] float rotationLerpRate = 0.1f;
 
+    [Header("References")]
     [SerializeField] FirstPersonMovement playerMovement;
     [SerializeField] FirstPersonLook playerLook;
+    [SerializeField] Transform playerCam;
 
-    [SerializeField] Camera corkboardCamera;
-    [SerializeField] Camera playerCamera;
+    Vector3 camDefaultLocalPos;
+    Quaternion camDefaultLocalRot;
 
     bool lockedOn = false;
 
@@ -24,7 +27,9 @@ public class Corkboard : PromptInArea
     {
         base.Start();
         prompt.text = unlockedPrompt;
-        corkboardCamera.enabled = false;
+
+        camDefaultLocalPos = playerCam.localPosition;
+        camDefaultLocalRot = playerCam.localRotation;
     }
 
     public override void Action() // on press space
@@ -41,9 +46,7 @@ public class Corkboard : PromptInArea
 
             Cursor.lockState = CursorLockMode.Locked;
 
-            // swap cameras
-            corkboardCamera.enabled = false;
-            playerCamera.enabled = true;
+            trackDistance = true;
         }
         else // lock the player into the corkboard
         {
@@ -56,14 +59,23 @@ public class Corkboard : PromptInArea
 
             Cursor.lockState = CursorLockMode.Confined;
 
-            // swap cameras
-            corkboardCamera.enabled = true;
-            playerCamera.enabled = false;
+            trackDistance = false;
         }
     }
 
     public override void Update()
     {
         base.Update();
+
+        if (lockedOn) // lerp camera to waypoint position
+        {
+            playerCam.position = Vector3.Lerp(playerCam.position, camWaypoint.position, positionLerpRate);
+            playerCam.rotation = Quaternion.Lerp(playerCam.rotation, camWaypoint.rotation, rotationLerpRate);
+        }
+        else // lerp camera to default position
+        {
+            playerCam.localPosition = Vector3.Lerp(playerCam.localPosition, camDefaultLocalPos, positionLerpRate);
+            playerCam.localRotation = Quaternion.Lerp(playerCam.localRotation, camDefaultLocalRot, rotationLerpRate);
+        }
     }
 }
