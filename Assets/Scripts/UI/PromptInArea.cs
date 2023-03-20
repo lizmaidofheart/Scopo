@@ -5,14 +5,23 @@ using TMPro;
 
 public class PromptInArea : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI prompt;
+    [Header("Prompt In Area")]
+
+    [SerializeField] public TextMeshProUGUI prompt;
+
     [SerializeField] float maxRadius = 5;
     [SerializeField] float minRadius = 3;
-    Transform playerTransform;
+    public Transform playerTransform;
+
     [SerializeField] KeyCode button;
 
+    [SerializeField] float activateCooldown = 0;
+    bool onCooldown = false;
+
+    [SerializeField] public bool trackDistance = true;
+
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         Color textColour = prompt.color;
         textColour.a = 0;
@@ -22,25 +31,26 @@ public class PromptInArea : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
-        // get opacity value based on player proximity to point (max distance to show = maxRadius)
-        float distanceToPlayer = (playerTransform.position - transform.position).magnitude;
-        float opacity;
-        if (distanceToPlayer <= minRadius) opacity = 1;
-        else if (distanceToPlayer > maxRadius) opacity = 0;
-        else opacity = 1 - (distanceToPlayer - minRadius) / (maxRadius - minRadius);
-
-        // change opacity of text based on player proximity to point
-        Color textColour = prompt.color;
-        textColour.a = opacity;
-        prompt.color = textColour;
-
-        // if player is close enough, do the action on button press
-        if (Input.GetKeyDown(button))
+        if (trackDistance)
         {
-            Action();
+            // get opacity value based on player proximity to point (max distance to show = maxRadius)
+            float distanceToPlayer = (playerTransform.position - transform.position).magnitude;
+            float opacity;
+            if (distanceToPlayer <= minRadius) opacity = 1;
+            else if (distanceToPlayer > maxRadius) opacity = 0;
+            else opacity = 1 - (distanceToPlayer - minRadius) / (maxRadius - minRadius);
+
+            // change opacity of text based on player proximity to point
+            Color textColour = prompt.color;
+            textColour.a = opacity;
+            prompt.color = textColour;
+
+            // if player is close enough, do the action on button press
+            if (Input.GetKeyDown(button) && distanceToPlayer <= maxRadius && !onCooldown) Action();
         }
+        else if (Input.GetKeyDown(button) && !onCooldown) Action();
     }
 
     private void OnDrawGizmosSelected()
@@ -55,6 +65,13 @@ public class PromptInArea : MonoBehaviour
 
     public virtual void Action()
     {
+        StartCoroutine(Cooldown());
+    }
 
+    private IEnumerator Cooldown()
+    {
+        onCooldown = true;
+        yield return new WaitForSeconds(activateCooldown);
+        onCooldown = false;
     }
 }

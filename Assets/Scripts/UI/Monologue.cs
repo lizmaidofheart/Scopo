@@ -38,6 +38,7 @@ public class Monologue : MonoBehaviour
     [SerializeField] float timeToStay = 3;
 
     private Coroutine runningTypewriter;
+    bool typewriterIsRunning = false;
 
     private void Start()
     {
@@ -54,7 +55,11 @@ public class Monologue : MonoBehaviour
     {
         if (monologueText.ContainsKey(key))
         {
-            StopCoroutine(runningTypewriter);
+            if (typewriterIsRunning)
+            {
+                StopCoroutine(runningTypewriter);
+            }
+            
             textUI.text = monologueText[key];
             runningTypewriter = StartCoroutine(TextTypewriter());
         }
@@ -64,6 +69,8 @@ public class Monologue : MonoBehaviour
     private IEnumerator TextTypewriter() // make text appear one character by one, then stay
                                          // for the specified time before being removed
     {
+        typewriterIsRunning = true;
+
         int max = textUI.text.Length;
         textUI.maxVisibleCharacters = 0;
 
@@ -76,5 +83,7 @@ public class Monologue : MonoBehaviour
         yield return new WaitForSeconds(timeToStay);
 
         textUI.maxVisibleCharacters = 0;
+
+        typewriterIsRunning = false;
     }
 }
