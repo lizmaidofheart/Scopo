@@ -105,8 +105,8 @@ public class Lurk : BrainState
             // if player can see the cryptid, move away to a far distance and try move out of the player's vision - if handles whether to go left or right
             // this code is adapted from https://forum.unity.com/threads/left-right-test-function.31420/
 
-            Vector3 perp = Vector3.Cross(PlayerReference.Instance.transform.forward, CryptidBrain.Instance.body.position - PlayerReference.Instance.transform.position);
-            float dir = Vector3.Dot(perp, Vector3.up);
+            Vector3 perpendicular = Vector3.Cross(PlayerReference.Instance.transform.forward, CryptidBrain.Instance.body.position - PlayerReference.Instance.transform.position);
+            float dir = Vector3.Dot(perpendicular, Vector3.up);
 
             if (dir > 0f)
             {
