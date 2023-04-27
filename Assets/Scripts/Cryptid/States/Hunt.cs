@@ -14,9 +14,11 @@ public class Hunt : BrainState
     public float timeToStopCaring = 20;
     public float timeRemaining;
     public string stoppedCaringState = "Wander";
+    public float bufferTimeBeforeAggressionIncrease = 6;
+    public float bufferTimeRemaining;
 
     public Hunt(string name, CryptidBrain brain, float newSearchRadiusIncrease, float newReduceAggressionOnFailure,
-        float chase, float toy, bool lurk, float time, string stopState) : base(name, brain)
+        float chase, float toy, bool lurk, float time, string stopState, float bufferTime) : base(name, brain)
     {
         searchRadiusIncrease = newSearchRadiusIncrease;
         reduceAggressionOnFailure = newReduceAggressionOnFailure;
@@ -25,13 +27,17 @@ public class Hunt : BrainState
         lurkOnRediscovery = lurk;
         timeToStopCaring = time;
         stoppedCaringState = stopState;
+        bufferTimeBeforeAggressionIncrease = bufferTime;
     }
 
     public override void Enter()
     {
         base.Enter();
+
         searchRadius = 0;
         timeRemaining = timeToStopCaring;
+        bufferTimeRemaining = bufferTimeBeforeAggressionIncrease;
+
         CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
 
         if (lurkOnRediscovery)
@@ -81,6 +87,19 @@ public class Hunt : BrainState
             CryptidBrain.Instance.aggression -= reduceAggressionOnFailure;
             brain.ChangeState(stoppedCaringState);
         }
+
+        // buffer timer
+
+        if (bufferTimeRemaining > 0)
+        {
+            bufferTimeRemaining -= Time.deltaTime;
+
+            if (bufferTimeRemaining <= 0)
+            {
+                CryptidBrain.Instance.aggression += 1;
+            }
+        }
+
     }
 
     private void NewSearchLocation()

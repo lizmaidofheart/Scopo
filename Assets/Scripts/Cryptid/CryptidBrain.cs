@@ -95,12 +95,12 @@ public class CryptidBrain : MonoBehaviour
 
         states["Initial"] = new Idle("Initial", this, idleTime, "Wander");
         states["Wander"] = new Wander("Wander", this, wanderTargetsParent, wanderSpeed);
-        states["Follow"] = new Follow("Follow", this, followTimeToLose, 2, followDistance, toyMinimumCuriosity, lurkMinimumAggression, 15);
+        states["Follow"] = new Follow("Follow", this, followTimeToLose, followDistance, toyMinimumCuriosity, lurkMinimumAggression, 15);
         states["Toy"] = new Toy("Toy", this, 5, 1, 10, lurkMinimumAggression, toyMinimumCuriosity - 2, toyInterestTime, toyCameraThreshold, toyKiteTargetsParent,
             toyMaxDistanceToGoal, toyTimeToSelectNewGoal, toyDistanceToKiteOutside, toyKiteOffsetDistance);
         states["Lurk"] = new Lurk("Lurk", this, 5, 2, 10, chaseMinimumAggression, lurkDistance, lurkWatchedDistance, lurkAvoidance, 3, lurkLoseInterestTime);
-        states["HuntNormal"] = new Hunt("HuntNormal", this, huntSearchRadiusIncrease, 1, chaseMinimumAggression, toyMinimumCuriosity, false, huntTimeBeforeGiveUp, "Wander");
-        states["HuntAggressive"] = new Hunt("HuntAggressive", this, aggrohuntSearchRadiusIncrease, 1, chaseMinimumAggression, -1, true, aggrohuntTimeBeforeGiveUp, "HuntNormal");
+        states["HuntNormal"] = new Hunt("HuntNormal", this, huntSearchRadiusIncrease, 1, chaseMinimumAggression, toyMinimumCuriosity, false, huntTimeBeforeGiveUp, "Wander", 6);
+        states["HuntAggressive"] = new Hunt("HuntAggressive", this, aggrohuntSearchRadiusIncrease, 1, chaseMinimumAggression, -1, true, aggrohuntTimeBeforeGiveUp, "HuntNormal", 4);
         states["Chase"] = new Chase("Chase", this, chaseTimeToLose, chaseAttackDistance, chaseSpeed);
         states["Attack"] = new Attack("Attack", this, attackAnimationDuration);
     }

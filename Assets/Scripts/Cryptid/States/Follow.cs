@@ -6,7 +6,6 @@ public class Follow : BrainState
 {
     public float timeToLosePlayer = 5;
     public float timeRemaining = 5;
-    public float aggressionIncreaseOnLosePlayer = 1;
     public float curiosityToToy = 6;
     public float aggressionToLurk = 10;
     public float radiusToFollowIn = 0;
@@ -14,10 +13,9 @@ public class Follow : BrainState
     public float defendedZoneTimeBeforeRefreshAggression = 10;
 
 
-    public Follow(string name, CryptidBrain brain, float timeToLose, float aggressionIncrease, float radius, float curiosity, float aggression, float defenceTime) : base(name, brain)
+    public Follow(string name, CryptidBrain brain, float timeToLose, float radius, float curiosity, float aggression, float defenceTime) : base(name, brain)
     {
         timeToLosePlayer = timeToLose;
-        aggressionIncreaseOnLosePlayer = aggressionIncrease;
         radiusToFollowIn = radius;
         curiosityToToy = curiosity;
         aggressionToLurk = aggression;
@@ -82,7 +80,6 @@ public class Follow : BrainState
             // if lost player, swap to 'hunt' mode
             if (timeRemaining <= 0)
             {
-                CryptidBrain.Instance.aggression += aggressionIncreaseOnLosePlayer;
                 brain.ChangeState("HuntNormal");
             }
 
