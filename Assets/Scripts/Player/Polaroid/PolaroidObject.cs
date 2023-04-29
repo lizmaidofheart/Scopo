@@ -185,7 +185,7 @@ public class PolaroidObject : MonoBehaviour
         // increase flash while preparing
         else if (flashState == FlashState.Increase)
         {
-            polaroidFlashPointLight.intensity = Mathf.Lerp(polaroidFlashPointLight.intensity, flashIntensity, flashIncreaseRate);
+            polaroidFlashPointLight.intensity = Mathf.Lerp(polaroidFlashPointLight.intensity, flashIntensity, flashIncreaseRate * Time.deltaTime);
         }
 
         // if just flashed, begin to reduce flash (this is delayed so the frame when the camera takes the photo is fully lit)

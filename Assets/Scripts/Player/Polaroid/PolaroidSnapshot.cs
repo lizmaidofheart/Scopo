@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System.IO;
+using UnityEngine.UI;
 
 public class PolaroidSnapshot : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class PolaroidSnapshot : MonoBehaviour
     [SerializeField] int resHeight = 256;
 
     [SerializeField] UnityEvent photographedNotTheCryptid;
+
+    [SerializeField] Photograph UIPhotograph;
 
     private void Awake()
     {
@@ -111,7 +114,9 @@ public class PolaroidSnapshot : MonoBehaviour
         byte[] bytes = snapshot.EncodeToPNG();
         string fileName = SnapshotName();
         File.WriteAllBytes(fileName, bytes);
-        
+
+        UIPhotograph.SetPhoto(fileName);
+
         return fileName;
     }
 
