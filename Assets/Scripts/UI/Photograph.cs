@@ -6,6 +6,8 @@ using System.IO;
 
 public class Photograph : MonoBehaviour
 {
+    // for handling the photograph popup in the ui
+
     [SerializeField] RawImage image;
     [SerializeField] Animator animator;
 
@@ -16,6 +18,6 @@ public class Photograph : MonoBehaviour
         ImageConversion.LoadImage(texture, bytes);
         image.texture = texture;
 
-        animator.SetTrigger("Pop In");
+        animator.SetTrigger("Pop In"); // make the photograph ui pop in then out
     }
 }
