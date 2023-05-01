@@ -7,6 +7,7 @@ public class PlayerReference : MonoBehaviour
 {
     [SerializeField] public Camera cam;
     [SerializeField] private float cluesFound = 0;
+    [SerializeField] public bool hasPhotographedCryptid = false;
     private List<string> clueLog = new List<string>();
 
     // this is a singleton acting as an easy reference for the player
@@ -49,5 +50,10 @@ public class PlayerReference : MonoBehaviour
             clueLog.Add(clue);
             cluesFound += 1;
         }
+    }
+
+    public void SetPhotographedCryptid(bool set)
+    {
+        hasPhotographedCryptid = set;
     }
 }
