@@ -41,7 +41,7 @@ public class Leave : PromptInArea
 
         if (PlayerReference.Instance.hasPhotographedCryptid) // only let player leave if theyve photographed the cryptid
         {
-            SceneManager.LoadScene(sceneIndex);
+            LoadScene.Instance.LoadNewScene(sceneIndex);
         }
         else // otherwise, change prompt to a rejection thatll change back after a timer runs out
         {

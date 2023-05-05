@@ -40,7 +40,7 @@ public class PlayerReference : MonoBehaviour
     private IEnumerator ResetLevel(float timeToWait) // reload scene after a specified delay
     {
         yield return new WaitForSeconds(timeToWait);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        LoadScene.Instance.LoadNewScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void FindClue(string clue)

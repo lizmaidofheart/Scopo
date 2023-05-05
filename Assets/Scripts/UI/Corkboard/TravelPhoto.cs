@@ -10,6 +10,6 @@ public class TravelPhoto : CBInteractible
     public override void Interact()
     {
         base.Interact();
-        SceneManager.LoadScene(sceneIndex);
+        LoadScene.Instance.LoadNewScene(sceneIndex);
     }
 }
