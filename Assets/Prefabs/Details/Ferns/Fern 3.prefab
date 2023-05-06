@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8381826296670171575}
   - component: {fileID: 8381826296670171568}
-  m_Layer: 0
+  - component: {fileID: -7064142699070657705}
+  m_Layer: 15
   m_Name: Fern 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,6 +46,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1eb9ac1aea0f11429675fc70c4e8011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &-7064142699070657705
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8381826296670171574}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8381826297668068947
 GameObject:
   m_ObjectHideFlags: 0

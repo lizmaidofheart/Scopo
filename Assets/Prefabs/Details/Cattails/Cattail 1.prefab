@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 798366161015909615}
   - component: {fileID: 798366161015909608}
-  m_Layer: 0
+  - component: {fileID: 6320445632887333850}
+  m_Layer: 15
   m_Name: Cattail 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 798366162081446711}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &798366161015909608
 MonoBehaviour:
@@ -45,6 +46,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1eb9ac1aea0f11429675fc70c4e8011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &6320445632887333850
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798366161015909614}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &798366162081446667
 GameObject:
   m_ObjectHideFlags: 0
