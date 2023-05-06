@@ -51,7 +51,7 @@ public class PolaroidCheckVisible : MonoBehaviour
                 // check if the camera has a clean line of sight to the object, within a max range specified by the object's photographable component.
                 // right now this checks for the object's centre. this may become an issue later on for large objects that go around or behind other objects.
                 RaycastHit hit;
-                if (Physics.Raycast(cam.transform.position, (obj.transform.position - cam.transform.position).normalized, out hit, obj.visibleRange, raycastLayers))
+                if (Physics.Raycast(cam.transform.position, (obj.transform.position + obj.checkOffset - cam.transform.position).normalized, out hit, obj.visibleRange, raycastLayers))
                 {
                     // make sure that what we hit was what we're looking for
                     Photographable hitPhotographable = hit.collider.gameObject.GetComponent<Photographable>();

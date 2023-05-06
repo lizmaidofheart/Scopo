@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class BillboardHandler : MonoBehaviour
 {
-
     [SerializeField] Transform playerCamTransform;
     [SerializeField] float billboardRadius = 50;
     [SerializeField] float updatesPerSecond = 10;
     [SerializeField] LayerMask billboardLayer;
-
 
     // Start is called before the first frame update
     void Start()

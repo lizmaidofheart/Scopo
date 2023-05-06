@@ -13,6 +13,8 @@ public class Photographable : MonoBehaviour
     [SerializeField] public float visibleRange = 100f;
     [SerializeField] public string identity = "Unknown Object";
     [SerializeField] bool isClue = true;
+    [Tooltip("Make sure the shown gizmo is within the object's collider")]
+    [SerializeField] public Vector3 checkOffset = new Vector3();
 
     [SerializeField] UnityEvent gotPhotographed;
 
@@ -46,5 +48,11 @@ public class Photographable : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, visibleRange);
+
+        // draw a sphere for the checkoffset position
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position + checkOffset, 0.2f);
+        
     }
 }
