@@ -95,8 +95,8 @@ public class Chase : BrainState
 
         DefendedZoneHandling(0, 0, aggressionReduction, -1);
 
-        // if close enough to player, attack them
-        if ((PlayerReference.Instance.transform.position - CryptidBrain.Instance.body.position).magnitude <= attackDistance) brain.ChangeState("Attack");
+        // if close enough to player and sprinting, attack them
+        if (((PlayerReference.Instance.transform.position - CryptidBrain.Instance.body.position).magnitude <= attackDistance) && !isResting) brain.ChangeState("Attack");
     }
 
     public override void Exit()
