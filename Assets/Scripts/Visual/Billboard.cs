@@ -9,7 +9,7 @@ public class Billboard : MonoBehaviour
     public void BillboardUpdate(Vector3 goalPosition)
     {
         Vector3 lookPos = goalPosition - transform.position;
-        lookPos.y = 0;
+        lookPos.y = 0; // means that only yaw is changed
         transform.rotation = Quaternion.LookRotation(lookPos);
     }
 }
