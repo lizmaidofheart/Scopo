@@ -49,6 +49,7 @@ public class CryptidBrain : MonoBehaviour
     [SerializeField] float lurkWatchedDistance = 15;
     [SerializeField] float lurkAvoidance = 2;
     [SerializeField] float lurkLoseInterestTime = 20;
+    [SerializeField] float lurkIncreaseAggressionWhenWatchedTimer = 5;
 
     [Header("Hunt Settings")]
     [SerializeField] float huntSearchRadiusIncrease = 5;
@@ -91,16 +92,20 @@ public class CryptidBrain : MonoBehaviour
         }
 
         // declaring all the possible states and their access keys.
-        // its a bit frustrating these can't be set in the editor yet but it works well enough here.
+        // its a bit frustrating these can't be set in the editor but it works well enough here.
+        // prolly would have been best to use scriptableobjects, in retrospect
 
         states["Initial"] = new Idle("Initial", this, idleTime, "Wander");
         states["Wander"] = new Wander("Wander", this, wanderTargetsParent, wanderSpeed);
         states["Follow"] = new Follow("Follow", this, followTimeToLose, followDistance, toyMinimumCuriosity, lurkMinimumAggression, 15);
         states["Toy"] = new Toy("Toy", this, 5, 1, 10, lurkMinimumAggression, toyMinimumCuriosity - 2, toyInterestTime, toyCameraThreshold, toyKiteTargetsParent,
             toyMaxDistanceToGoal, toyTimeToSelectNewGoal, toyDistanceToKiteOutside, toyKiteOffsetDistance);
-        states["Lurk"] = new Lurk("Lurk", this, 5, 2, 10, chaseMinimumAggression, lurkDistance, lurkWatchedDistance, lurkAvoidance, 3, lurkLoseInterestTime);
-        states["HuntNormal"] = new Hunt("HuntNormal", this, huntSearchRadiusIncrease, 1, chaseMinimumAggression, toyMinimumCuriosity, false, huntTimeBeforeGiveUp, "Wander", 6);
-        states["HuntAggressive"] = new Hunt("HuntAggressive", this, aggrohuntSearchRadiusIncrease, 1, chaseMinimumAggression, -1, true, aggrohuntTimeBeforeGiveUp, "HuntNormal", 4);
+        states["Lurk"] = new Lurk("Lurk", this, 5, 2, 10, chaseMinimumAggression, lurkDistance, lurkWatchedDistance, lurkAvoidance,
+            lurkIncreaseAggressionWhenWatchedTimer, lurkLoseInterestTime);
+        states["HuntNormal"] = new Hunt("HuntNormal", this, huntSearchRadiusIncrease, 1, chaseMinimumAggression, toyMinimumCuriosity, false,
+            huntTimeBeforeGiveUp, "Wander", 6);
+        states["HuntAggressive"] = new Hunt("HuntAggressive", this, aggrohuntSearchRadiusIncrease, 1, chaseMinimumAggression, -1, true,
+            aggrohuntTimeBeforeGiveUp, "HuntNormal", 4);
         states["Chase"] = new Chase("Chase", this, chaseTimeToLose, chaseAttackDistance, chaseSpeed);
         states["Attack"] = new Attack("Attack", this, attackAnimationDuration);
     }

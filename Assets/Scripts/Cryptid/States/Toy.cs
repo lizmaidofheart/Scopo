@@ -77,7 +77,7 @@ public class Toy : BrainState
             brain.ChangeState("Follow");
         }
 
-        // if can sense player, update navigation destination, reset lose player timer and set cryptid to stare at the player
+        // if can sense player, update navigation destination + reset lose player timer
         else if (CryptidBrain.Instance.senses.CanSensePlayer())
         {
             if (timeRemaining < timeToLosePlayer) timeRemaining = timeToLosePlayer;
@@ -104,7 +104,6 @@ public class Toy : BrainState
             // if lost player, swap to 'hunt' mode
             if (timeRemaining <= 0)
             {
-                CryptidBrain.Instance.aggression += aggressionIncreaseOnLosePlayer;
                 brain.ChangeState("HuntNormal");
             }
         }

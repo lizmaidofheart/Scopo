@@ -59,7 +59,6 @@ public class Chase : BrainState
             // if lost player, swap to 'hunt' mode
             if (timeRemaining <= 0)
             {
-                CryptidBrain.Instance.aggression += 1;
                 brain.ChangeState("HuntAggressive");
             }
 

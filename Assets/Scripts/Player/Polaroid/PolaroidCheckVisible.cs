@@ -60,7 +60,6 @@ public class PolaroidCheckVisible : MonoBehaviour
                         if (hitPhotographable == obj)
                         {
                             Debug.DrawRay(transform.position, (obj.transform.position - cam.transform.position).normalized * obj.visibleRange, Color.red, 2f);
-                            Debug.Log(obj.identity);
 
                             return true;
                         }

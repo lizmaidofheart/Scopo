@@ -77,7 +77,6 @@ public class Lurk : BrainState
             // if lost player, swap to 'hunt' mode
             if (timeRemaining <= 0)
             {
-                CryptidBrain.Instance.aggression += aggressionIncrease;
                 brain.ChangeState("HuntAggressive");
             }
 
