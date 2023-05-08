@@ -12,12 +12,18 @@ public class Chase : BrainState
     public float defaultRadius;
     public float defaultSpeed;
     public float imposedSpeed;
+    public float sprintDuration = 5;
+    public float restDuration = 3;
+    public bool isResting = false;
+    public float toggleSprintRestTimer;
 
-    public Chase(string name, CryptidBrain brain, float time, float attackDist, float newSpeed) : base(name, brain)
+    public Chase(string name, CryptidBrain brain, float time, float attackDist, float newSpeed, float sprintTime, float restTime) : base(name, brain)
     {
         timeToLosePlayer = time;
         attackDistance = attackDist;
         imposedSpeed = newSpeed;
+        sprintDuration = sprintTime;
+        restDuration = restTime;
     }
 
     public override void Enter()
@@ -30,6 +36,8 @@ public class Chase : BrainState
         defaultSpeed = CryptidBrain.Instance.navigator.speed;
         CryptidBrain.Instance.navigator.speed = imposedSpeed;
 
+        toggleSprintRestTimer = sprintDuration;
+
         timeRemaining = timeToLosePlayer;
         EnableStareAtPlayer(true);
 
@@ -37,6 +45,8 @@ public class Chase : BrainState
 
         AdaptiveMusic.Instance.SwitchTrack(4);
     }
+
+    // sprints after player for a short time, then stops to rest for a short time, then sprints again; loop continues
 
     public override void UpdateLogic()
     {
@@ -46,10 +56,10 @@ public class Chase : BrainState
         if (CryptidBrain.Instance.senses.CanSensePlayer())
         {
             CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
-
+            EnableStareAtPlayer(true);
+            
             if (timeRemaining < timeToLosePlayer) timeRemaining = timeToLosePlayer;
 
-            EnableStareAtPlayer(true);
         }
         // otherwise, reduce lose player timer and stop staring at the player
         else
@@ -63,6 +73,24 @@ public class Chase : BrainState
             }
 
             EnableStareAtPlayer(false);
+        }
+
+        toggleSprintRestTimer -= Time.deltaTime;
+        // if time has run out to toggle between sprinting and resting, toggle
+        if (toggleSprintRestTimer <= 0)
+        {
+            if (isResting)
+            {
+                isResting = false;
+                toggleSprintRestTimer = sprintDuration;
+                CryptidBrain.Instance.navigator.speed = imposedSpeed;
+            }
+            else
+            {
+                isResting = true;
+                toggleSprintRestTimer = restDuration;
+                CryptidBrain.Instance.navigator.speed = 0;
+            }
         }
 
         DefendedZoneHandling(0, 0, aggressionReduction, -1);

@@ -64,6 +64,8 @@ public class CryptidBrain : MonoBehaviour
     [SerializeField] float chaseTimeToLose = 5;
     [SerializeField] float chaseAttackDistance = 3;
     [SerializeField] float chaseSpeed = 2.5f;
+    [SerializeField] float chaseSprintDuration = 5;
+    [SerializeField] float chaseRestDuration = 3;
 
     [Header("Attack Settings")]
     [SerializeField] float attackAnimationDuration = 2;
@@ -106,7 +108,7 @@ public class CryptidBrain : MonoBehaviour
             huntTimeBeforeGiveUp, "Wander", 6);
         states["HuntAggressive"] = new Hunt("HuntAggressive", this, aggrohuntSearchRadiusIncrease, 1, chaseMinimumAggression, -1, true,
             aggrohuntTimeBeforeGiveUp, "HuntNormal", 4);
-        states["Chase"] = new Chase("Chase", this, chaseTimeToLose, chaseAttackDistance, chaseSpeed);
+        states["Chase"] = new Chase("Chase", this, chaseTimeToLose, chaseAttackDistance, chaseSpeed, chaseSprintDuration, chaseRestDuration);
         states["Attack"] = new Attack("Attack", this, attackAnimationDuration);
     }
 
