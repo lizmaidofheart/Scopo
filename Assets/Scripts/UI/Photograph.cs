@@ -20,4 +20,12 @@ public class Photograph : MonoBehaviour
 
         animator.SetTrigger("Pop In"); // make the photograph ui pop in then out
     }
+
+    public void SetPhotoWithoutAnimation(string filepath)
+    {
+        byte[] bytes = File.ReadAllBytes(filepath);
+        Texture2D texture = new Texture2D(512, 512);
+        ImageConversion.LoadImage(texture, bytes);
+        image.texture = texture;
+    }
 }

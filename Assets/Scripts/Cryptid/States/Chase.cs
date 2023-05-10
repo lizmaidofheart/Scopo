@@ -14,7 +14,7 @@ public class Chase : BrainState
     public float imposedSpeed;
     public float sprintDuration = 5;
     public float restDuration = 3;
-    public bool isResting = false;
+    public bool isResting = true;
     public float toggleSprintRestTimer;
 
     public Chase(string name, CryptidBrain brain, float time, float attackDist, float newSpeed, float sprintTime, float restTime) : base(name, brain)
@@ -36,7 +36,9 @@ public class Chase : BrainState
         defaultSpeed = CryptidBrain.Instance.navigator.speed;
         CryptidBrain.Instance.navigator.speed = imposedSpeed;
 
-        toggleSprintRestTimer = sprintDuration;
+        // start in rest state
+        toggleSprintRestTimer = restDuration;
+        isResting = true;
 
         timeRemaining = timeToLosePlayer;
         EnableStareAtPlayer(true);

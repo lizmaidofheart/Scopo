@@ -14,7 +14,7 @@ public class PolaroidSnapshot : MonoBehaviour
 
     // code modified from https://www.youtube.com/watch?v=d-56p770t0U
 
-    private Camera snapshotCam;
+    [SerializeField] Camera snapshotCam;
 
     [SerializeField] int resWidth = 256;
     [SerializeField] int resHeight = 256;
@@ -46,7 +46,6 @@ public class PolaroidSnapshot : MonoBehaviour
 
     private void Start()
     {
-        snapshotCam = PolaroidInfo.Instance.polaroidCam;
 
         // initialise a render texture for the cam, or set our resolution values according to the existing render texture if there already is one
         if (snapshotCam.targetTexture == null)
@@ -75,19 +74,19 @@ public class PolaroidSnapshot : MonoBehaviour
         {
             string fileName = TakeSnapshot();
 
-            List<Photographable> visibleObjs = PolaroidCheckVisible.Instance.visiblePhotographables(snapshotCam);
+            Dictionary<Photographable, float> visibleObjs = PolaroidCheckVisible.Instance.visiblePhotographables(snapshotCam);
 
             bool cryptidPhotographed = false;
-            foreach (Photographable obj in visibleObjs)
+            foreach (KeyValuePair<Photographable, float> entry in visibleObjs)
             {
-                obj.IveBeenPhotographed(); // tell a photographed object that it's been photographed.
-                if (obj.identity == "???")
+                entry.Key.IveBeenPhotographed(); // tell a photographed object that it's been photographed.
+                if (entry.Key.identity == "???")
                 {
                     cryptidPhotographed = true;
                 }
             }
 
-            PolaroidInfo.Instance.photos.Add(new PolaroidInfo.Photograph(fileName, visibleObjs));
+            PolaroidInfo.Instance.photos.Add(new PolaroidInfo.PhotoData(fileName, visibleObjs));
 
             // trigger event if haven't photographed the cryptid (this is to interface with cryptid behaviour)
             if (!cryptidPhotographed)

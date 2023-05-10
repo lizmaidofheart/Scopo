@@ -12,20 +12,47 @@ public class PolaroidInfo : MonoBehaviour
 
     // info accessible from the singleton
 
-    [SerializeField] public Camera polaroidCam;
-    public List<Photograph> photos; // a public list of all photos created
+    public List<PhotoData> photos; // a public list of all photos created
     public List<Photographable> photographables; // a public list of all photographable objects
 
     [System.Serializable]
-    public struct Photograph
+    public struct PhotoData
     {
         public string filename;
-        public List<Photographable> visibleObjs;
+        public Dictionary<Photographable, float> visibleObjsWithDistances;
+        public bool containsCryptid;
+        public float distanceToCryptid;
+        public float closestDistanceToClue;
+        public int amountOfClues;
 
-        public Photograph(string _filename, List<Photographable> _visibleObjs)
+        public PhotoData(string _filename, Dictionary<Photographable, float> _visibleObjs)
         {
             filename = _filename;
-            visibleObjs = _visibleObjs;
+            visibleObjsWithDistances = _visibleObjs;
+
+            containsCryptid = false;
+            distanceToCryptid = -1;
+            closestDistanceToClue = 10000000;
+            amountOfClues = 0;
+
+            GetComparisonData();
+        }
+
+        private void GetComparisonData()
+        {
+            foreach (KeyValuePair<Photographable, float> entry in visibleObjsWithDistances)
+            {
+                if (entry.Key.identity == "???")
+                {
+                    containsCryptid = true;
+                    distanceToCryptid = entry.Value;
+                }
+                else if (entry.Key.isClue)
+                {
+                    if (closestDistanceToClue > entry.Value) { closestDistanceToClue = entry.Value; }
+                    amountOfClues += 1;
+                }
+            }
         }
     }
 
@@ -41,7 +68,9 @@ public class PolaroidInfo : MonoBehaviour
         }
 
         // these being created in awake means they can be added to in other scripts' start()s
-        photos = new List<Photograph>();
+        photos = new List<PhotoData>();
         photographables = new List<Photographable>();
+
+        DontDestroyOnLoad(gameObject);
     }
 }

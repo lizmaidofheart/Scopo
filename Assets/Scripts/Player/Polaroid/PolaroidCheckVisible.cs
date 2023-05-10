@@ -24,13 +24,13 @@ public class PolaroidCheckVisible : MonoBehaviour
 
     }
 
-    // return a list of all visible photographables to the camera
-    public List<Photographable> visiblePhotographables(Camera cam)
+    // return a dictionary of all visible photographables to the camera, with their distances from the camera
+    public Dictionary<Photographable, float> visiblePhotographables(Camera cam)
     {
-        List<Photographable> output = new List<Photographable>();
+        Dictionary<Photographable, float> output = new Dictionary<Photographable, float>();
         foreach (Photographable obj in PolaroidInfo.Instance.photographables)
         {
-            if (ICanSee(cam, obj)) { output.Add(obj); }
+            if (ICanSee(cam, obj)) { output.Add(obj, Vector3.Distance(cam.transform.position, obj.transform.position)); }
         }
         return output;
     }

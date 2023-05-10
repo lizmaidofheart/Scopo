@@ -12,7 +12,7 @@ public class Photographable : MonoBehaviour
 
     [SerializeField] public float visibleRange = 100f;
     [SerializeField] public string identity = "Unknown Object";
-    [SerializeField] bool isClue = true;
+    [SerializeField] public bool isClue = true;
     [Tooltip("Make sure the shown gizmo is within the object's collider")]
     [SerializeField] public Vector3 checkOffset = new Vector3();
 
