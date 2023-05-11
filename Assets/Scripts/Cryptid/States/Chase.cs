@@ -46,6 +46,7 @@ public class Chase : BrainState
         CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
 
         AdaptiveMusic.Instance.SwitchTrack(4);
+        CryptidBrain.Instance.animator.SetBool("isWalking", true);
     }
 
     // sprints after player for a short time, then stops to rest for a short time, then sprints again; loop continues
@@ -83,15 +84,19 @@ public class Chase : BrainState
         {
             if (isResting)
             {
+                // start sprinting
                 isResting = false;
                 toggleSprintRestTimer = sprintDuration;
                 CryptidBrain.Instance.navigator.speed = imposedSpeed;
+                CryptidBrain.Instance.animator.SetBool("isWalking", true);
             }
             else
             {
+                // start resting
                 isResting = true;
                 toggleSprintRestTimer = restDuration;
                 CryptidBrain.Instance.navigator.speed = 0;
+                CryptidBrain.Instance.animator.SetBool("isWalking", false);
             }
         }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Attack : BrainState
 {
-    public float duration = 2;
+    public float duration = 1;
 
     public Attack(string name, CryptidBrain brain, float animationDuration) : base(name, brain)
     {
@@ -16,9 +16,10 @@ public class Attack : BrainState
         base.Enter();
         CryptidBrain.Instance.playerObstacle.radius = 1;
         // play attack animation
-        PlayerReference.Instance.Die(duration + 1);
+        PlayerReference.Instance.Die(duration + 0.5f);
 
         AdaptiveMusic.Instance.SwitchTrack(-1); // silence all music
+        CryptidBrain.Instance.animator.SetBool("isWalking", false);
     }
 
 }

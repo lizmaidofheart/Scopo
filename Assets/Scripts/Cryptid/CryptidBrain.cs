@@ -79,6 +79,7 @@ public class CryptidBrain : MonoBehaviour
     [SerializeField] public float defendedZoneRadius;
     [SerializeField] public LayerMask groundLayer;
     [SerializeField] public NavMeshObstacle playerObstacle;
+    [SerializeField] public Animator animator;
 
     private void Awake() 
     {

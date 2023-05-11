@@ -29,6 +29,7 @@ public class Wander : BrainState
         GoToNewLocation();
 
         AdaptiveMusic.Instance.SwitchTrack(0);
+        CryptidBrain.Instance.animator.SetBool("isWalking", true);
 
     }
 

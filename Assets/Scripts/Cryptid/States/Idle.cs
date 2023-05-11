@@ -20,6 +20,7 @@ public class Idle : BrainState
         idleTimeRemaining = idleTime;
 
         AdaptiveMusic.Instance.SwitchTrack(0);
+        CryptidBrain.Instance.animator.SetBool("isWalking", false);
     }
 
     public override void UpdateLogic()

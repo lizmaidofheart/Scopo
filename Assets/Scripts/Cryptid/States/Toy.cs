@@ -52,6 +52,7 @@ public class Toy : BrainState
         goalTimeRemaining = 0;
 
         AdaptiveMusic.Instance.SwitchTrack(1);
+        CryptidBrain.Instance.animator.SetBool("isWalking", true);
     }
 
     public override void UpdateLogic()

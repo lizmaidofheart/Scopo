@@ -48,6 +48,7 @@ public class Hunt : BrainState
         {
             AdaptiveMusic.Instance.SwitchTrack(1);
         }
+        CryptidBrain.Instance.animator.SetBool("isWalking", true);
     }
 
     public override void UpdateLogic()

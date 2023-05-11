@@ -44,6 +44,7 @@ public class Lurk : BrainState
         loseInterestTimeRemaining = loseInterestTime;
 
         AdaptiveMusic.Instance.SwitchTrack(2);
+        CryptidBrain.Instance.animator.SetBool("isWalking", true);
     }
 
     public override void UpdateLogic()

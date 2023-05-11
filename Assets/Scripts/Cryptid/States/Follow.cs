@@ -32,6 +32,7 @@ public class Follow : BrainState
         CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
 
         AdaptiveMusic.Instance.SwitchTrack(1);
+        CryptidBrain.Instance.animator.SetBool("isWalking", true);
     }
 
     public override void UpdateLogic()
