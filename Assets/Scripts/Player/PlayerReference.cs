@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class PlayerReference : MonoBehaviour
 {
     [SerializeField] public Camera cam;
+    [SerializeField] Animator deathAnimator;
     [SerializeField] private float cluesFound = 0;
     [SerializeField] public bool hasPhotographedCryptid = false;
+    [SerializeField] bool timeToDie = false;
     private List<string> clueLog = new List<string>();
 
     // this is a singleton acting as an easy reference for the player
@@ -30,10 +32,20 @@ public class PlayerReference : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (timeToDie)
+        {
+            timeToDie = false;
+            Die(2);
+        }
+    }
+
     public void Die(float timeBeforeReset)
     {
         FirstPersonMovement mover = GetComponent<FirstPersonMovement>(); // stop player being able to move
         mover.speed = 0;
+        deathAnimator.SetTrigger("Die");
         StartCoroutine(ResetLevel(timeBeforeReset));
     }
 
