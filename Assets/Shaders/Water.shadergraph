@@ -220,10 +220,22 @@
             "m_Id": "1d7e7fb273614673bbe438d644193244"
         },
         {
-            "m_Id": "dce92c2728844dbcb939906a9df650a6"
+            "m_Id": "b625230bcc3244948f68f86fda30663e"
         },
         {
-            "m_Id": "b625230bcc3244948f68f86fda30663e"
+            "m_Id": "a9b04d50948a4932aa954bf018286ebd"
+        },
+        {
+            "m_Id": "7c8192c1fe744bb8ab23a845d4979dc1"
+        },
+        {
+            "m_Id": "e854a515b9d4448e99a255adbb5fee90"
+        },
+        {
+            "m_Id": "c2de38a7fd59421292ccaf48a3f2d935"
+        },
+        {
+            "m_Id": "18c53dde32484a9884a59259334fe9ca"
         }
     ],
     "m_Edges": [
@@ -860,8 +872,8 @@
     ],
     "m_VertexContext": {
         "m_Position": {
-            "x": 2230.0,
-            "y": 1077.3333740234375
+            "x": 2258.0,
+            "y": 1081.3333740234375
         },
         "m_Blocks": [
             {
@@ -877,8 +889,8 @@
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": 2230.0,
-            "y": 1287.3333740234375
+            "x": 2258.0,
+            "y": 1291.333251953125
         },
         "m_Blocks": [
             {
@@ -924,10 +936,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -13.999879837036133,
-            "y": 1353.3333740234375,
-            "width": 169.9999237060547,
-            "height": 36.0001220703125
+            "x": -83.33352661132813,
+            "y": 1590.666748046875,
+            "width": 170.00009155273438,
+            "height": 36.0
         }
     },
     "m_Slots": [
@@ -973,15 +985,15 @@
     "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
     "m_ObjectId": "047e72891d3f4693bafd82c7a5e4210f",
     "m_Title": "Making the water depth influence colour",
-    "m_Content": "",
+    "m_Content": "Based on the distance from the water surface to the next surface after that by the camera's angle, lerps between a light and dark colour. ",
     "m_TextSize": 1,
     "m_Theme": 1,
     "m_Position": {
         "serializedVersion": "2",
-        "x": -656.0,
-        "y": 556.6666259765625,
-        "width": 830.189697265625,
-        "height": 467.33331298828127
+        "x": -1759.3333740234375,
+        "y": 842.6666259765625,
+        "width": 830.0000610351563,
+        "height": 508.66668701171877
     },
     "m_Group": {
         "m_Id": ""
@@ -1066,9 +1078,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -167.9998321533203,
-            "y": 1616.6666259765625,
-            "width": 134.00003051757813,
+            "x": -320.6666259765625,
+            "y": 2041.3333740234375,
+            "width": 133.99986267089845,
             "height": 36.0001220703125
         }
     },
@@ -1165,9 +1177,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -586.6665649414063,
-            "y": 1652.666748046875,
-            "width": 138.66665649414063,
+            "x": -739.33349609375,
+            "y": 2077.333251953125,
+            "width": 138.6666259765625,
             "height": 36.0
         }
     },
@@ -1201,10 +1213,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -232.00021362304688,
-            "y": 163.33338928222657,
-            "width": 142.0000762939453,
-            "height": 143.99998474121095
+            "x": -1161.3336181640625,
+            "y": 452.00006103515627,
+            "width": 142.0,
+            "height": 144.0
         }
     },
     "m_Slots": [
@@ -1438,6 +1450,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "18c53dde32484a9884a59259334fe9ca",
+    "m_Title": "The lerp input is a boolean, so this selects whether to show the foam or not at certain points by lerping towards its colour.",
+    "m_Content": "",
+    "m_TextSize": 0,
+    "m_Theme": 1,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": 658.0,
+        "y": 1256.666748046875,
+        "width": 424.0,
+        "height": 466.6666259765625
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "1a245309e4914c9b9f1d9e048e1b89ff",
     "m_Id": 3,
@@ -1480,15 +1512,15 @@
     "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
     "m_ObjectId": "1d7e7fb273614673bbe438d644193244",
     "m_Title": "Creating surface ripples",
-    "m_Content": "",
+    "m_Content": "This uses a moving voronoi and Powers it in order to create slim ripples where there are boundaries between cells",
     "m_TextSize": 1,
     "m_Theme": 1,
     "m_Position": {
         "serializedVersion": "2",
-        "x": -1942.0,
-        "y": -755.3333740234375,
+        "x": -2831.333251953125,
+        "y": -558.0,
         "width": 1692.6666259765625,
-        "height": 693.3333740234375
+        "height": 715.3333129882813
     },
     "m_Group": {
         "m_Id": ""
@@ -1639,10 +1671,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 134.66680908203126,
-            "y": 1445.9998779296875,
-            "width": 209.33328247070313,
-            "height": 304.0
+            "x": -17.999996185302736,
+            "y": 1870.666748046875,
+            "width": 209.33311462402345,
+            "height": 339.99951171875
         }
     },
     "m_Slots": [
@@ -1753,10 +1785,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -627.9999389648438,
-            "y": 781.3333129882813,
-            "width": 154.00003051757813,
-            "height": 35.99993896484375
+            "x": -1734.0003662109375,
+            "y": 1102.666748046875,
+            "width": 154.0003662109375,
+            "height": 36.0001220703125
         }
     },
     "m_Slots": [
@@ -1841,10 +1873,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1650.6666259765625,
-            "y": -458.66668701171877,
+            "x": -2540.000244140625,
+            "y": -239.3333282470703,
             "width": 127.333251953125,
-            "height": 119.99996948242188
+            "height": 120.00003051757813
         }
     },
     "m_Slots": [
@@ -2043,10 +2075,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1046.6671142578125,
-            "y": 315.33343505859377,
-            "width": 186.000244140625,
-            "height": 36.00006103515625
+            "x": -1976.0001220703125,
+            "y": 603.9999389648438,
+            "width": 185.999755859375,
+            "height": 36.0
         }
     },
     "m_Slots": [
@@ -2209,10 +2241,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -557.333251953125,
-            "y": 1292.0,
-            "width": 150.66668701171876,
-            "height": 36.0
+            "x": -626.666748046875,
+            "y": 1529.333251953125,
+            "width": 150.66683959960938,
+            "height": 36.0001220703125
         }
     },
     "m_Slots": [
@@ -2371,10 +2403,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -189.99989318847657,
-            "y": 1427.3333740234375,
-            "width": 156.00009155273438,
-            "height": 144.0
+            "x": -342.6668701171875,
+            "y": 1852.0,
+            "width": 156.00010681152345,
+            "height": 143.9998779296875
         }
     },
     "m_Slots": [
@@ -2474,10 +2506,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1921.333251953125,
-            "y": -312.0000915527344,
+            "x": -2810.6669921875,
+            "y": -92.6666488647461,
             "width": 142.0,
-            "height": 36.00006103515625
+            "height": 35.99985885620117
         }
     },
     "m_Slots": [
@@ -2558,9 +2590,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -324.00006103515627,
-            "y": 642.0,
-            "width": 153.33334350585938,
+            "x": -1430.000244140625,
+            "y": 963.333251953125,
+            "width": 153.3333740234375,
             "height": 36.0
         }
     },
@@ -2839,9 +2871,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 468.00006103515627,
-            "y": 1243.3333740234375,
-            "width": 209.333251953125,
+            "x": 350.6666564941406,
+            "y": 1401.3333740234375,
+            "width": 209.33346557617188,
             "height": 328.0
         }
     },
@@ -3076,9 +3108,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -344.66650390625,
-            "y": 1232.0,
-            "width": 241.9998779296875,
+            "x": -414.0001525878906,
+            "y": 1469.3333740234375,
+            "width": 242.0001983642578,
             "height": 96.0
         }
     },
@@ -3405,10 +3437,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -3.3331780433654787,
-            "y": 1190.0001220703125,
-            "width": 127.3332748413086,
-            "height": 119.999755859375
+            "x": -72.66666412353516,
+            "y": 1427.3333740234375,
+            "width": 127.33328247070313,
+            "height": 120.0
         }
     },
     "m_Slots": [
@@ -3433,6 +3465,26 @@
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "7c8192c1fe744bb8ab23a845d4979dc1",
+    "m_Title": "Foam on shores",
+    "m_Content": "",
+    "m_TextSize": 1,
+    "m_Theme": 1,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -877.3333129882813,
+        "y": 1226.666748046875,
+        "width": 1998.173583984375,
+        "height": 1027.6651611328125
+    },
+    "m_Group": {
+        "m_Id": ""
     }
 }
 
@@ -3555,9 +3607,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 500.6666259765625,
-            "y": 1172.0,
-            "width": 142.0,
+            "x": 678.6666259765625,
+            "y": 1398.666748046875,
+            "width": 142.0001220703125,
             "height": 36.0
         }
     },
@@ -3606,10 +3658,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1446.666748046875,
-            "y": 1329.3333740234375,
-            "width": 184.0001220703125,
-            "height": 102.666748046875
+            "x": 1474.66650390625,
+            "y": 1333.3333740234375,
+            "width": 183.9998779296875,
+            "height": 102.6666259765625
         }
     },
     "m_Slots": [
@@ -3645,10 +3697,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -657.9998168945313,
-            "y": 1440.6668701171875,
-            "width": 125.333251953125,
-            "height": 174.66650390625
+            "x": -810.6668090820313,
+            "y": 1865.3333740234375,
+            "width": 125.33349609375,
+            "height": 174.666748046875
         }
     },
     "m_Slots": [
@@ -3690,10 +3742,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1292.666748046875,
-            "y": -550.6666870117188,
-            "width": 209.33349609375,
-            "height": 327.99993896484377
+            "x": -2182.000244140625,
+            "y": -331.3333435058594,
+            "width": 209.3333740234375,
+            "height": 363.9999084472656
         }
     },
     "m_Slots": [
@@ -3805,10 +3857,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1903.9998779296875,
-            "y": -513.3333129882813,
+            "x": -2793.33349609375,
+            "y": -293.9999694824219,
             "width": 125.333251953125,
-            "height": 174.66659545898438
+            "height": 174.6666717529297
         }
     },
     "m_Slots": [
@@ -3850,10 +3902,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1046.6671142578125,
-            "y": 374.66668701171877,
-            "width": 188.6668701171875,
-            "height": 36.000030517578128
+            "x": -1976.0001220703125,
+            "y": 663.3333740234375,
+            "width": 188.6663818359375,
+            "height": 35.99981689453125
         }
     },
     "m_Slots": [
@@ -3922,9 +3974,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1601.9998779296875,
-            "y": -677.3333740234375,
-            "width": 155.9998779296875,
+            "x": -2491.33349609375,
+            "y": -458.0000915527344,
+            "width": 156.0,
             "height": 144.0
         }
     },
@@ -4075,10 +4127,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1921.333251953125,
-            "y": -626.6666870117188,
-            "width": 130.6666259765625,
-            "height": 35.99993896484375
+            "x": -2810.6669921875,
+            "y": -407.3332824707031,
+            "width": 130.666748046875,
+            "height": 35.999847412109378
         }
     },
     "m_Slots": [
@@ -4297,10 +4349,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -827.9999389648438,
-            "y": -184.66665649414063,
-            "width": 144.6666259765625,
-            "height": 35.99993896484375
+            "x": -1717.333740234375,
+            "y": 34.666664123535159,
+            "width": 144.666748046875,
+            "height": 36.00004577636719
         }
     },
     "m_Slots": [
@@ -4333,10 +4385,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -892.666748046875,
-            "y": 46.00005340576172,
+            "x": -1822.000244140625,
+            "y": 334.6667175292969,
             "width": 129.333251953125,
-            "height": 120.0000228881836
+            "height": 120.00003051757813
         }
     },
     "m_Slots": [
@@ -4411,10 +4463,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -501.333251953125,
-            "y": -398.6666564941406,
-            "width": 209.33319091796876,
-            "height": 304.0
+            "x": -1390.6669921875,
+            "y": -179.33331298828126,
+            "width": 209.3333740234375,
+            "height": 303.9999084472656
         }
     },
     "m_Slots": [
@@ -4474,6 +4526,26 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "SurfaceDescription.SpriteMask"
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "a9b04d50948a4932aa954bf018286ebd",
+    "m_Title": "Adding the ripples to the water",
+    "m_Content": "",
+    "m_TextSize": 1,
+    "m_Theme": 1,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -458.0,
+        "y": 612.0,
+        "width": 284.66668701171877,
+        "height": 565.9999389648438
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
@@ -4540,10 +4612,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -827.9999389648438,
-            "y": -550.6666870117188,
+            "x": -1717.333740234375,
+            "y": -331.3333435058594,
             "width": 209.3333740234375,
-            "height": 303.99993896484377
+            "height": 304.00006103515627
         }
     },
     "m_Slots": [
@@ -4617,15 +4689,15 @@
     "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
     "m_ObjectId": "b625230bcc3244948f68f86fda30663e",
     "m_Title": "Darkening ripples based on distance from camera",
-    "m_Content": "",
+    "m_Content": "This means far away ripples are less noisy and distracting. It checks the distance and then lerps\nthe ripple opacity based on it",
     "m_TextSize": 1,
     "m_Theme": 1,
     "m_Position": {
         "serializedVersion": "2",
-        "x": -1281.3333740234375,
-        "y": -33.333335876464847,
-        "width": 1237.3333740234375,
-        "height": 545.3333740234375
+        "x": -2210.666748046875,
+        "y": 197.3333282470703,
+        "width": 1487.33349609375,
+        "height": 603.3333129882813
     },
     "m_Group": {
         "m_Id": ""
@@ -4678,10 +4750,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -804.6669311523438,
-            "y": 315.33343505859377,
-            "width": 129.333251953125,
-            "height": 102.66656494140625
+            "x": -1734.0003662109375,
+            "y": 603.9999389648438,
+            "width": 129.3336181640625,
+            "height": 102.666748046875
         }
     },
     "m_Slots": [
@@ -4774,9 +4846,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1230.0001220703125,
-            "y": 31.333293914794923,
-            "width": 207.33319091796876,
+            "x": -2159.33349609375,
+            "y": 319.9999694824219,
+            "width": 207.333251953125,
             "height": 134.66677856445313
         }
     },
@@ -4832,15 +4904,15 @@
     "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
     "m_ObjectId": "bd24bb07510d4fd0a683ee3a59dcf308",
     "m_Title": "Making fog render on the water",
-    "m_Content": "",
+    "m_Content": "By default the water doesn't have fog. This adds it by lerping between the water and the fog colour based on the fog density at the position.",
     "m_TextSize": 1,
     "m_Theme": 1,
     "m_Position": {
         "serializedVersion": "2",
-        "x": 1322.0,
-        "y": 1189.3333740234375,
-        "width": 745.3333740234375,
-        "height": 414.6666259765625
+        "x": 1350.0,
+        "y": 1093.3333740234375,
+        "width": 745.333251953125,
+        "height": 514.6666259765625
     },
     "m_Group": {
         "m_Id": ""
@@ -4902,6 +4974,26 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "c2de38a7fd59421292ccaf48a3f2d935",
+    "m_Title": "Getting the moving noise distortion of the foam.",
+    "m_Content": "",
+    "m_TextSize": 0,
+    "m_Theme": 1,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -833.3333129882813,
+        "y": 1790.0,
+        "width": 1039.333251953125,
+        "height": 440.0001220703125
+    },
+    "m_Group": {
+        "m_Id": ""
     }
 }
 
@@ -5004,9 +5096,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -337.3334045410156,
-            "y": 688.0,
-            "width": 140.6667022705078,
+            "x": -1443.333740234375,
+            "y": 1009.333251953125,
+            "width": 140.6669921875,
             "height": 36.0
         }
     },
@@ -5070,9 +5162,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 876.666748046875,
-            "y": 1190.0,
-            "width": 209.333251953125,
+            "x": 852.6666870117188,
+            "y": 1348.6666259765625,
+            "width": 209.33343505859376,
             "height": 328.0
         }
     },
@@ -5116,10 +5208,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1481.9998779296875,
-            "y": -348.0000305175781,
+            "x": -2371.33349609375,
+            "y": -128.66668701171876,
             "width": 148.0,
-            "height": 35.99993896484375
+            "height": 36.000038146972659
         }
     },
     "m_Slots": [
@@ -5152,10 +5244,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1010.66650390625,
-            "y": -434.66668701171877,
+            "x": -1900.000244140625,
+            "y": -215.33335876464845,
             "width": 154.66650390625,
-            "height": 36.000030517578128
+            "height": 36.00004577636719
         }
     },
     "m_Slots": [
@@ -5213,10 +5305,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1230.0001220703125,
-            "y": 224.666748046875,
-            "width": 123.333251953125,
-            "height": 246.66656494140626
+            "x": -2159.33349609375,
+            "y": 513.333251953125,
+            "width": 123.3333740234375,
+            "height": 246.666748046875
         }
     },
     "m_Slots": [
@@ -5275,10 +5367,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -225.3331298828125,
-            "y": 1371.3333740234375,
-            "width": 138.6666259765625,
-            "height": 36.0
+            "x": -294.6667785644531,
+            "y": 1608.6666259765625,
+            "width": 138.66664123535157,
+            "height": 36.0001220703125
         }
     },
     "m_Slots": [
@@ -5383,10 +5475,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -412.6666259765625,
-            "y": 760.0,
-            "width": 241.99998474121095,
-            "height": 96.0
+            "x": -1518.666748046875,
+            "y": 1081.3333740234375,
+            "width": 241.9998779296875,
+            "height": 95.9998779296875
         }
     },
     "m_Slots": [
@@ -5476,10 +5568,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -385.9998474121094,
-            "y": 1532.666748046875,
+            "x": -538.6668090820313,
+            "y": 1957.3333740234375,
             "width": 127.33328247070313,
-            "height": 120.0
+            "height": 120.0001220703125
         }
     },
     "m_Slots": [
@@ -5519,10 +5611,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 239.3333740234375,
-            "y": 41.99996566772461,
-            "width": 209.33343505859376,
-            "height": 328.0000915527344
+            "x": -964.666748046875,
+            "y": 335.33331298828127,
+            "width": 209.3333740234375,
+            "height": 328.00006103515627
         }
     },
     "m_Slots": [
@@ -5607,26 +5699,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
-    "m_ObjectId": "dce92c2728844dbcb939906a9df650a6",
-    "m_Title": "Foam on shores",
-    "m_Content": "",
-    "m_TextSize": 1,
-    "m_Theme": 1,
-    "m_Position": {
-        "serializedVersion": "2",
-        "x": -686.6666259765625,
-        "y": 1123.3333740234375,
-        "width": 1806.9498291015625,
-        "height": 674.0
-    },
-    "m_Group": {
-        "m_Id": ""
-    }
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
     "m_ObjectId": "dea6fb53c61446a799b6754fc6c281a9",
     "m_Id": 3,
@@ -5682,10 +5754,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 216.6667938232422,
-            "y": 1293.333251953125,
-            "width": 127.33329772949219,
-            "height": 120.0001220703125
+            "x": 147.33331298828126,
+            "y": 1530.666748046875,
+            "width": 127.33328247070313,
+            "height": 119.9998779296875
         }
     },
     "m_Slots": [
@@ -5807,9 +5879,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1814.66650390625,
-            "y": 1258.0,
-            "width": 209.3333740234375,
+            "x": 1842.666259765625,
+            "y": 1262.0,
+            "width": 209.333740234375,
             "height": 328.0
         }
     },
@@ -5899,10 +5971,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -118.66668701171875,
-            "y": 656.6666870117188,
-            "width": 209.33328247070313,
-            "height": 328.00006103515627
+            "x": -1224.666748046875,
+            "y": 978.0,
+            "width": 209.3333740234375,
+            "height": 327.9998779296875
         }
     },
     "m_Slots": [
@@ -5930,6 +6002,26 @@
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "e854a515b9d4448e99a255adbb5fee90",
+    "m_Title": "Using the camera depth, gets where the foam should appear, and cuts it off sharply. The FoamSmoothness value is the distance between the water surface and the bottom of the foam.",
+    "m_Content": "",
+    "m_TextSize": 0,
+    "m_Theme": 1,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -646.6666870117188,
+        "y": 1364.0,
+        "width": 1226.666748046875,
+        "height": 388.666748046875
+    },
+    "m_Group": {
+        "m_Id": ""
     }
 }
 
@@ -6041,10 +6133,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 500.66668701171877,
-            "y": 490.0000915527344,
-            "width": 209.33343505859376,
-            "height": 303.9999084472656
+            "x": -428.66668701171877,
+            "y": 778.6665649414063,
+            "width": 209.33335876464845,
+            "height": 304.00006103515627
         }
     },
     "m_Slots": [
@@ -6112,10 +6204,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -563.333740234375,
-            "y": 125.33342742919922,
-            "width": 187.333740234375,
-            "height": 144.0
+            "x": -1492.666748046875,
+            "y": 413.9999084472656,
+            "width": 187.333251953125,
+            "height": 143.99996948242188
         }
     },
     "m_Slots": [

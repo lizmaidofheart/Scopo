@@ -98,7 +98,17 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "8baed3834ad746d5b2f94eb01ea1976b"
+        },
+        {
+            "m_Id": "ca5d18cdbfbd45c1b0a4d7bdd36f0c1d"
+        },
+        {
+            "m_Id": "8587362d44b84916bf68a44e672c8e7c"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -607,10 +617,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 283.16796875,
-            "y": -172.66650390625,
-            "width": 209.3330078125,
-            "height": 304.0
+            "x": 406.0000305175781,
+            "y": -179.99998474121095,
+            "width": 209.33340454101563,
+            "height": 304.0000305175781
         }
     },
     "m_Slots": [
@@ -858,10 +868,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -643.4990234375,
-            "y": 141.33349609375,
-            "width": 156.0,
-            "height": 144.0
+            "x": -741.3333740234375,
+            "y": 227.99996948242188,
+            "width": 156.00006103515626,
+            "height": 144.00003051757813
         }
     },
     "m_Slots": [
@@ -903,10 +913,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -901.5,
-            "y": -440.66650390625,
-            "width": 190.0,
-            "height": 168.0
+            "x": -899.3333129882813,
+            "y": -669.3334350585938,
+            "width": 209.333251953125,
+            "height": 352.0
         }
     },
     "m_Slots": [
@@ -928,7 +938,7 @@
     ],
     "synonyms": [],
     "m_Precision": 0,
-    "m_PreviewExpanded": false,
+    "m_PreviewExpanded": true,
     "m_DismissedVersion": 0,
     "m_PreviewMode": 0,
     "m_CustomColors": {
@@ -1015,10 +1025,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -46.1650390625,
-            "y": -356.66650390625,
-            "width": 209.3330078125,
-            "height": 304.0
+            "x": -43.99993133544922,
+            "y": -585.3334350585938,
+            "width": 209.33322143554688,
+            "height": 303.9999694824219
         }
     },
     "m_Slots": [
@@ -1069,10 +1079,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1087.5,
-            "y": 324.66650390625,
-            "width": 147.333984375,
-            "height": 132.0
+            "x": -1185.3333740234375,
+            "y": 411.3333435058594,
+            "width": 147.3333740234375,
+            "height": 132.00003051757813
         }
     },
     "m_Slots": [
@@ -1181,9 +1191,9 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
+        "x": 0.6000000238418579,
+        "y": 1.0,
+        "z": 1.0,
         "w": 0.0
     }
 }
@@ -1200,10 +1210,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -509.3334045410156,
-            "y": -101.33333587646485,
-            "width": 185.3333740234375,
-            "height": 35.99998474121094
+            "x": -506.6667175292969,
+            "y": -330.0000305175781,
+            "width": 185.33340454101563,
+            "height": 35.999969482421878
         }
     },
     "m_Slots": [
@@ -1336,10 +1346,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 642.6666870117188,
-            "y": 60.66665267944336,
-            "width": 120.66668701171875,
-            "height": 35.9999885559082
+            "x": 778.6666259765625,
+            "y": 127.33333587646485,
+            "width": 144.666748046875,
+            "height": 35.99999237060547
         }
     },
     "m_Slots": [
@@ -1396,9 +1406,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -817.5,
-            "y": 264.66650390625,
-            "width": 131.333984375,
+            "x": -915.3333740234375,
+            "y": 351.33331298828127,
+            "width": 131.33331298828126,
             "height": 120.0
         }
     },
@@ -1502,9 +1512,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1164.666748046875,
-            "y": -374.6666564941406,
-            "width": 157.3333740234375,
+            "x": -1162.0,
+            "y": -603.3334350585938,
+            "width": 157.333251953125,
             "height": 36.0
         }
     },
@@ -1563,10 +1573,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -479.4990234375,
-            "y": -476.66650390625,
-            "width": 209.333984375,
-            "height": 304.0
+            "x": -477.3333435058594,
+            "y": -705.3334350585938,
+            "width": 209.3333740234375,
+            "height": 304.00006103515627
         }
     },
     "m_Slots": [
@@ -1618,6 +1628,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "8587362d44b84916bf68a44e672c8e7c",
+    "m_Title": "Combines the vignette and the base texture",
+    "m_Content": "This lerps between the base texture and a set vignette colour based on the vignette output",
+    "m_TextSize": 1,
+    "m_Theme": 1,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": 388.6666564941406,
+        "y": -308.0,
+        "width": 863.3333740234375,
+        "height": 671.3333740234375
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "88b1366e26184cfea9bdae1ef4510dfe",
     "m_Group": {
@@ -1628,10 +1658,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -188.66668701171876,
-            "y": 141.3333282470703,
-            "width": 166.0,
-            "height": 36.0
+            "x": -286.0000305175781,
+            "y": 227.99996948242188,
+            "width": 165.99996948242188,
+            "height": 36.000030517578128
         }
     },
     "m_Slots": [
@@ -1702,6 +1732,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "8baed3834ad746d5b2f94eb01ea1976b",
+    "m_Title": "Creating a basic vignette effect by using the Red channel from Polar Coordinates",
+    "m_Content": "Strength, Smoothness and the center can all be set externally.",
+    "m_TextSize": 1,
+    "m_Theme": 1,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1182.0,
+        "y": -849.3333740234375,
+        "width": 1362.6666259765625,
+        "height": 590.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicValueMaterialSlot",
     "m_ObjectId": "8df7bf4c244d4cd09a3ed50ce1aa7b6a",
     "m_Id": 1,
@@ -1760,10 +1810,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 569.16796875,
-            "y": -332.66650390625,
-            "width": 209.3330078125,
-            "height": 280.0
+            "x": 645.3333129882813,
+            "y": -179.99998474121095,
+            "width": 209.3333740234375,
+            "height": 280.0000305175781
         }
     },
     "m_Slots": [
@@ -1838,10 +1888,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1213.83349609375,
-            "y": 0.0,
-            "width": 0.0,
-            "height": 0.0
+            "x": 1323.3331298828125,
+            "y": -9.333329200744629,
+            "width": 122.0,
+            "height": 78.66667938232422
         }
     },
     "m_Slots": [
@@ -1965,10 +2015,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 909.1669921875,
-            "y": 22.6669921875,
-            "width": 209.333984375,
-            "height": 328.0
+            "x": 1018.6666259765625,
+            "y": 13.333388328552246,
+            "width": 209.3333740234375,
+            "height": 327.99993896484377
         }
     },
     "m_Slots": [
@@ -2035,10 +2085,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1088.0,
-            "y": 264.66668701171877,
-            "width": 173.333251953125,
-            "height": 36.0
+            "x": -1185.3333740234375,
+            "y": 351.33331298828127,
+            "width": 173.33331298828126,
+            "height": 36.00006103515625
         }
     },
     "m_Slots": [
@@ -2119,9 +2169,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -712.0001220703125,
-            "y": -272.6666259765625,
-            "width": 166.00006103515626,
+            "x": -672.6666259765625,
+            "y": -509.3333740234375,
+            "width": 165.99990844726563,
             "height": 36.0
         }
     },
@@ -2215,10 +2265,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -678.166015625,
-            "y": -466.0,
+            "x": -676.0,
+            "y": -694.666748046875,
             "width": 120.0,
-            "height": 150.6669921875
+            "height": 150.66668701171876
         }
     },
     "m_Slots": [
@@ -2335,9 +2385,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -254.83203125,
-            "y": -172.66650390625,
-            "width": 127.3330078125,
+            "x": -252.66668701171876,
+            "y": -401.3333740234375,
+            "width": 127.33336639404297,
             "height": 120.0
         }
     },
@@ -2378,6 +2428,26 @@
     "m_Value": 1.0,
     "m_DefaultValue": 1.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "ca5d18cdbfbd45c1b0a4d7bdd36f0c1d",
+    "m_Title": "Adding a blotchy variation to the vignette using Voronoi.",
+    "m_Content": "The opacity of this effect can be set, and an offset can be given to ensure that different instances of its use look different. The VignetteDirtOffset parameter is set in script.",
+    "m_TextSize": 1,
+    "m_Theme": 1,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1202.666748046875,
+        "y": -32.0,
+        "width": 1362.666748046875,
+        "height": 583.9659423828125
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
@@ -2588,10 +2658,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 642.666748046875,
-            "y": 97.33329772949219,
-            "width": 156.6666259765625,
-            "height": 36.00001525878906
+            "x": 778.6666259765625,
+            "y": 163.99996948242188,
+            "width": 156.66668701171876,
+            "height": 36.0
         }
     },
     "m_Slots": [
@@ -2648,10 +2718,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -416.1650390625,
-            "y": 16.0,
-            "width": 209.3330078125,
-            "height": 364.0
+            "x": -514.0,
+            "y": 102.66661834716797,
+            "width": 209.33328247070313,
+            "height": 364.0000305175781
         }
     },
     "m_Slots": [
@@ -2696,10 +2766,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 9.16796875,
-            "y": -8.0,
-            "width": 209.3330078125,
-            "height": 328.0
+            "x": -88.6667251586914,
+            "y": 78.66663360595703,
+            "width": 209.33343505859376,
+            "height": 328.0000915527344
         }
     },
     "m_Slots": [
@@ -2751,7 +2821,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "x": 0.0,
+        "x": 0.20000000298023225,
         "y": 0.0,
         "z": 0.0,
         "w": 0.0

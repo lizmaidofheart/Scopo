@@ -590,6 +590,12 @@
     "m_StickyNoteDatas": [
         {
             "m_Id": "d0e2a065ea2d407881f5f024c7942b2c"
+        },
+        {
+            "m_Id": "6004f5ed05d845e8b502d664ffd62e94"
+        },
+        {
+            "m_Id": "6a9b04cbb1ed434ca762f2d58c335665"
         }
     ],
     "m_Edges": [
@@ -2682,8 +2688,8 @@
     ],
     "m_VertexContext": {
         "m_Position": {
-            "x": 9900.6669921875,
-            "y": 6325.99951171875
+            "x": 9969.33203125,
+            "y": 6417.99951171875
         },
         "m_Blocks": [
             {
@@ -2699,8 +2705,8 @@
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": 9900.6669921875,
-            "y": 6525.99951171875
+            "x": 9969.33203125,
+            "y": 6617.99951171875
         },
         "m_Blocks": [
             {
@@ -3631,9 +3637,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 9010.0,
-            "y": 6606.0,
-            "width": 156.6669921875,
+            "x": 9192.6669921875,
+            "y": 6700.00048828125,
+            "width": 156.666015625,
             "height": 36.0
         }
     },
@@ -4313,10 +4319,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1674.0001220703125,
-            "y": 6030.666015625,
-            "width": 134.000244140625,
-            "height": 36.00048828125
+            "x": -1458.6668701171875,
+            "y": 6386.00048828125,
+            "width": 134.0001220703125,
+            "height": 36.0
         }
     },
     "m_Slots": [
@@ -6917,10 +6923,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 9010.0,
-            "y": 6642.0,
-            "width": 165.9990234375,
-            "height": 36.0
+            "x": 9192.6669921875,
+            "y": 6736.00048828125,
+            "width": 166.0,
+            "height": 35.99951171875
         }
     },
     "m_Slots": [
@@ -7440,9 +7446,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 9379.9990234375,
-            "y": 6446.0,
-            "width": 277.3349609375,
+            "x": 9448.666015625,
+            "y": 6537.99951171875,
+            "width": 277.3330078125,
             "height": 424.0
         }
     },
@@ -8018,6 +8024,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "6004f5ed05d845e8b502d664ffd62e94",
+    "m_Title": "Adding a blotchy vignette effect",
+    "m_Content": "",
+    "m_TextSize": 3,
+    "m_Theme": 1,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": 9179.3330078125,
+        "y": 6211.33349609375,
+        "width": 641.3335571289063,
+        "height": 770.40185546875
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "6010d1041dd8449bb3ee4e56b089df96",
     "m_Id": 1,
@@ -8287,10 +8313,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 9009.333984375,
-            "y": 6502.0,
+            "x": 9192.0,
+            "y": 6596.00048828125,
             "width": 157.3330078125,
-            "height": 36.0
+            "height": 35.99951171875
         }
     },
     "m_Slots": [
@@ -8556,6 +8582,26 @@
         "m_SerializableColors": []
     },
     "m_ComparisonType": 0
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "6a9b04cbb1ed434ca762f2d58c335665",
+    "m_Title": "Converting one 28-colour palette to another by a specified set of equivalencies",
+    "m_Content": "This compares each pixel to a colour from the input colour, and if it matches, it changes it to the set equivalent. Unfortunately, shadergraph has no way to exit early from this comparison, so every pixel must be compared 28 times, even though it will be matched and changed only once. This assumes that there are no shared colours between the two palettes.\nThe entire comparison cannot be shown all on screen due to constraints in the method being used to screenshot the shadergraph, but the module repeats 28 times.",
+    "m_TextSize": 3,
+    "m_Theme": 1,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": 2286.0,
+        "y": 6730.6669921875,
+        "width": 3112.66650390625,
+        "height": 546.4072265625
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
@@ -8864,10 +8910,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 9009.333984375,
-            "y": 6538.0,
+            "x": 9192.0,
+            "y": 6632.0,
             "width": 185.3330078125,
-            "height": 36.0
+            "height": 36.00048828125
         }
     },
     "m_Slots": [
@@ -10261,10 +10307,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1502.66650390625,
-            "y": 6017.3330078125,
-            "width": 184.666748046875,
-            "height": 254.666015625
+            "x": -1287.3336181640625,
+            "y": 6372.6669921875,
+            "width": 184.6669921875,
+            "height": 254.6669921875
         }
     },
     "m_Slots": [
@@ -10350,10 +10396,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 9010.0,
-            "y": 6678.0,
-            "width": 173.333984375,
-            "height": 36.0
+            "x": 9192.6669921875,
+            "y": 6772.0,
+            "width": 173.3330078125,
+            "height": 36.00048828125
         }
     },
     "m_Slots": [
@@ -12725,14 +12771,14 @@
     "m_ObjectId": "d0e2a065ea2d407881f5f024c7942b2c",
     "m_Title": "Get texture",
     "m_Content": "",
-    "m_TextSize": 1,
+    "m_TextSize": 3,
     "m_Theme": 1,
     "m_Position": {
         "serializedVersion": "2",
-        "x": -1727.3333740234375,
-        "y": 5957.33349609375,
-        "width": 465.3333740234375,
-        "height": 362.0
+        "x": -1596.6666259765625,
+        "y": 6256.0,
+        "width": 549.762451171875,
+        "height": 418.2861328125
     },
     "m_Group": {
         "m_Id": ""
@@ -13361,8 +13407,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 9009.333984375,
-            "y": 6570.0,
+            "x": 9192.0,
+            "y": 6664.00048828125,
             "width": 166.0,
             "height": 36.0
         }

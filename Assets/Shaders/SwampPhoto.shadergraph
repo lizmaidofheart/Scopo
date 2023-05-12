@@ -74,7 +74,11 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "03528eb126fb4fed90512da0c16c6df2"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -273,6 +277,26 @@
     },
     "m_Labels": [],
     "m_Space": 0
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "03528eb126fb4fed90512da0c16c6df2",
+    "m_Title": "This just adds a blotchy coloured vignette to the input image.",
+    "m_Content": "It doesn't need to do the same complicated palette conversion process as the EndScreenPhotos shader, as the photos are already taken using the swamp palette.",
+    "m_TextSize": 1,
+    "m_Theme": 1,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1144.0,
+        "y": -131.3333282470703,
+        "width": 1246.3619384765625,
+        "height": 731.021240234375
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
