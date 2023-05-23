@@ -45,7 +45,7 @@ public class Chase : BrainState
 
         CryptidBrain.Instance.navigator.SetDestination(CryptidBrain.Instance.senses.lastKnownPlayerLocation);
 
-        AdaptiveMusic.Instance.SwitchTrack(4);
+        AdaptiveMusic.Instance.SwitchTrack(3);
         CryptidBrain.Instance.animator.SetBool("isWalking", true);
     }
 
